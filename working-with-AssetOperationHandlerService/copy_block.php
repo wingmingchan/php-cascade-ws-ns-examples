@@ -10,17 +10,17 @@ use cascade_ws_exception as e;
 
 try
 {
-	// the block to be copy
-	$block_id = $service->createId( a\TextBlock::TYPE, "_cascade/blocks/code/text-block", "cascade-admin" );
+    // the block to be copy
+    $block_id = $service->createId( a\TextBlock::TYPE, "_cascade/blocks/code/text-block", "cascade-admin" );
 
-	// the parent folder where the new block should be placed
-	$parent_id = $service->createId( a\Folder::TYPE, "_cascade/blocks/code", "cascade-admin" );
-	
-	// new name for the copy
-	$new_name = "another-text-block";
-	
-	// no workflow
-	$do_workflow = false;
+    // the parent folder where the new block should be placed
+    $parent_id = $service->createId( a\Folder::TYPE, "_cascade/blocks/code", "cascade-admin" );
+    
+    // new name for the copy
+    $new_name = "another-text-block";
+    
+    // no workflow
+    $do_workflow = false;
          
     $service->copy( $block_id, $parent_id, $new_name, $do_workflow );
 
