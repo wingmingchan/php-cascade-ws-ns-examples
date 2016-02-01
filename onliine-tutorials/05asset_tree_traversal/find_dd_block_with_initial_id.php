@@ -1,9 +1,10 @@
 <?php
 /*
-When a phantom node is encounter, normally the execution of a program will terminate
+When a phantom node is encountered, normally the execution of a program will terminate
 with a message, saying that a certain field does not exist. The message only gives
 the initial part of the id string of the block. To be able to locate the block, we need
 to have the complete id string. Use this program to find the id of that block.
+The program can be modified to find a page instead.
 */
 require_once( 'cascade_ws_ns/auth_chanw.php' );
 require_once( '/webfs/www/nosync/cascade/admin_functions_rwd.php' );
