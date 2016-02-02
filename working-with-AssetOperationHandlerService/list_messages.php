@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-$service->listMessages();
+    $service->listMessages();
 
     if( $service->isSuccessful() )
     {
