@@ -10,8 +10,8 @@ use cascade_ws_exception as e;
 
 try
 {
-	$path = "/how-to/blocks";
-	$service->read( 
+    $path = "/how-to/blocks";
+    $service->read( 
         $service->createId( a\Folder::TYPE, $path, "cascade-admin" ) );
         
     if($service->isSuccessful())
