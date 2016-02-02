@@ -33,7 +33,8 @@ try
         $service->editWorkflowSettings( $workflowSettings, false, false );
     }
     else
-        echo "Failed to read. " . $service->getMessage();}
+        echo "Failed to read. " . $service->getMessage();
+}
 catch( \Exception $e )
 {
     echo $e;
