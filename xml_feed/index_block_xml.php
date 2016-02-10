@@ -3,7 +3,7 @@
 This program can be used to create a feed,
 containing the block XML of an index block. The block id must be
 passed in as part of the query string. The url of this program
-then can be fed into a feed block and and the block will be populated
+then can be fed into a feed block and the block will be populated
 with the retrieved XML. 
 */
 
@@ -19,7 +19,7 @@ use cascade_ws_exception as e;
 try
 {
     // retrieve the block ID
-    $block_id = $_GET[ "block_id" ];
+    $block_id   = ( isset( $_GET[ "block_id" ] ) ? $_GET[ "block_id" ] : "" );
     
     if( isset( $block_id ) &&  $service->isHexString( $block_id ) )
     {
@@ -52,6 +52,6 @@ try
 }
 catch( \Exception $e ) 
 {
-    echo S_PRE . $e . E_PRE; 
+    echo "<error>$e</error>";
 }
 ?>
