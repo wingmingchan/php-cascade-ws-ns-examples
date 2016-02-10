@@ -44,43 +44,43 @@ use cascade_ws_exception as e;
 
 try
 {
-	// retrieve the required information
+    // retrieve the required information
     $asset_id   = ( isset( $_GET[ "asset_id" ] ) ? $_GET[ "asset_id" ] : "" );
     $asset_type = ( isset( $_GET[ "asset_type" ] ) ? $_GET[ "asset_type" ] : "" );
     $audit_type = ( isset( $_GET[ "audit_type" ] ) ? $_GET[ "audit_type" ] : "" );
     
-	if( $asset_id != "" &&  $service->isHexString( $asset_id ) &&
-		$asset_type != "" /* && array_key_exists( $asset_type, c\T::$type_class_name_map ) */
-	)
-	{
-		if( !isset( $audit_type ) )
-			$audit_type = "";
-			
-		$audits = 
-			$cascade->getAudits(
-				$cascade->getAsset( $asset_type, $asset_id ),
-				$audit_type
-			);
-			
-		if( count( $audits ) > 0 )
-		{
-			$xml = "<audits>";
-			
-			foreach( $audits as $audit )
-			{
-				$xml .= "<audit>";
-				$xml .= "<user>" .       $audit->getUser() . "</user>";
-				$xml .= "<date>" .       $audit->getDate()->format( "Y-m-d" ) . "</date>";
-				$xml .= "<action>" .     $audit->getAction() . "</action>";
-				$xml .= "<identifier>" . $audit->getIdentifier()->getId() . "</identifier>";
-				$xml .= "</audit>";
-			}
-			
-			$xml .= "</audits>";
-		}
-		
-		if( isset( $xml ) )
-			echo $xml;
+    if( $asset_id != "" &&  $service->isHexString( $asset_id ) &&
+        $asset_type != "" /* && array_key_exists( $asset_type, c\T::$type_class_name_map ) */
+    )
+    {
+        if( !isset( $audit_type ) )
+            $audit_type = "";
+            
+        $audits = 
+            $cascade->getAudits(
+                $cascade->getAsset( $asset_type, $asset_id ),
+                $audit_type
+            );
+            
+        if( count( $audits ) > 0 )
+        {
+            $xml = "<audits>";
+            
+            foreach( $audits as $audit )
+            {
+                $xml .= "<audit>";
+                $xml .= "<user>" .       $audit->getUser() . "</user>";
+                $xml .= "<date>" .       $audit->getDate()->format( "Y-m-d" ) . "</date>";
+                $xml .= "<action>" .     $audit->getAction() . "</action>";
+                $xml .= "<identifier>" . $audit->getIdentifier()->getId() . "</identifier>";
+                $xml .= "</audit>";
+            }
+            
+            $xml .= "</audits>";
+        }
+        
+        if( isset( $xml ) )
+            echo $xml;
     }
     else
     {
