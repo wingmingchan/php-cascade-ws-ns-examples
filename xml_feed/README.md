@@ -1,0 +1,2 @@
+# php-cascade-ws-ns-examples/xml_feed
+Programs shown here illustrate how web services can be used to generate xml markups and feeds. The results can be read back into Cascade using feed blocks. For example, the program index_block_xml.php shows how to expose index block XML and feed it back to Cascade.
