@@ -50,7 +50,7 @@ try
     $audit_type = ( isset( $_GET[ "audit_type" ] ) ? $_GET[ "audit_type" ] : "" );
     
     if( $asset_id != "" &&  $service->isHexString( $asset_id ) &&
-        $asset_type != "" /* && array_key_exists( $asset_type, c\T::$type_class_name_map ) */
+        $asset_type != "" && array_key_exists( $asset_type, c\T::$type_class_name_map )
     )
     {
         if( !isset( $audit_type ) )
