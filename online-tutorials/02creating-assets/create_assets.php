@@ -53,7 +53,7 @@ try
             catch( e\NullAssetException $e )
             {
                 $cascade->createRole( $global_role_name, "global" );
-                echo "The role $site_role_name has been created.";
+                echo "The role $global_role_name has been created.";
             }
 
             try
