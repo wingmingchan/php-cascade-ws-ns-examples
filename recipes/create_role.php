@@ -10,30 +10,30 @@ use cascade_ws_exception as e;
 
 try
 {
-	$global_role_name = 'Site-Contributor';
-	$site_role_name   = 'Site Test Role';
+    $global_role_name = 'Site-Contributor';
+    $site_role_name   = 'Site Test Role';
     
-	try
-	{
-		$cascade->getRoleByName( $global_role_name );
-		echo "The role $global_role_name already exists.", BR;
-	}
-	catch( e\NullAssetException $e )
-	{
-		$cascade->createRole( $global_role_name, "global" );
-		echo "The role $global_role_name has been created.", BR;
-	}
-	
-	try
-	{
-		$cascade->getRoleByName( $site_role_name );
-		echo "The role $site_role_name already exists.", BR;
-	}
-	catch( e\NullAssetException $e )
-	{
-		$cascade->createRole( $site_role_name, a\Site::TYPE );
-		echo "The role $site_role_name has been created.", BR;
-	}
+    try
+    {
+        $cascade->getRoleByName( $global_role_name );
+        echo "The role $global_role_name already exists.", BR;
+    }
+    catch( e\NullAssetException $e )
+    {
+        $cascade->createRole( $global_role_name, "global" );
+        echo "The role $global_role_name has been created.", BR;
+    }
+    
+    try
+    {
+        $cascade->getRoleByName( $site_role_name );
+        echo "The role $site_role_name already exists.", BR;
+    }
+    catch( e\NullAssetException $e )
+    {
+        $cascade->createRole( $site_role_name, a\Site::TYPE );
+        echo "The role $site_role_name has been created.", BR;
+    }
 }
 catch( \Exception $e ) 
 {
