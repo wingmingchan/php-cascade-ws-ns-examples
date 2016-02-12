@@ -20,8 +20,19 @@ try
 {
     // retrieve the block ID
     $block_id   = ( isset( $_GET[ "block_id" ] ) ? $_GET[ "block_id" ] : "" );
+    $path       = ( isset( $_GET[ "path" ] )     ? $_GET[ "path" ] : "" );
+    $site       = ( isset( $_GET[ "site" ] )     ? $_GET[ "site" ] : "" );
     
     if( isset( $block_id ) &&  $service->isHexString( $block_id ) )
+    {
+        $id_path = $block_id;
+    }
+    else if( isset( $path ) && isset( $site ) )
+    {
+        $id_path = $path;
+    }
+    
+    if( isset( $id_path ) )
     {
         // site containing the page
         $site_name = "cascade-admin";
