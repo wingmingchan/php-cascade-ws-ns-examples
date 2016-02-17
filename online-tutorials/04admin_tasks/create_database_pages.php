@@ -30,12 +30,6 @@ try
             "display" => "Asset Factory Plugin",
             "sql"     => "ASSET_FACTORY_PLUGIN_SQL",
         ),
-        "asset-factory-plugin-param" => array( 
-            "table"   => "cxml_assetfactorypluginparam",
-            "display" => "Asset Factory Plugin Param",
-            "sql"     => "ASSET_FACTORY_PLUGIN_PARAM_SQL",
-        ),
-		// all remaining tables removed
     );
     
     $site_name     = "database-test";
@@ -103,7 +97,7 @@ try
 \$db.finalize()
 ";
 
-		// try to retrieve the page
+        // try to retrieve the page
         $page = $cascade->getPage( $page_name, $site_name );
         
         // if page does not exist, create a copy from the master
