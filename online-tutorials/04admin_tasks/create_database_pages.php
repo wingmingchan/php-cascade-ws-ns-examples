@@ -114,14 +114,14 @@ try
         // set the script for each format
         $format->setScript( $script )->edit();
         
-		// get the metadata of the page    
+        // get the metadata of the page    
         $metadata = $page->getMetadata();
         // set display name and title
         $metadata->setDisplayName( $display )->
             setTitle( $display );
         // attach the format to a region
         $page->setRegionFormat( 'RWD', 'BOTTOM', $format )->
-        	// set H1
+            // set H1
             setText( "main-content-title", $display )->
             edit();
         //u\DebugUtility::dump( $page->getIdentifiers() );
