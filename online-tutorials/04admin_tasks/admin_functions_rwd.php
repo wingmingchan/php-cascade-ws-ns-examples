@@ -211,7 +211,7 @@ function createDestinationForSites( a\Cascade $cascade, $site_name, $group_name=
     $group = $cascade->getAsset( a\Group::TYPE, $group_name );
     $cwt   = $cascade->getAsset( a\Group::TYPE, "CWT-Designers" );
         
-    $web_destination = $cascade->getDestination( a\Destination::TYPE, $site_name, $site_name . '-web' );
+    $web_destination = $cascade->getDestination( a\Destination::TYPE, $site_name . '-web', $site_name );
     
     if( $web_destination == NULL )
     {
@@ -230,7 +230,7 @@ function createDestinationForSites( a\Cascade $cascade, $site_name, $group_name=
         edit();
     }
     
-    $www_destination = $cascade->getDestination( a\Destination::TYPE, $site_name, $site_name . '-www' );
+    $www_destination = $cascade->getDestination( a\Destination::TYPE, $site_name . '-www', $site_name );
     
     if( $www_destination == NULL )
     {
