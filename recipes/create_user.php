@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-	$site_name         = 'web-service-tutorial';
+    $site_name         = 'web-service-tutorial';
     $global_role_name  = 'Manager';
     $site_role_name    = 'Site Test Role';
     $group_name        = 'web-service-tutorial-group';
@@ -19,26 +19,26 @@ try
     
     if( is_null( $cascade->getUser( $username ) ) )
     {
-		$site        = $cascade->getAsset( a\Site::TYPE, $site_name );
-		$group       = $cascade->getAsset( a\Group::TYPE, $group_name );
-		$global_role = $cascade->getRoleAssetByName( $global_role_name );
-		
-		$cascade->
-			createUser(
-				$username,
-				$password,
-				$group,
-				$global_role
-			)->
-			enable()->
-			setDefaultGroup( $group )->
-			setDefaultSite( $site );                
-		echo "The user $username has been created.";
-	}
-	else
-	{
-		echo "The user $username already exists.";
-	}
+        $site        = $cascade->getAsset( a\Site::TYPE, $site_name );
+        $group       = $cascade->getAsset( a\Group::TYPE, $group_name );
+        $global_role = $cascade->getRoleAssetByName( $global_role_name );
+        
+        $cascade->
+            createUser(
+                $username,
+                $password,
+                $group,
+                $global_role
+            )->
+            enable()->
+            setDefaultGroup( $group )->
+            setDefaultSite( $site );                
+        echo "The user $username has been created.";
+    }
+    else
+    {
+        echo "The user $username already exists.";
+    }
 }
 catch( \Exception $e ) 
 {
