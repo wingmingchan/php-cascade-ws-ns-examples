@@ -10,9 +10,9 @@ use cascade_ws_exception as e;
 
 try
 {
-	$group_name     = "web-service-tutorial-group";
-	$site_role_name = "Site Test Role";
-	
+    $group_name     = "web-service-tutorial-group";
+    $site_role_name = "Site Test Role";
+    
     if( is_null( $cascade->getGroup( $group_name ) ) && $cascade->hasRoleName( $site_role_name ) )
     {
         $cascade->createGroup( $group_name, $site_role_name );
