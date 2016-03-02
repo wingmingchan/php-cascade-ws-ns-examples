@@ -10,11 +10,11 @@ use cascade_ws_exception as e;
 
 try
 {
-	$block = $cascade->getAsset( a\DataBlock::TYPE, "e10da00f8b7f0856005cdf95fc73eeca" );
-	
-	$block->setPage( 
-		"group;page-chooser",
-		$cascade->getAsset( a\Page::TYPE, "87e6d0cf8b7f0856002a5e11c8e6bd21" ) )->edit();
+    $block = $cascade->getAsset( a\DataBlock::TYPE, "e10da00f8b7f0856005cdf95fc73eeca" );
+    
+    $block->setPage( 
+        "group;page-chooser",
+        $cascade->getAsset( a\Page::TYPE, "87e6d0cf8b7f0856002a5e11c8e6bd21" ) )->edit();
 }
 catch( \Exception $e ) 
 {
