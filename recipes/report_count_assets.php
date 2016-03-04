@@ -13,34 +13,34 @@ use cascade_ws_exception as e;
 try
 {
     // to prevent time-out
-	set_time_limit ( 10000 );
-	// to prevent using up memory when traversing a large site
-	ini_set( 'memory_limit', '2048M' );
+    set_time_limit ( 10000 );
+    // to prevent using up memory when traversing a large site
+    ini_set( 'memory_limit', '2048M' );
     
     $site_name = 'cascade-admin';
 
-	$results = $report->
-		setRootFolder( 
-			$cascade->getAsset( 
-				a\Folder::TYPE, '/', $site_name )
-		)->reportNumberOfAssets(
-			array(
-				a\DataBlock::TYPE,
-				a\FeedBlock::TYPE,
-				a\File::TYPE,
-				a\Folder::TYPE,
-				a\IndexBlock::TYPE,
-				a\Page::TYPE,
-				a\ScriptFormat::TYPE,
-				a\Symlink::TYPE,
-				a\Template::TYPE,
-				a\TextBlock::TYPE,
-				a\XmlBlock::TYPE,
-				a\XsltFormat::TYPE
-			) 
-		);
+    $results = $report->
+        setRootFolder( 
+            $cascade->getAsset( 
+                a\Folder::TYPE, '/', $site_name )
+        )->reportNumberOfAssets(
+            array(
+                a\DataBlock::TYPE,
+                a\FeedBlock::TYPE,
+                a\File::TYPE,
+                a\Folder::TYPE,
+                a\IndexBlock::TYPE,
+                a\Page::TYPE,
+                a\ScriptFormat::TYPE,
+                a\Symlink::TYPE,
+                a\Template::TYPE,
+                a\TextBlock::TYPE,
+                a\XmlBlock::TYPE,
+                a\XsltFormat::TYPE
+            ) 
+        );
 
-	u\DebugUtility::dump( $results );
+    u\DebugUtility::dump( $results );
 
     $end_time = time();
     echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
