@@ -25,14 +25,14 @@ use cascade_ws_exception as e;
 
 try
 {
-	$initial_id  = "8ccff2718b7f08e";
-	$site_name   = "database-test";
-	
-	$cascade->getAsset( a\Site::TYPE, $site_name )->getBaseFolderAssetTree()->
-		traverse( 
-			array( a\DataBlock::TYPE  => array( "assetTreeFindDDBlockPageWithIntialId" ),
-			       a\Page::TYPE       => array( "assetTreeFindDDBlockPageWithIntialId" ) ),
-			array( "partial-id" => $initial_id ) );
+    $initial_id  = "4fd7d46b8b7f085";
+    $site_name   = "stroke";
+    
+    $cascade->getAsset( a\Site::TYPE, $site_name )->getBaseFolderAssetTree()->
+        traverse( 
+            array( a\DataBlock::TYPE  => array( "assetTreeFindDDBlockPageWithIntialId" ),
+                   a\Page::TYPE       => array( "assetTreeFindDDBlockPageWithIntialId" ) ),
+            array( "partial-id" => $initial_id ) );
 }
 catch( \Exception $e ) 
 {
@@ -43,25 +43,25 @@ function assetTreeFindDDBlockPageWithIntialId(
     aohs\AssetOperationHandlerService $service, 
     p\Child $child, $params=NULL, &$results=NULL )
 {
-	if( !isset( $params[ 'partial-id' ] ) )
-		throw new \Exception( "The id is not included" );
-	
-	$partial_id = $params[ 'partial-id' ];
-	
-	$type = $child->getType();
-	
-	if( $type != a\DataBlock::TYPE && $type != a\Page::TYPE )
-		return;
-		
-	$id = $child->getId();
-	
-	if( !u\StringUtility::startsWith( $id, $partial_id ) )
-	{
-		return;
-	}
-	else
-	{
-		echo $id;
-	}
+    if( !isset( $params[ 'partial-id' ] ) )
+        throw new \Exception( "The id is not included" );
+    
+    $partial_id = $params[ 'partial-id' ];
+    
+    $type = $child->getType();
+    
+    if( $type != a\DataBlock::TYPE && $type != a\Page::TYPE )
+        return;
+        
+    $id = $child->getId();
+    
+    if( !u\StringUtility::startsWith( $id, $partial_id ) )
+    {
+        return;
+    }
+    else
+    {
+        echo $id;
+    }
 }
 ?>
