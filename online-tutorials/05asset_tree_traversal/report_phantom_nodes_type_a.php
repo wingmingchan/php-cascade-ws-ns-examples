@@ -19,13 +19,15 @@ use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 // site to be traverse
-$site_name = "cascade-admin";
+$site_name = "cascade-admin"; // 636 seconds
+$folder_id = "bafa363d8b7f08ee2dbad4e8a9bc49dd";
 
 try
 {
     $results = array();
     
-    $cascade->getSite( $site_name )->getBaseFolderAssetTree()->
+    //$cascade->getSite( $site_name )->getBaseFolderAssetTree()->
+    $cascade->getAsset( a\Folder::TYPE, $folder_id )->getAssetTree()->
         traverse(
             array( a\Page::TYPE =>      array( "assetTreeReportPhantomNodes" ),
                    a\DataBlock::TYPE => array( "assetTreeReportPhantomNodes" ) ),
@@ -36,14 +38,14 @@ try
     u\DebugUtility::dump( $results );
     
     $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    echo BR . "Total time taken: " . ( $end_time - $start_time ) . " seconds" . BR;
 
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE;
     $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    echo BR . "Total time taken: " . ( $end_time - $start_time ) . " seconds" . BR;
 }
 
 
