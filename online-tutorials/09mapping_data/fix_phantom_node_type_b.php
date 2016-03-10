@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-	$cascade->getAsset( a\Page::TYPE, "1e64131c8b7f08ee4bf67273f4e23681" )->mapData()->dump( true );
+    $cascade->getAsset( a\Page::TYPE, "1e64131c8b7f08ee4bf67273f4e23681" )->mapData()->dump( true );
 }
 catch( \Exception $e ) 
 {
