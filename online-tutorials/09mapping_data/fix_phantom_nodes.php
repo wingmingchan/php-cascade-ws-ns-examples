@@ -57,26 +57,26 @@ function assetTreeFixPhantomNodes(
         
         if( $asset->hasPhantomNodes() ) // type B
         {
-        	$asset->mapData();
+            $asset->mapData();
         }
     }
     catch( e\NoSuchFieldException $e ) // type A
     {
-    	if( $type == a\Page::TYPE )
-    	{
-    		$asset = new a\PagePhantom( $service, $child->toStdClass() );
-    	}
-    	else
-    	{
-    		$asset = new a\DataDefinitionBlockPhantom( $service, $child->toStdClass() );
-    	}
-    	
-    	$dd         = $asset->getDataDefinition();
-		$healthy_sd = new p\StructuredData( $dd->getStructuredData(), $service, $dd->getId() );
-		$phantom_sd = $phantom_page->getStructuredDataPhantom();
-		$healthy_sd = $healthy_sd->removePhantomNodes( $phantom_sd );
+        if( $type == a\Page::TYPE )
+        {
+            $asset = new a\PagePhantom( $service, $child->toStdClass() );
+        }
+        else
+        {
+            $asset = new a\DataDefinitionBlockPhantom( $service, $child->toStdClass() );
+        }
+        
+        $dd         = $asset->getDataDefinition();
+        $healthy_sd = new p\StructuredData( $dd->getStructuredData(), $service, $dd->getId() );
+        $phantom_sd = $phantom_page->getStructuredDataPhantom();
+        $healthy_sd = $healthy_sd->removePhantomNodes( $phantom_sd );
 
-		$asset->setStructuredData( $healthy_sd );
+        $asset->setStructuredData( $healthy_sd );
     }
 }
 ?>
