@@ -19,7 +19,7 @@ use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 // site/folder to be traverse
-$folder_id = "1e640d568b7f08ee4bf672732f23b0d5";
+$folder_id = "9d6b193f8b7f08ee42e2f3672f4d5488";
 
 try
 {
@@ -41,11 +41,17 @@ catch( \Exception $e )
     echo BR . "Total time taken: " . ( $end_time - $start_time ) . " seconds" . BR;
 }
 
-
 function assetTreeFixPhantomNodes( 
     aohs\AssetOperationHandlerService $service, 
     p\Child $child, $params=NULL, &$results=NULL )
 {
+    // skip entire folder
+    if( strpos( $child->getPathPath(), "_extra/" ) !== false )
+        return;
+        
+    if( strpos( $child->getPathPath(), "_cascade/" ) !== false )
+        return;
+
     $type = $child->getType();
     
     if( $type != a\Page::TYPE && $type != a\DataBlock::TYPE )
@@ -73,7 +79,7 @@ function assetTreeFixPhantomNodes(
         
         $dd         = $asset->getDataDefinition();
         $healthy_sd = new p\StructuredData( $dd->getStructuredData(), $service, $dd->getId() );
-        $phantom_sd = $phantom_page->getStructuredDataPhantom();
+        $phantom_sd = $asset->getStructuredDataPhantom();
         $healthy_sd = $healthy_sd->removePhantomNodes( $phantom_sd );
 
         $asset->setStructuredData( $healthy_sd );
