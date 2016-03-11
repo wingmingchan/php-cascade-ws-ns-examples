@@ -32,7 +32,7 @@ try
 */
     );
 
-    $folder_id                = "88a314ef8b7f08ee67da2d52e3a9c811"; 
+    $folder_id                = "9d6b193f8b7f08ee42e2f3672f4d5488"; 
 
     $site_storage_block       = $cascade->getAsset( a\DataBlock::TYPE, "ea51caec8b7f08ee1c99f4958efb7698" );
     $global_link_script_block = $cascade->getAsset( a\TextBlock::TYPE, "13618dd38b7f08ee1890c1e411561de0" );
@@ -101,6 +101,10 @@ function assetTreeConvertToOneRegionTemplate(
     // skip entire folder
     if( strpos( $child->getPathPath(), "_extra/" ) !== false )
         return;
+        
+    if( strpos( $child->getPathPath(), "_cascade/" ) !== false )
+        return;
+        
         
     $site_storage_block       = $params[ 'site-storage' ];
     $global_link_script_block = $params[ 'global-link-script' ];
