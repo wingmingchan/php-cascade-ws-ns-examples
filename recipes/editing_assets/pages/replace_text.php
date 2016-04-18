@@ -12,11 +12,11 @@ try
     $site_name = "cascade-admin";
     $page_name = "my_test_page";
     $page      = $cascade->getAsset( a\Page::TYPE, $page_name, $site_name );
-    $node_ids  = $page->getIdentifiers();
+    $node_ids  = $page->getIdentifiers(); // the fully qualified identifiers
     
     foreach( $node_ids as $id )
     {
-        if( $page->isWYSIWYG( $id ) )
+        if( $page->isWYSIWYG( $id ) ) // only modify text in WYSIWYG's
         {
             $page->replaceText( 
                 "http://web.upstate.edu",
