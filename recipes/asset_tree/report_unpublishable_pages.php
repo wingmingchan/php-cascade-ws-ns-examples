@@ -10,10 +10,6 @@ use cascade_ws_exception as e;
 
 $start_time = time();
 
-// Note that this program does not work for publishable pages or folders
-// inside unpublishable folders. To do this, we have to traverse an entire site and
-// cache all unpublishable folders.
-
 try
 {
     // to prevent time-out
@@ -23,7 +19,7 @@ try
     
     $results = array();
 
-    $cascade->getAsset( a\Folder::TYPE, 'ede7f1338b7f08560139425cf45c4cc8' )->
+    $cascade->getAsset( a\Folder::TYPE, '453d83318b7f08560139425c04f1636b' )->
         getAssetTree()->traverse(
             array( a\Page::TYPE => array( "assetTreeReportUnpublishableAsset" ) ), 
             NULL,
