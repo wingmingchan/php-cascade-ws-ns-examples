@@ -43,8 +43,9 @@ try
     
     foreach( $server_pages as $page )
     {
+    	// remove site name and .php
         $page_path = substr( $page, strlen( $site_name ) + 1 ); // the slash
-        $page_path = substr( $page_path, 0, -4 );  // remove site name and .php
+        $page_path = substr( $page_path, 0, -4 );  
         
         // compare the two and store the difference
         if( !in_array( $page_path, $results[ "assetTreeStoreAssetPath" ] ) )
