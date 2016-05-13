@@ -20,11 +20,11 @@ try
     if( is_null( $cib ) )
     {
         $cascade->createIndexBlock(
-            $block_folder,
-            'folder-index',
-            c\T::FOLDER,
-            NULL,
-            $cascade->getAsset( a\Folder::TYPE, '/', $site_name ) // Base Folder
+            $block_folder,   // parent folder
+            $block_name,
+            c\T::FOLDER,     // type
+            NULL,            // content type
+            $cascade->getAsset( a\Folder::TYPE, '/', $site_name ) // folder to index
         )->
         setDepthOfIndex( 5 )->
         setIndexFiles( true )->
