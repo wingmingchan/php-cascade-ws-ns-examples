@@ -7,6 +7,7 @@ use cascade_ws_asset     as a;
 use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
+
 try 
 {
     $source_block = $cascade->getAsset( 
