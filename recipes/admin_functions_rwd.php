@@ -1,4 +1,7 @@
 <?php
+/*
+This file contains admin functions used by other probrams.
+*/
 require_once( 'cascade_ws_ns/auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;

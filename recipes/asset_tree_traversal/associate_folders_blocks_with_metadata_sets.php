@@ -1,4 +1,8 @@
 <?php
+/*
+This program is used to associated a folder containing only blocks,
+and all blocks within, with the correct metadata sets.
+*/
 $start_time = time();
 
 require_once('cascade_ws_ns/auth_chanw.php');

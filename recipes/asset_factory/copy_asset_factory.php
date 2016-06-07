@@ -1,4 +1,8 @@
 <?php
+/*
+This program is used to create a new asset factory in a site,
+and grant access of the factory to two groups.
+*/
 require_once('cascade_ws_ns/auth_chanw.php');
 
 use cascade_ws_constants as c;
