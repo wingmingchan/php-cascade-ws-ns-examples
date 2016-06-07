@@ -1,6 +1,6 @@
 <?php
 /*
-This program can be used to report sites and publish set scheduled to be published
+This program can be used to report sites and publish sets scheduled to be published
 regularly.
 */
 
