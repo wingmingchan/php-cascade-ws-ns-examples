@@ -1,6 +1,7 @@
 <?php
 /*
-This program can take a very long time to run.
+This program can be used to report phantom nodes of type A.
+It program can take a very long time to run.
 */
 $start_time = time();
 
