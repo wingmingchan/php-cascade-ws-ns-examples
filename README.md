@@ -1,2 +1,8 @@
 # php-cascade-ws-ns-examples
-Instead of posting examples in my cascade-admin site, I plan to rewrite and post examples here to show how to use the library to perform various tasks.
+This section contains lots of complete programs, illustrating how to use the library to perform tasks of various types.
+<ul>
+<li>asset-class-test-code: code used to test various Asset classes.</li>
+<li>recipes: Task-oriented programs</li>
+<li>working-with-AssetOperationHandlerService: Examples showing how to use the AssetOperationHandlerService alone to write low-level code.</li>
+<li>xml_feed: Examples related to XML and feeds.</li>
+</ul>
