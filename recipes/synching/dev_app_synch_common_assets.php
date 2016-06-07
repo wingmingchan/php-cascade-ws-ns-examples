@@ -20,27 +20,18 @@ try
     // to prevent using up memory when traversing a large site
     ini_set( 'memory_limit', '2048M' );
     
-    // display basic info
-    //$instances->display();
-    
     $source_site_name = '_common_assets';
     $target_site_name = '_common_assets';
     $exception_thrown = true; // strict or lenient mode
     
-    // test setSourceSite and isSourceSiteSet
-    //echo ( $instances->isSourceSiteSet() ? "Source site set." : "Source site not set." ) . BR;
+    // set source site
     $instances->setSourceSite( $source_site_name );
-    //echo ( $instances->isSourceSiteSet() ? "Source site set." : "Source site not set." ) . BR;
-    
-    // get Cascade objects
-    $source_cascade = $instances->getSourceCascade();
-    $target_cascade = $instances->getTargetCascade();
     
     // set target site
     $instances->setTargetSite( $target_site_name );
     
     // last run 2016/05/18
-    $step = 16;
+    $step = 1;
     
     switch( $step )
     {
