@@ -1,4 +1,7 @@
 <?php
+/*
+This program is used to convert a site, from non-responsive to RWD1.
+*/
 $start_time = time();
 
 require_once('cascade_ws_ns/auth_chanw.php');

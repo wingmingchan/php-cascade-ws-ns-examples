@@ -1,4 +1,7 @@
 <?php 
+/*
+This program can be used to count pages in the entire Cascade instance.
+*/
 require_once('cascade_ws_ns/auth_chanw.php');
 
 use cascade_ws_constants as c;

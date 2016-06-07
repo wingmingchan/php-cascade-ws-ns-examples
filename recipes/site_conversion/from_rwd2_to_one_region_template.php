@@ -1,4 +1,9 @@
 <?php
+/*
+This program is used to convert a site, from RWD2 to RWD2.1, using a one-region template.
+The program can be used to convert a few pages at a time, or a folder at a time.
+*/
+
 $start_time = time();
 
 require_once('cascade_ws_ns/auth_chanw.php');

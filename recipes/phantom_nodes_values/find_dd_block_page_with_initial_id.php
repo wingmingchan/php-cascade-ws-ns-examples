@@ -25,8 +25,8 @@ use cascade_ws_exception as e;
 
 try
 {
-    $initial_id  = "4fd7d46b8b7f085";
-    $site_name   = "stroke";
+    $initial_id  = "344fe2498b7f085";
+    $site_name   = "cascade-admin";
     
     $cascade->getAsset( a\Site::TYPE, $site_name )->getBaseFolderAssetTree()->
         traverse( 

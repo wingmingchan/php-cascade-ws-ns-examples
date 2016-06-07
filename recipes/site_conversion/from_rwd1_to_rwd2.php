@@ -1,6 +1,7 @@
 <?php
 /*
 This program is used to convert a site, from RWD1 to RWD2.
+RWD1 uses XSLT exclusively, whereas RWD2 uses Velocity.
 When working with a large site, it is better to work with a folder at a time 
 when converting pages, hence the line (line 31) retrieving a folder.
 */

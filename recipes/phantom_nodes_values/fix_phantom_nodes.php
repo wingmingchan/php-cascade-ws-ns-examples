@@ -1,6 +1,7 @@
 <?php
 /*
-This program can take a very long time to run.
+This program can be used to remove phantom nodes of both type A and type B.
+It can take a very long time to run.
 */
 $start_time = time();
 

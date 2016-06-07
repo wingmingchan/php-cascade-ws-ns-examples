@@ -1,4 +1,9 @@
 <?php
+/*
+This program can be used to report information on blockss/formats 
+attached to regions at the page level, not useful for the one-region template approach
+though.
+*/
 $start_time = time();
 
 require_once('cascade_ws_ns/auth_chanw.php');
