@@ -1,4 +1,8 @@
 <?php
+/*
+This program is used to synch the one-region master site from one instance to
+another instance.
+*/
 require_once('cascade_ws_ns/auth_dev_app.php');
 
 use cascade_ws_constants as c;
@@ -11,7 +15,6 @@ $start_time = time();
 
 try
 {
-    
     // to prevent time-out
     set_time_limit ( 10000 );
     // to prevent using up memory when traversing a large site
