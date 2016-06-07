@@ -1,4 +1,7 @@
 <?php
+/*
+This program is used to count assets of various types.
+*/
 $start_time = time();
 
 require_once('cascade_ws_ns/auth_wing.php');
