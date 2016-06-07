@@ -10,24 +10,24 @@ use cascade_ws_exception as e;
 
 try
 {
-	$site_ids = $cascade->getSites();
-	
-	foreach( $site_ids as $site_id )
-	{
-		echo "Site name: ", $site_id->getPathPath(), BR;
-		
-		$site = $cascade->getSite( $site_id->getPathPath() );
-		
-		echo "Base Folder ID: ", $site->getBaseFolderId(), BR;
-		echo "Root Asset Factory Container ID: ", $site->getRootAssetFactoryContainerId(), BR;
-		
-		$afc = $site->getRootAssetFactoryContainer();
-		echo "Root Asset Factory Container has ", count( $afc->getChildren() ), " child(ren).", BR;
-		
-		echo "Root Content Type Container ID: ", $site->getRootContentTypeContainerId(), BR;
-		echo "Root Destination Container ID: ", $site->getRootSiteDestinationContainerId(), BR;
-		echo HR;
-	}
+    $site_ids = $cascade->getSites();
+    
+    foreach( $site_ids as $site_id )
+    {
+        echo "Site name: ", $site_id->getPathPath(), BR;
+        
+        $site = $cascade->getSite( $site_id->getPathPath() );
+        
+        echo "Base Folder ID: ", $site->getBaseFolderId(), BR;
+        echo "Root Asset Factory Container ID: ", $site->getRootAssetFactoryContainerId(), BR;
+        
+        $afc = $site->getRootAssetFactoryContainer();
+        echo "Root Asset Factory Container has ", count( $afc->getChildren() ), " child(ren).", BR;
+        
+        echo "Root Content Type Container ID: ", $site->getRootContentTypeContainerId(), BR;
+        echo "Root Destination Container ID: ", $site->getRootSiteDestinationContainerId(), BR;
+        echo HR;
+    }
 }
 catch( \Exception $e ) 
 {
