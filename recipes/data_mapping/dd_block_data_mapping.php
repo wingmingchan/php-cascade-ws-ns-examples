@@ -57,12 +57,6 @@ try
 
     // step 1: get a new StructuredData object from the new data definition
     $new_sd = $new_dd->getStructuredDataObject();
-        
-    
-        
-    //u\DebugUtility::dump( $new_sd->getPossibleValues( ) );
-    
-    
     
     $map = array(
         "header"  => "content-group;h1",
