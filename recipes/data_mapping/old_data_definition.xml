@@ -1,0 +1,9 @@
+<system-data-structure>
+    <text identifier="header" label="Header"/>
+    <text wysiwyg="true" identifier="wysiwyg" label="WYSIWYG"/>
+    <text type="checkbox" identifier="sports">
+        <checkbox-item value="Swimming"/>
+        <checkbox-item value="Jogging"/>
+    </text>
+    <text identifier="text4" label="Text" multiple="true"/>
+</system-data-structure>

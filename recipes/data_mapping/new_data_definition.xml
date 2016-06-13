@@ -1,0 +1,13 @@
+<system-data-structure>
+    <group identifier="content-group" label="Content">
+        <text identifier="h1" label="Header"/>
+        <text wysiwyg="true" identifier="content" label="WYSIWYG"/>
+    </group>
+    <group identifier="hobby-group" label="Hobby">
+        <text type="radiobutton" identifier="hobby" label="Hobby">
+            <radio-item value="Swimming"/>
+            <radio-item value="Jogging"/>
+        </text>
+        <text identifier="text4" label="Text" multiple="true"/>
+    </group>
+</system-data-structure>
