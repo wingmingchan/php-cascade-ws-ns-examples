@@ -49,14 +49,14 @@ use cascade_ws_exception as e;
 
 try 
 {
-	$new_dd = $cascade->getAsset( 
+    $new_dd = $cascade->getAsset( 
         a\DataDefinition::TYPE, "49f695968b7f08ee1ac4a4a7c324eacc" );
         
     $dd_block = $cascade->getAsset( 
         a\DataDefinitionBlock::TYPE, "4a0b84158b7f08ee1ac4a4a743f37c9f" );
 
-	// step 1: get a new StructuredData object from the new data definition
-	$new_sd = $new_dd->getStructuredDataObject();
+    // step 1: get a new StructuredData object from the new data definition
+    $new_sd = $new_dd->getStructuredDataObject();
         
     
         
@@ -65,45 +65,45 @@ try
     
     
     $map = array(
-    	"header"  => "content-group;h1",
-    	"wysiwyg" => "content-group;content",
-    	"sports"  => "hobby-group;hobby"
+        "header"  => "content-group;h1",
+        "wysiwyg" => "content-group;content",
+        "sports"  => "hobby-group;hobby"
     );
     
     foreach( $map as $old_node => $new_node )
     {
-    	// step 2: copy data from non-multiple nodes
-    	if( $dd_block->isText( $old_node ) )
-    	{
-    		if( $dd_block->isTextBox( $old_node ) || $dd_block->isWYSIWYG( $old_node ) )
-    		{
-    			$new_sd->setText( $new_node, $dd_block->getText( $old_node ) );
-    		}
-    		// mapping checkbox to radio
-    		// need to make sure only one value is mapped
-    		elseif( $dd_block->isCheckbox( $old_node ) )
-    		{
-    			// get default value of the radio
-    			$attrs       = $new_dd->getField( $new_node );
-    			$default_val = $attrs[ "default" ];
-    			
-    			// use default
-    			if( $dd_block->getText( $old_node ) == "" )
-    			{
-    				$new_sd->setText( $default_val );
-    			}
-    			// use the first value
-    			else
-    			{
-    				$str_array = 
-    				    u\StringUtility::getExplodedStringArray( ";", $dd_block->getText( $old_node ) );
-    				    
-    				$new_val = $str_array[ 0 ];
-    				$new_val = substr( $new_val, 24 ); // cut out prefix
-    				$new_sd->setText( $new_node, $new_val );
-    			}
-    		}
-    	}
+        // step 2: copy data from non-multiple nodes
+        if( $dd_block->isText( $old_node ) )
+        {
+            if( $dd_block->isTextBox( $old_node ) || $dd_block->isWYSIWYG( $old_node ) )
+            {
+                $new_sd->setText( $new_node, $dd_block->getText( $old_node ) );
+            }
+            // mapping checkbox to radio
+            // need to make sure only one value is mapped
+            elseif( $dd_block->isCheckbox( $old_node ) )
+            {
+                // get default value of the radio
+                $attrs       = $new_dd->getField( $new_node );
+                $default_val = $attrs[ "default" ];
+                
+                // use default
+                if( $dd_block->getText( $old_node ) == "" )
+                {
+                    $new_sd->setText( $default_val );
+                }
+                // use the first value
+                else
+                {
+                    $str_array = 
+                        u\StringUtility::getExplodedStringArray( ";", $dd_block->getText( $old_node ) );
+                        
+                    $new_val = $str_array[ 0 ];
+                    $new_val = substr( $new_val, 24 ); // cut out prefix
+                    $new_sd->setText( $new_node, $new_val );
+                }
+            }
+        }
     }
     
     // step 3: multiple nodes
@@ -112,7 +112,7 @@ try
     
     for( $i = 0; $i < $num_of_nodes; $i++ )
     {
-    	$new_sd->setText( "hobby-group;text4;" . $i, $dd_block->getText( "text4;" . $i ) );
+        $new_sd->setText( "hobby-group;text4;" . $i, $dd_block->getText( "text4;" . $i ) );
     }
     
     $dd_block->setStructuredData( $new_sd );
