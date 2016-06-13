@@ -5,7 +5,7 @@ The two data definitions involved:
 Old: old_data_definition
 New: new_data_definition
 
-identifers of the source:
+identifiers of the source:
 
 array(5) {
   [0]=>
