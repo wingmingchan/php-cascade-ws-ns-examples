@@ -29,8 +29,7 @@ try
         getAssetTree()->
         traverse(
             array( a\Page::TYPE => array( "assetTreeReplaceTextByPattern" ) ),
-            $params,
-            $results
+            $params
         );
 
     $end_time = time();
