@@ -64,8 +64,8 @@ function assetTreeSearchTextByPattern(
         throw new \Exception( "No results array is supplied" );
     }
     
-    $page = $child->getAsset( $service );
-    $identifiers = $page->searchTextByPattern( $pattern );
+    $asset = $child->getAsset( $service );
+    $identifiers = $asset->searchTextByPattern( $pattern );
     
     if( count( $identifiers ) > 0 )
     {

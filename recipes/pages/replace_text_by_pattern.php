@@ -66,12 +66,12 @@ function assetTreeReplaceTextByPattern(
         throw new \Exception( "No replacement is supplied" );
     }
     
-    $page = $child->getAsset( $service );
+    $asset = $child->getAsset( $service );
     
-    if( count( $page->searchTextByPattern( $pattern ) ) > 0 )
+    if( count( $asset->searchTextByPattern( $pattern ) ) > 0 )
     {
     	echo $child->getPathPath(), BR;
-    	$page->replaceByPattern( $pattern, $replacement )->edit();
+    	$asset->replaceByPattern( $pattern, $replacement )->edit();
     }
 }
 ?>
