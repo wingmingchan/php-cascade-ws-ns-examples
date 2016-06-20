@@ -25,8 +25,6 @@ try
         "replacement" => $replacement
     );
     
-    $results = array();
-    
     $cascade->getAsset( a\Folder::TYPE, "5fa0f00d8b7f0856002a5e11033c2ad1" )->
         getAssetTree()->
         traverse(
@@ -34,9 +32,6 @@ try
             $params,
             $results
         );
-        
-    u\DebugUtility::dump( $results );
-
 
     $end_time = time();
     echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
@@ -70,11 +65,6 @@ function assetTreeReplaceTextByPattern(
     if( !isset( $replacement ) || trim( $replacement ) == "" )
     {
         throw new \Exception( "No replacement is supplied" );
-    }
-    
-    if( !isset( $results ) || !is_array( $results ) )
-    {
-        throw new \Exception( "No results array is supplied" );
     }
     
     $page = $child->getAsset( $service );
