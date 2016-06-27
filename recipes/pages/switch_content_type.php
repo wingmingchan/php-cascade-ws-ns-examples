@@ -10,12 +10,12 @@ use cascade_ws_exception as e;
 
 try
 {
-	$page = $cascade->getAsset( a\Page::TYPE, '2a47653d8b7f08ee3c48c4e996f9054a' );
-	
-	// the targeted content type
-	$ct = $cascade->getAsset( a\ContentType::TYPE, '1378b3e38b7f08ee1890c1e4df869132' );
-	
-	$page->setContentType( $ct );
+    $page = $cascade->getAsset( a\Page::TYPE, '2a47653d8b7f08ee3c48c4e996f9054a' );
+    
+    // the targeted content type
+    $ct = $cascade->getAsset( a\ContentType::TYPE, '1378b3e38b7f08ee1890c1e4df869132' );
+    
+    $page->setContentType( $ct );
 }
 catch( \Exception $e ) 
 {
