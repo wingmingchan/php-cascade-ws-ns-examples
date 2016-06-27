@@ -10,8 +10,8 @@ use cascade_ws_exception as e;
 
 try
 {
-	// there is no point in loading the page to delete it
-	$cascade->deletePage( "2a47653d8b7f08ee3c48c4e996f9054a" );
+    // there is no point in loading the page to delete it
+    $cascade->deletePage( "2a47653d8b7f08ee3c48c4e996f9054a" );
 }
 catch( \Exception $e ) 
 {

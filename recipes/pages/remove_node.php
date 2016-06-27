@@ -13,7 +13,7 @@ try
     $page = $cascade->getAsset( a\Page::TYPE, '2a47653d8b7f08ee3c48c4e996f9054a' );
     
     // remove the last instance of a multiple field
-	$page->removeLastSibling( "content-group;0" );
+    $page->removeLastSibling( "content-group;0" );
 }
 catch( \Exception $e ) 
 {

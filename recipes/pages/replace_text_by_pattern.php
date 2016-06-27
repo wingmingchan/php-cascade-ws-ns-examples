@@ -70,8 +70,8 @@ function assetTreeReplaceTextByPattern(
     
     if( count( $asset->searchTextByPattern( $pattern ) ) > 0 )
     {
-    	echo $child->getPathPath(), BR;
-    	$asset->replaceByPattern( $pattern, $replacement )->edit();
+        echo $child->getPathPath(), BR;
+        $asset->replaceByPattern( $pattern, $replacement )->edit();
     }
 }
 ?>
