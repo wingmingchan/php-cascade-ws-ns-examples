@@ -1,5 +1,5 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('cascade_ws_ns/auth_sandbox.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
