@@ -13,7 +13,7 @@ try
     $page = $cascade->getAsset( a\Page::TYPE, '2a47653d8b7f08ee3c48c4e996f9054a' );
     
     // create a copy of the node and append it to the end
-	$page->appendSibling( "content-group;0" );
+    $page->appendSibling( "content-group;0" );
 }
 catch( \Exception $e ) 
 {
