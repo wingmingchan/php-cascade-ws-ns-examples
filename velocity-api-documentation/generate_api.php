@@ -1,7 +1,10 @@
 <?php 
 require_once( 'cascade_ws_ns/auth_chanw.php' );
 //require_once( "cascade_api_adapters.php" );
-require_once( "cascade_velocity.php" );
+//require_once( "cascade_velocity.php" );
+//require_once( "java_lang.php" );
+//require_once( "java_util.php" );
+require_once( "org_jdom.php" );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -77,6 +80,7 @@ try
         }
         
         $block_xml = str_replace( "-params-", $param_xml, $scripts );
+        
         $block->setXml( $block_xml )->edit();
         
         // find the page, create it if not existing
@@ -92,7 +96,8 @@ try
             setTitle( $display_name )->
             getHostAsset()->
             setText( "main-content-title", $h1 )->
-            setText( "main-content-content", $references )->
+            //setText( "main-content-content", $references )->
+            setText( "main-content-content", "" )->
             setBlock( "post-title-chooser", $block )->
             edit();
     }
