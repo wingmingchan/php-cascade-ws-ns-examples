@@ -1,5 +1,12 @@
-<?php 
+<?php
+/*
+This program is used to generate Velocity API documentation pages.
+See http://www.upstate.edu/cascade-admin/formats/velocity/api-documentation/index.php
+
+*/
 require_once( 'cascade_ws_ns/auth_chanw.php' );
+
+// one data file at a time!!!
 //require_once( "cascade_api_adapters.php" );
 //require_once( "cascade_velocity.php" );
 //require_once( "java_lang.php" );
