@@ -4,7 +4,10 @@ This program can be used to create a feed,
 containing the block XML of an index block. The block id or path/site
 must be passed in as part of the query string. The url of this program
 then can be fed into a feed block and the block will be populated
-with the retrieved XML. 
+with the retrieved XML.
+
+See https://github.com/wingmingchan/velocity/blob/master/tutorials/03%20working_with_block_xml/create_content_root_from_feed.vm
+for a format that consumes the feed, using the Locator tool.
 */
 
 require_once('cascade_ws_ns/auth_web_services_for_feeds.php');
