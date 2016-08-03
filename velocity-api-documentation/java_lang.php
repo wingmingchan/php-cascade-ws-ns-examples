@@ -102,5 +102,16 @@ $data = array(
             "java.lang.StringBuffer"
         )
     ),
+    
+    // StringBuilder
+    array(
+        "java-lang-string-builder",
+        "StringBuilder",
+        "StringBuilder",
+        "api-java-lang-string-builder-script",
+        array(
+            "java.lang.StringBuilder"
+        )
+    ),
 );
 ?>
