@@ -7,7 +7,7 @@ use cascade_ws_property as p;
 use cascade_ws_utility as u;
 use cascade_ws_exception as e;
 
-$option = 2;
+$option = 1;
 
 try
 {
