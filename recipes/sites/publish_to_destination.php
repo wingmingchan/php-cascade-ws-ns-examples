@@ -10,9 +10,9 @@ use cascade_ws_exception as e;
 
 try
 {
-	$cascade->getSite( "foil" )->publish(
-		$cascade->getAsset( a\Destination::TYPE, "f0a0bdf58b7f085600d330dabd5ad9d8" )
-	);
+    $cascade->getSite( "foil" )->publish(
+        $cascade->getAsset( a\Destination::TYPE, "f0a0bdf58b7f085600d330dabd5ad9d8" )
+    );
 }
 catch( \Exception $e ) 
 {
