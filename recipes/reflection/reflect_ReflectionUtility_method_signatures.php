@@ -1,5 +1,5 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -12,7 +12,7 @@ try
 {
     u\ReflectionUtility::showMethodSignatures( "cascade_ws_utility\ReflectionUtility" );
     
-/*  outputs (PHP 5, for PHP 7, more information will be displayed):
+/*  outputs (PHP 5):
 
 <ul>
 <li>
@@ -51,6 +51,46 @@ try
 <code>public static cascade_ws_utility\ReflectionUtility::showMethodSignatures( $obj,  $with_hr = false )</code></li>
 <li>
 <code>public static cascade_ws_utility\ReflectionUtility::showMethodSignature( $obj,  $method_name,  $with_hr = false )</code></li>
+</ul>
+
+(PHP 7)
+<ul>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getClassDocumentation( $obj )</code></li>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getClassInfo( $obj, ReflectionClass $r = NULL )</code></li>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getClassName( $obj )</code></li>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getFunctionSignature(ReflectionFunction $function )</code></li>
+<li>
+<code>public static ReflectionMethod  cascade_ws_utility\ReflectionUtility::getMethod( $obj, string $method_name )</code></li>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodInfo(ReflectionMethod $method )</code></li>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodInfoByName( $obj, string $method_name )</code></li>
+<li>
+<code>public static array  cascade_ws_utility\ReflectionUtility::getMethods( $obj )</code></li>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodSignature(ReflectionMethod $method )</code></li>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodSignatureByName( $obj, string $method_name )</code></li>
+<li>
+<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodSignatures( $obj )</code></li>
+<li>
+<code>public static cascade_ws_utility\ReflectionUtility::showClassInfo( $obj )</code></li>
+<li>
+<code>public static cascade_ws_utility\ReflectionUtility::showFunctionSignature(string $function_name, bool $with_hr = false )</code></li>
+<li>
+<code>public static cascade_ws_utility\ReflectionUtility::showMethodDescription( $obj, string $method_name, bool $with_hr = false )</code></li>
+<li>
+<code>public static cascade_ws_utility\ReflectionUtility::showMethodExample( $obj, string $method_name, bool $with_hr = false )</code></li>
+<li>
+<code>public static cascade_ws_utility\ReflectionUtility::showMethodInfo( $obj, string $method_name, bool $with_hr = false )</code></li>
+<li>
+<code>public static cascade_ws_utility\ReflectionUtility::showMethodSignatures( $obj, bool $with_hr = false )</code></li>
+<li>
+<code>public static cascade_ws_utility\ReflectionUtility::showMethodSignature( $obj, string $method_name, bool $with_hr = false )</code></li>
 </ul>
 */
 }
