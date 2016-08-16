@@ -10,11 +10,11 @@ use cascade_ws_exception as e;
 
 try
 {
-	$func_names = array( "strpos", "str_replace", "strlen", "strtolower" );
-	
-	foreach( $func_names as $func_name )
-		u\ReflectionUtility::showFunctionSignature( $func_name, true );
-		
+    $func_names = array( "strpos", "str_replace", "strlen", "strtolower" );
+    
+    foreach( $func_names as $func_name )
+        u\ReflectionUtility::showFunctionSignature( $func_name, true );
+        
 /* outputs:
 
 strpos( $haystack,  $needle,  $offset )
