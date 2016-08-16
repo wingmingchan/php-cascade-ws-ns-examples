@@ -12,7 +12,7 @@ try
 {
     u\ReflectionUtility::showMethodSignatures( "cascade_ws_utility\ReflectionUtility" );
     
-/*  outputs:
+/*  outputs (PHP 5, for PHP 7, more information will be displayed):
 
 <ul>
 <li>
