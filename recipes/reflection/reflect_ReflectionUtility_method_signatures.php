@@ -56,27 +56,27 @@ try
 (PHP 7)
 <ul>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getClassDocumentation( $obj )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getClassDocumentation( $obj )</code></li>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getClassInfo( $obj, ReflectionClass $r = NULL )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getClassInfo( $obj, ReflectionClass $r = NULL )</code></li>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getClassName( $obj )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getClassName( $obj )</code></li>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getFunctionSignature(ReflectionFunction $function )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getFunctionSignature(ReflectionFunction $function )</code></li>
 <li>
-<code>public static ReflectionMethod  cascade_ws_utility\ReflectionUtility::getMethod( $obj, string $method_name )</code></li>
+<code>public static ReflectionMethod cascade_ws_utility\ReflectionUtility::getMethod( $obj, string $method_name )</code></li>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodInfo(ReflectionMethod $method )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getMethodInfo(ReflectionMethod $method )</code></li>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodInfoByName( $obj, string $method_name )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getMethodInfoByName( $obj, string $method_name )</code></li>
 <li>
-<code>public static array  cascade_ws_utility\ReflectionUtility::getMethods( $obj )</code></li>
+<code>public static array cascade_ws_utility\ReflectionUtility::getMethods( $obj )</code></li>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodSignature(ReflectionMethod $method )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getMethodSignature(ReflectionMethod $method )</code></li>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodSignatureByName( $obj, string $method_name )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getMethodSignatureByName( $obj, string $method_name )</code></li>
 <li>
-<code>public static string  cascade_ws_utility\ReflectionUtility::getMethodSignatures( $obj )</code></li>
+<code>public static string cascade_ws_utility\ReflectionUtility::getMethodSignatures( $obj )</code></li>
 <li>
 <code>public static cascade_ws_utility\ReflectionUtility::showClassInfo( $obj )</code></li>
 <li>
@@ -92,6 +92,7 @@ try
 <li>
 <code>public static cascade_ws_utility\ReflectionUtility::showMethodSignature( $obj, string $method_name, bool $with_hr = false )</code></li>
 </ul>
+
 */
 }
 catch( \Exception $e ) 
