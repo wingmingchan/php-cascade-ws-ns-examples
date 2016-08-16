@@ -1,4 +1,10 @@
-<?php 
+<?php
+/*
+This program is used to generate the method signatures of a certain class.
+To generate the output for PHP 7, the source code must be written in PHP 7,
+with param types and return types.
+*/
+
 require_once('auth_tutorial.php');
 
 use cascade_ws_AOHS      as aohs;
