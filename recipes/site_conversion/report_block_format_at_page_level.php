@@ -1,6 +1,6 @@
 <?php
 /*
-This program can be used to report information on blockss/formats 
+This program can be used to report information on blocks/formats 
 attached to regions at the page level, not useful for the one-region template approach
 though.
 */
