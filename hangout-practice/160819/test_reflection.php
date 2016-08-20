@@ -1,4 +1,11 @@
-<?php 
+<?php
+/*
+This program shows how to use the newly added cascade_ws_utility\ReflectionUtility class.
+To run this example, upgrade the library to make the class available to MAMP.
+
+After running this example, find out more about the class by checking out 
+the available methods.
+*/
 require_once('auth_tutorial.php');
 
 use cascade_ws_AOHS      as aohs;
