@@ -1,4 +1,7 @@
 <?php 
+ini_set( 'display_errors', true );
+error_reporting( E_ALL );
+
 require_once('cascade_ws_ns/auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
@@ -16,4 +19,26 @@ catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE; 
 }
+
+/*
+Useful code templates:
+
+    u\ReflectionUtility::showMethodSignatures( 
+        "cascade_ws_utility\ReflectionUtility" );
+        
+    u\ReflectionUtility::showMethodSignature( 
+        "cascade_ws_asset\Page", "edit" );
+        
+    u\ReflectionUtility::showMethodDescription( 
+        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
+        
+    u\ReflectionUtility::showMethodExample( 
+        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
+
+    u\DebugUtility::dump( $page );
+
+    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump( true );
+
+
+*/
 ?>
