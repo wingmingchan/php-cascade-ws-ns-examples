@@ -52,6 +52,8 @@ try
 <li>
 <code>public static cascade_ws_utility\ReflectionUtility::showMethodExample( $obj,  $method_name,  $with_hr = false )</code></li>
 <li>
+<code>public static cascade_ws_utility\ReflectionUtility::showMethodReturnType( $obj, $method_name, $with_hr = false )</code></li>
+<li>
 <code>public static cascade_ws_utility\ReflectionUtility::showMethodInfo( $obj,  $method_name,  $with_hr = false )</code></li>
 <li>
 <code>public static cascade_ws_utility\ReflectionUtility::showMethodSignatures( $obj,  $with_hr = false )</code></li>
@@ -84,19 +86,21 @@ try
 <li>
 <code>public static string cascade_ws_utility\ReflectionUtility::getMethodSignatures( $obj )</code></li>
 <li>
-<code>public static cascade_ws_utility\ReflectionUtility::showClassInfo( $obj )</code></li>
+<code>public static void cascade_ws_utility\ReflectionUtility::showClassInfo( $obj )</code></li>
 <li>
-<code>public static cascade_ws_utility\ReflectionUtility::showFunctionSignature( string $function_name, bool $with_hr = false )</code></li>
+<code>public static void cascade_ws_utility\ReflectionUtility::showFunctionSignature( string $function_name, bool $with_hr = false )</code></li>
 <li>
-<code>public static cascade_ws_utility\ReflectionUtility::showMethodDescription( $obj, string $method_name, bool $with_hr = false )</code></li>
+<code>public static void cascade_ws_utility\ReflectionUtility::showMethodDescription( $obj, string $method_name, bool $with_hr = false )</code></li>
 <li>
-<code>public static cascade_ws_utility\ReflectionUtility::showMethodExample( $obj, string $method_name, bool $with_hr = false )</code></li>
+<code>public static void cascade_ws_utility\ReflectionUtility::showMethodExample( $obj, string $method_name, bool $with_hr = false )</code></li>
 <li>
-<code>public static cascade_ws_utility\ReflectionUtility::showMethodInfo( $obj, string $method_name, bool $with_hr = false )</code></li>
+<code>public static void cascade_ws_utility\ReflectionUtility::showMethodReturnType( $obj, $method_name, $with_hr = false )</code></li>
 <li>
-<code>public static cascade_ws_utility\ReflectionUtility::showMethodSignatures( $obj, bool $with_hr = false )</code></li>
+<code>public static void cascade_ws_utility\ReflectionUtility::showMethodInfo( $obj, string $method_name, bool $with_hr = false )</code></li>
 <li>
-<code>public static cascade_ws_utility\ReflectionUtility::showMethodSignature( $obj, string $method_name, bool $with_hr = false )</code></li>
+<code>public static void cascade_ws_utility\ReflectionUtility::showMethodSignatures( $obj, bool $with_hr = false )</code></li>
+<li>
+<code>public static void cascade_ws_utility\ReflectionUtility::showMethodSignature( $obj, string $method_name, bool $with_hr = false )</code></li>
 </ul>
 */
 }
