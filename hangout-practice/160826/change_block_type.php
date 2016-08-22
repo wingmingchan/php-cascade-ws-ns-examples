@@ -1,7 +1,9 @@
 <?php
 /* 
 This program shows how dangerous web services can be.
+A text block can be turned into a feed block easily.
 If we don't encapsulate the properties of assets, we can do really crazy things.
+For example, we can turn a block into a page.
 */
 
 require_once('auth_tutorial.php');
