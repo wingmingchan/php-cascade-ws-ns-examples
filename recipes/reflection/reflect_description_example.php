@@ -26,7 +26,7 @@ try
     
 /* outputs:
 
-<pre>u\DebugUtility::dump( $service->getAudits();</pre>
+<pre>u\DebugUtility::dump( $service->getAudits() );</pre>
 */
 }
 catch( \Exception $e ) 
