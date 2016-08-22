@@ -23,7 +23,6 @@ try
     $text_p           = $feed_p;
     $text_p->id       = $text_block_id;
 
-    $id               = $service->createId( a\TextBlock::TYPE, $text_block_id );
     $asset            = new \stdClass();
     $asset->feedBlock = $text_p;
     $service->edit( $asset );
