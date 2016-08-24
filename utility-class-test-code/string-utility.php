@@ -10,6 +10,35 @@ use cascade_ws_exception as e;
 
 try
 {
+    if( u\StringUtility::stringToBool( "true" ) )
+        echo "Tis true", BR;
+        
+    if( u\StringUtility::stringToBool( "1" ) )
+        echo "Tis also true", BR;
+                
+    if( u\StringUtility::stringToBool( "0" ) )
+        echo "Tis true", BR;
+    else
+        echo "Tis false", BR;    
+        
+    if( u\StringUtility::stringToBool( 1 ) )
+        echo "Tis true", BR;
+    else
+        echo "Tis false", BR;    
+        
+    if( u\StringUtility::stringToBool( 0 ) )
+        echo "Tis true", BR;
+    else
+        echo "Tis false", BR;    
+        
+    if( u\StringUtility::stringToBool( "" ) )
+        echo "Tis true", BR;
+    else
+        echo "Tis false", BR;    
+        
+
+    echo u\StringUtility::boolToString( true ), BR;
+
     echo ( u\StringUtility::startsWith( "Hello", "He" ) ? "yes" : "no" ), BR;
     
     echo ( u\StringUtility::startsWith( "Hello", "e" ) ? "yes" : "no" ), BR;
