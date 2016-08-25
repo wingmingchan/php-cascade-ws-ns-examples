@@ -10,19 +10,19 @@ use cascade_ws_exception as e;
 
 try
 {
-	$cache                = u\Cache::getInstance( $service );
-	$template_id_stdClass = $service->createId( a\Template::TYPE, "78c760648b7f0856004564242ce4d1d1" );
-	$template_identifier  = new p\Child( $template_id_stdClass );
+    $cache                = u\Cache::getInstance( $service );
+    $template_id_stdClass = $service->createId( a\Template::TYPE, "78c760648b7f0856004564242ce4d1d1" );
+    $template_identifier  = new p\Child( $template_id_stdClass );
 
-	// test cache time
-	$start_time = time();
-	
-	for( $i = 0; $i < 50; $i++ )
-	{
-		$template = $cache->retrieveAsset( $template_identifier );
-	}
-	
-	$end_time = time();
+    // test cache time
+    $start_time = time();
+    
+    for( $i = 0; $i < 50; $i++ )
+    {
+        $template = $cache->retrieveAsset( $template_identifier );
+    }
+    
+    $end_time = time();
     echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
     
     u\DebugUtility::dump( $cache );
@@ -30,14 +30,14 @@ try
     u\DebugUtility::dump( $cache );
     
     // test direct retrieval time
-	$start_time = time();
-	
-	for( $i = 0; $i < 50; $i++ )
-	{
-		$template = $template_identifier->getAsset( $service );
-	}
-	
-	$end_time = time();
+    $start_time = time();
+    
+    for( $i = 0; $i < 50; $i++ )
+    {
+        $template = $template_identifier->getAsset( $service );
+    }
+    
+    $end_time = time();
     echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
 }
 catch( \Exception $e ) 
