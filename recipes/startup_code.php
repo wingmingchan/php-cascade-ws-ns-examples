@@ -1,7 +1,4 @@
 <?php 
-ini_set( 'display_errors', true );
-error_reporting( E_ALL );
-
 require_once('cascade_ws_ns/auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
