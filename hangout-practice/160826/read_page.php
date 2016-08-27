@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-	$cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump( true );
+    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump( true );
 }
 catch( \Exception $e ) 
 {
