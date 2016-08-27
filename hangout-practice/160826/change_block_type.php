@@ -26,13 +26,13 @@ try
     $text_p           = $text_block->getProperty();
         
     $text_block_id    = "388f033b8b7ffe83164c9314c23a3f8f";
-    $text_p           = $feed_p;
-    //$text_p           = $text_p;
+    $text_p           = $feed_p; // use this line to turn a text block to a feed block
+    //$text_p           = $text_p; // use this line to turn a feed block to a text block
     $text_p->id       = $text_block_id;
 
     $asset            = new \stdClass();
-    $asset->feedBlock = $feed_p;
-    //$asset->textBlock = $text_p;
+    $asset->feedBlock = $feed_p; // use this line to turn a text block to a feed block
+    //$asset->textBlock = $text_p; // use this line to turn a feed block to a text block
     $service->edit( $asset );
     
     if( $service->isSuccessful() )
