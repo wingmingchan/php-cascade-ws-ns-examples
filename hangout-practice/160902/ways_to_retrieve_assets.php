@@ -10,27 +10,27 @@ use cascade_ws_exception as e;
 
 try
 {
-	$page_id = "389b03188b7ffe83164c931405d3704f";
-	
-	// 1. use the $service object
-	//$service->getAsset( a\Page::TYPE, $page_id )->dump();
-	
-	// 2. use the constructor
-	//$page = new a\Page( $service, $service->createId( a\Page::TYPE, $page_id ) );
-	//$page->dump();
-	
-	// 3. use the Child/Identifier class
-	//$id = new p\Child( $service->createId( a\Page::TYPE, $page_id ) );
-	//$id->getAsset( $service )->dump();
-	
-	// 4. use Asset::getAsset static method
-	//a\Asset::getAsset( $service, a\Page::TYPE, $page_id )->dump();
-	
-	// 5. use $cascade->getAsset
-	//$cascade->getAsset( a\Page::TYPE, $page_id )->dump();
-	
-	// 6. use $cascade->getX
-	$cascade->getPage( $page_id )->dump();
+    $page_id = "389b03188b7ffe83164c931405d3704f";
+    
+    // 1. use the $service object
+    //$service->getAsset( a\Page::TYPE, $page_id )->dump();
+    
+    // 2. use the constructor
+    //$page = new a\Page( $service, $service->createId( a\Page::TYPE, $page_id ) );
+    //$page->dump();
+    
+    // 3. use the Child/Identifier class
+    //$id = new p\Child( $service->createId( a\Page::TYPE, $page_id ) );
+    //$id->getAsset( $service )->dump();
+    
+    // 4. use Asset::getAsset static method
+    //a\Asset::getAsset( $service, a\Page::TYPE, $page_id )->dump();
+    
+    // 5. use $cascade->getAsset
+    //$cascade->getAsset( a\Page::TYPE, $page_id )->dump();
+    
+    // 6. use $cascade->getX
+    $cascade->getPage( $page_id )->dump();
 }
 catch( \Exception $e ) 
 {
@@ -38,7 +38,7 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 
 /*
