@@ -10,12 +10,12 @@ use cascade_ws_exception as e;
 
 try
 {
-	echo u\ReflectionUtility::getClassName( $service ), BR;
-	
-	u\DebugUtility::out( u\ReflectionUtility::getClassName( $service ) );
-	
-	
-	//u\DebugUtility::dump( $service );
+    echo u\ReflectionUtility::getClassName( $service ), BR;
+    
+    u\DebugUtility::out( u\ReflectionUtility::getClassName( $service ) );
+    
+    
+    //u\DebugUtility::dump( $service );
 }
 catch( \Exception $e ) 
 {
@@ -23,7 +23,7 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 
 /*
