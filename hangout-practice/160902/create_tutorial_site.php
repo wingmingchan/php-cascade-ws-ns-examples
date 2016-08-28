@@ -1,5 +1,5 @@
 <?php
-require_once('auth_tutorial.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -11,7 +11,7 @@ use cascade_ws_exception as e;
 try
 {
     $site_name = 'ws-tutorial-wing';
-    $url       = 'yourdomain.youorg.edu/ws-tutorial-yourname';
+    $url       = 'webapp.upstate.edu/web-service-tutorial';
     
     try
     {
