@@ -10,16 +10,12 @@ use cascade_ws_exception as e;
 
 try
 {
-    // read the block as the source of data
-    $source = $cascade->getAsset( 
-        a\DataBlock::TYPE, "a8055b328b7ffe8364375ac750a0c920" );
-    // read the block to be modified
-    $target = $cascade->getAsset( 
-        a\DataBlock::TYPE, "a804f56a8b7ffe8364375ac7d88a0a78" );
-    // get the data of the source
-    $source_p = $source->getStructuredData();
-    // overwrite the target
-    $target->setStructuredData( $source_p );
+    echo u\ReflectionUtility::getClassName( $service ), BR;
+    
+    u\DebugUtility::out( u\ReflectionUtility::getClassName( $service ) );
+    
+    
+    //u\DebugUtility::dump( $service );
 }
 catch( \Exception $e ) 
 {
@@ -29,6 +25,7 @@ catch( \Error $er )
 {
     echo S_PRE . $er . E_PRE; 
 }
+
 /*
 Useful code templates:
     u\ReflectionUtility::showMethodSignatures( 
@@ -42,9 +39,10 @@ Useful code templates:
         
     u\ReflectionUtility::showMethodExample( 
         "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-
+        
     u\DebugUtility::dump( $page );
-
+    u\DebugUtility::out( "Hello" );
+    
     $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump( true );
 */
 ?>
