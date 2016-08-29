@@ -1,5 +1,5 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -8,26 +8,31 @@ use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
-$mode = 'all';
+//$mode = 'all';
 //$mode = 'copy';
 //$mode = 'display';
-//$mode = 'dump';
+$mode = 'dump';
+//$mode = 'edit';
+$mode = 'getAudits';
 //$mode = 'get';
 //$mode = 'publishSubscribers';
+//$mode = 'none';
 
 try
 {
+	$page_id = "824b63c68b7ffe830539acf09bc3135b";
+	
     // test static method
     $page = a\Asset::getAsset( 
-        $service, a\Page::TYPE, "2e9c6b1c8b7f0856002a5e11d46395d9" );
-
+        $service, a\Page::TYPE, $page_id );
+        
     switch( $mode )
     {
         case 'all':
         case 'copy':
             $page->copy(
                 $cascade->getAsset( 
-                    a\Folder::TYPE, "ffe39a278b7f08ee3e513744c5d70ead" ), // the target folder
+                    a\Folder::TYPE, "3890a3f88b7ffe83164c931457a2709c" ), // the target folder
                 "test-asset" // new name
             );
             
@@ -41,23 +46,26 @@ try
                 break;
                 
         case 'dump':
-            $page->dump( true );
+            $page->dump();
+            
+            if( $mode != 'all' )
+                break;
+
+        case 'edit':
+            $page->setText( "main-content-content", "Test content" )->
+                edit();
+            
+            if( $mode != 'all' )
+                break;
+
+        case 'getAudits':
+        	$audits = $page->getAudits();
+            u\DebugUtility::dump( $audits );
             
             if( $mode != 'all' )
                 break;
 
         case 'get':
-            echo "Test getAudits", BR;
-            $audits = $page->getAudits( c\T::EDIT );
-            
-            if( count( $audits) > 0 )
-            {
-                foreach( $audits as $audit )
-                {
-                    u\DebugUtility::dump( $audit->toStdClass() );
-                }
-            }
-            
             echo "Test get methods:", BR, 
                 "getId: ", $page->getId(), BR;
             
@@ -100,9 +108,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Asset" );
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
