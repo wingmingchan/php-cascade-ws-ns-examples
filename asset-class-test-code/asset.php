@@ -20,8 +20,8 @@ $mode = 'getAudits';
 
 try
 {
-	$page_id = "824b63c68b7ffe830539acf09bc3135b";
-	
+    $page_id = "824b63c68b7ffe830539acf09bc3135b";
+    
     // test static method
     $page = a\Asset::getAsset( 
         $service, a\Page::TYPE, $page_id );
@@ -59,7 +59,7 @@ try
                 break;
 
         case 'getAudits':
-        	$audits = $page->getAudits();
+            $audits = $page->getAudits();
             u\DebugUtility::dump( $audits );
             
             if( $mode != 'all' )
