@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -8,9 +8,9 @@ use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
-$paths      = array( 
-                 "/_cascade/blocks/code/text-block", 
-                 "_cascade/blocks/code/ajax-read-profile-php" );
+$paths = array( 
+             "/_cascade/blocks/code/text-block", 
+             "_cascade/blocks/code/ajax-read-profile-php" );
 
 $operations = array();
 
@@ -32,6 +32,10 @@ try
 }
 catch( \Exception $e )
 {
-    echo $e;
+    echo S_PRE, $e, E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE, $er, E_PRE;
 }
 ?>

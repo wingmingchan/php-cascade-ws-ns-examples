@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,16 +10,20 @@ use cascade_ws_exception as e;
 
 try
 {
-	$path      = "/_cascade/blocks/code/text-block2";
-	$service->delete( $service->createId( a\TextBlock::TYPE, $path, "cascade-admin" ) );
-	
-	if( $service->isSuccessful() )
+    $path      = "/_cascade/blocks/code/text-block2";
+    $service->delete( $service->createId( a\TextBlock::TYPE, $path, "cascade-admin" ) );
+    
+    if( $service->isSuccessful() )
         echo "Deleted successfully";
     else
         echo "Failed to delete. " . $service->getMessage();
 }
 catch( \Exception $e )
 {
-    echo $e;
+    echo S_PRE, $e, E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE, $er, E_PRE;
 }
 ?>

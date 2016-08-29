@@ -6,7 +6,7 @@ Setup:
 3. Edit one of the pages to start the workflow
 4. Run this program
 */
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -20,14 +20,20 @@ try
     $path = '/projects/web-services/reports/creating-format';
     
     $service->readWorkflowInformation( 
-    $service->createId( a\Page::TYPE, $path, "cascade-admin" ) );
+        $service->createId( a\Page::TYPE, $path, "cascade-admin" ) );
     
     if( $service->isSuccessful() )
     {
         echo "Successfully read workflow information<br />";
         
-        $workflow      = 
-            $service->getReply()->readWorkflowInformationReturn->workflow;
+        $workflow = $service->getReadWorkflow();
+        
+        if( !isset( $workflow ) )
+        {
+        	echo "No workflow read";
+        	return;
+        }
+
         $id            = $workflow->id;
         $current_step  = $workflow->currentStep;
         $ordered_steps = $workflow->orderedSteps;
@@ -91,6 +97,10 @@ try
 }
 catch( \Exception $e )
 {
-    echo $e;
+    echo S_PRE, $e, E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE, $er, E_PRE;
 }
 ?>

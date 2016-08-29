@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-	$id = "ac8e78198b7f08ee09f7a62c996243b8";
+    $id = "5b68a9d88b7ffe8364375ac779f042bb";
     $service->markMessage( 
         $service->createIdWithIdType( $id, c\T::MESSAGE ), 
         c\T::UNREAD );
@@ -20,10 +20,19 @@ try
         echo "Marked message successfully<br />";
     }
     else
+    {
         echo "Failed to mark message. " . $service->getMessage();
+    }
+    
+    $service->printLastRequest();
+    $service->printLastResponse();
 }
 catch( \Exception $e )
 {
-    echo $e;
+    echo S_PRE, $e, E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE, $er, E_PRE;
 }
 ?>

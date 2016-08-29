@@ -10,14 +10,11 @@ use cascade_ws_exception as e;
 
 try
 {
-    $page_path = "projects/web-services/reports/creating-format";
+    $id = "3896de848b7ffe83164c931422421045";
     
-    $service->unpublish( $service->createId( a\Page::TYPE, $page_path, "cascade-admin" ) );
-
-    if( $service->isSuccessful() )
-        echo "Unpublished successfully";
-    else
-        echo "Failed to unpublish. " . $service->getMessage();
+    if( $service->isHexString( $id ) )
+    	echo $service->getType( $id ), BR;
+    echo $service->getUrl(), BR;
 }
 catch( \Exception $e )
 {

@@ -2,7 +2,7 @@
 /*
 At Upstate, we use site names for group names.
 */
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -25,7 +25,7 @@ try
         $service->search( $search_for );
 
         // if succeeded
-        if ( $service->isSuccessful() )
+        if ( $service->getSuccess() )
         {
             echo "<h2>Search Result for $site</h2>";
 
@@ -54,30 +54,34 @@ try
     $service->search( $search_for );
     
     // if succeeded
-	if ( $service->isSuccessful() )
-	{
-		echo "<h2>Listing All Groups</h2>";
+    if ( $service->isSuccessful() )
+    {
+        echo "<h2>Listing All Groups</h2>";
 
-		if( is_null( $service->getSearchMatches()->match ) )
-		{
-			echo "No results<br />";
-		}
-		else
-		{
-			$groups = $service->getSearchMatches()->match;
-			
-			foreach( $groups as $group )
-				echo $group->id, BR;
-		}
-	}
-	else
-	{
-		echo "Search failed.<br />";
-		echo $service->getMessage();
-	}
+        if( is_null( $service->getSearchMatches()->match ) )
+        {
+            echo "No results<br />";
+        }
+        else
+        {
+            $groups = $service->getSearchMatches()->match;
+            
+            foreach( $groups as $group )
+                echo $group->id, BR;
+        }
+    }
+    else
+    {
+        echo "Search failed.<br />";
+        echo $service->getMessage();
+    }
 }
 catch( \Exception $e )
 {
-    echo $e;
+    echo S_PRE, $e, E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE, $er, E_PRE;
 }
 ?>
