@@ -24,7 +24,7 @@ try
     
     echo "Action: ", $audit0->getAction(), BR;
     echo "Audit asset: ", BR;
-    //u\DebugUtility::dump( $audit0->getAuditedAsset( $service ) );
+    u\DebugUtility::dump( $audit0->getAuditedAsset() );
     echo "Date: ", date_format( $audit0->getDate(), 'Y-m-d H:i:s' ), BR;
     
     echo "Identifier: ", BR;
