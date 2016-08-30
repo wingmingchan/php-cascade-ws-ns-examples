@@ -8,23 +8,26 @@ use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
+$mode = 'none';
 //$mode = 'all';
 //$mode = 'copy';
 //$mode = 'display';
-$mode = 'dump';
+//$mode = 'dump';
 //$mode = 'edit';
-$mode = 'getAudits';
+//$mode = 'getAudits';
 //$mode = 'get';
 //$mode = 'publishSubscribers';
-//$mode = 'none';
 
 try
 {
     $page_id = "824b63c68b7ffe830539acf09bc3135b";
     
     // test static method
-    $page = a\Asset::getAsset( 
-        $service, a\Page::TYPE, $page_id );
+    $page = a\Asset::getAsset(
+        $service, a\Page::TYPE, $page_id ); //->dump();
+    // static method can still be called through an object
+    $folder = $page->getAsset(
+        $service, a\Folder::TYPE, "3890910f8b7ffe83164c93144ce01dbd" )->dump();
         
     switch( $mode )
     {
@@ -59,7 +62,9 @@ try
                 break;
 
         case 'getAudits':
-            $audits = $page->getAudits();
+            //$audits = $page->getAudits();
+            $user   = $cascade->getAsset( a\User::TYPE, "schirtzl" );
+            $audits = $user->getAudits();
             u\DebugUtility::dump( $audits );
             
             if( $mode != 'all' )
@@ -102,7 +107,7 @@ try
                 
         case 'publishSubscribers':
             $page->publishSubscribers( 
-                $cascade->getAsset( a\Destination::TYPE, "12bbbe2a8b7f0856002a5e11cdea7a3b" ) 
+                $cascade->getAsset( a\Destination::TYPE, "388fd57b8b7ffe83164c9314b3e7eef4" ) 
             );
             
             if( $mode != 'all' )
