@@ -1,5 +1,5 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
 use cascade_ws_asset     as a;
@@ -9,12 +9,23 @@ use cascade_ws_exception as e;
 
 try
 {
-    $folder = $cascade->getAsset( a\Folder::TYPE, "e637b2d98b7f08ee71e0db967edcd450" );
-    $folder->deleteAllChildren();
+    $folder1 = $cascade->getAsset( a\Folder::TYPE, "e6a8b39d8b7ffe8364375ac7e4d72180" );
+    $folder1->deleteAllChildren();
     
-    $folder = $cascade->getAsset( a\Folder::TYPE, "e636ef478b7f08ee71e0db96b386c7f8" );
-    u\DebugUtility::dump( $folder->getChildren() );
-    u\DebugUtility::dump( $folder->getContainerChildrenIds() );
+    $folder2 = $cascade->getAsset( a\Folder::TYPE, "e231348c8b7ffe8364375ac74bbbc6fb" );
+    u\DebugUtility::dump( $folder2->getChildren() );
+    u\DebugUtility::dump( $folder2->getContainerChildrenIds() );
+    
+    $folder2->getMetadata()->setDisplayName( "Test" )->getHostAsset()->edit();
+    
+    //u\DebugUtility::dump( $folder2->getAssetTree() );
+    
+    echo u\StringUtility::boolToString( $folder2->isAncestorOf( $folder1) ), BR;
+    echo u\StringUtility::boolToString( $folder2->isParentOf( $folder1) ), BR;
+    
+    u\DebugUtility::dump( $folder2->toChild() );
+    
+    
 }
 catch( \Exception $e ) 
 {

@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('cascade_ws_ns/auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -35,12 +35,12 @@ try
                 break;
 
         case 'get':
-            echo c\L::ID . $afc->getId() . BR .
-                 c\L::NAME . $afc->getName() . BR .
-                 c\L::PATH . $afc->getPath() . BR .
+            echo c\L::ID .            $afc->getId() . BR .
+                 c\L::NAME .          $afc->getName() . BR .
+                 c\L::PATH .          $afc->getPath() . BR .
                  c\L::PROPERTY_NAME . $afc->getPropertyName() . BR .
-                 c\L::SITE_NAME . $afc->getSiteName() . BR .
-                 c\L::TYPE . $afc->getType() . BR .
+                 c\L::SITE_NAME .     $afc->getSiteName() . BR .
+                 c\L::TYPE .          $afc->getType() . BR .
                  "";
                  
             $children = $afc->getChildren();
