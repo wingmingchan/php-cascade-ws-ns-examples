@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
 use cascade_ws_asset as a;
@@ -22,7 +22,7 @@ try
     // no plugin
     //$id = "4332be908b7f085601aaf3b9ab389f68";
     // Test
-    $id = "cdb841748b7f08560047808b2bbd015b"; 
+    $id = "bddd362f8b7ffe8364375ac776dba124"; 
 
     $af = a\AssetFactory::getAsset( $service, a\AssetFactory::TYPE, $id );
 
@@ -37,6 +37,7 @@ try
                 
         case 'dump':
             $af->dump( true );
+            
             if( $mode != 'all' )
                 break;
 
@@ -49,42 +50,45 @@ try
                  c\L::TYPE . $af->getType() . BR .
                  
                  "Allow subfolder placement: " . 
-                 $af->getAllowSubfolderPlacement() . BR .
+                 u\StringUtility::boolToString( $af->getAllowSubfolderPlacement() ) . BR .
                  "Applicable groups: " . 
-                 $af->getApplicableGroups() . BR .
+                 u\StringUtility::getCoalescedString( $af->getApplicableGroups() ) . BR .
                  "Asset type: " . 
                  $af->getAssetType() . BR .
                  "Base asset ID: " . 
-                 $af->getBaseAssetId() . BR .
+                 u\StringUtility::getCoalescedString( $af->getBaseAssetId() ) . BR .
                  "Base asset path: " . 
-                 $af->getBaseAssetPath() . BR .
+                 u\StringUtility::getCoalescedString( $af->getBaseAssetPath() ) . BR .
                  "Base asset recycled: " . 
-                 $af->getBaseAssetRecycled() . BR .
+                 u\StringUtility::boolToString( $af->getBaseAssetRecycled() ) . BR .
                  "Folder placement position: " . 
                  $af->getFolderPlacementPosition() . BR .
                  "Overwrite: " . 
-                 $af->getOverwrite() . BR .
+                 u\StringUtility::boolToString( $af->getOverwrite() ) . BR .
                  c\L::PARENT_CONTAINER_ID . 
                  $af->getParentContainerId() . BR .
                  c\L::PARENT_CONTAINER_PATH . 
                  $af->getParentContainerPath() . BR .
+                 
                  "Placement folder ID: " . 
-                 $af->getPlacementFolderId() . BR .
+                 u\StringUtility::getCoalescedString( $af->getPlacementFolderId() ) . BR .
                  "Placement folder path: " . 
-                 $af->getPlacementFolderPath() . BR .
+                 u\StringUtility::getCoalescedString( $af->getPlacementFolderPath() ) . BR .
                  "Placement folder recycled: " . 
-                 $af->getPlacementFolderRecycled() . BR .
-                 c\L::SITE_ID . 
+                 u\StringUtility::boolToString( $af->getPlacementFolderRecycled() ) . BR .
+                 c\L::SITE_ID .
                  $af->getSiteId() . BR .
                  c\L::SITE_NAME . 
                  $af->getSiteName() . BR .
                  "Workflow definition ID: " . 
-                 $af->getWorkflowDefinitionId() . BR .
+                 u\StringUtility::getCoalescedString( $af->getWorkflowDefinitionId() ) . BR .
                  "Workflow definition path: " . 
-                 $af->getWorkflowDefinitionPath() . BR .
+                 u\StringUtility::getCoalescedString( $af->getWorkflowDefinitionPath() ) . BR .
                  "Workflow mode: " . 
                  $af->getWorkflowMode() . BR ;
                  
+                 if( $af->hasPlugin( a\AssetFactory::FILE_LIMIT_PLUGIN ) )
+                     u\DebugUtility::dump( $af->getPlugin( a\AssetFactory::FILE_LIMIT_PLUGIN ) );
                  u\DebugUtility::dump( $af->getPluginNames() );
                  u\DebugUtility::dump( $af->getPluginStd() );
             
@@ -96,9 +100,11 @@ try
              $group      = a\Asset::getAsset( $service, a\Group::TYPE, $group_name );
              $af->addGroup( $group )->edit();
              
+             
+             
              if( $af->isApplicableToGroup( $group ) )
              {
-                 echo "Applicable to $group_name" . BR;
+                 echo "Applicable to ", $group->getName(), BR;
              }
              else
              {
@@ -128,6 +134,8 @@ try
                 break;
 
         case 'plugin':
+            $temp_plugins = $af->getPluginStd();
+            
             $af->addPlugin( a\AssetFactory::CREATE_RESIZED_IMAGES_PLUGIN )->
                 addPlugin( a\AssetFactory::FILE_LIMIT_PLUGIN )->
                 dump( true );
@@ -168,6 +176,9 @@ try
                     a\AssetFactory::STRUCTURED_DATA_FIELD_TO_SYSTEM_NAME_PLUGIN,
                     a\AssetFactory::SD_FIELD_TO_SYSTEM_NAME_PARAM_FIELD_ID )->
                 dump( true );
+            
+            // undo everything
+            $af->setPlugins( $temp_plugins )->dump( true );
                         
             if( $mode != 'all' )
                 break;
@@ -184,9 +195,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\AssetFactory" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
