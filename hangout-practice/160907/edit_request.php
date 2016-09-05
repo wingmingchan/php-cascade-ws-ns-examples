@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-	$cascade->getAsset( a\TextBlock::TYPE, "388fa7a58b7ffe83164c93149320e775" )->edit();
+    $cascade->getAsset( a\TextBlock::TYPE, "388fa7a58b7ffe83164c93149320e775" )->edit();
     echo u\XMLUtility::replaceBrackets( $service->getLastRequest() );
 }
 catch( \Exception $e ) 
@@ -19,7 +19,7 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 
 /*
