@@ -1,4 +1,7 @@
 <?php
+/*
+No longer breaks the block in Cascade 8.
+*/
 require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
