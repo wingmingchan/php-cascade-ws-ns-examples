@@ -10,30 +10,30 @@ use cascade_ws_exception as e;
 
 try
 {
-	$ms   = $cascade->getAsset( a\MetadataSet::TYPE, "06d5db638b7ffe83765c5582062dd782" );
-	$dmfd = $ms->getDynamicMetadataFieldDefinition( "languages" );
-	
+    $ms   = $cascade->getAsset( a\MetadataSet::TYPE, "06d5db638b7ffe83765c5582062dd782" );
+    $dmfd = $ms->getDynamicMetadataFieldDefinition( "languages" );
+    
     u\DebugUtility::dump( $dmfd->getPossibleValues() );
     
     // multiselect
     $english = $dmfd->getPossibleValue( "English" );
-	echo u\StringUtility::boolToString( $english->getSelectedByDefault() ), BR;
-	
-	foreach( $dmfd->getPossibleValues() as $pv )
-		echo $pv->getValue(), BR;
-		
-	$dmfd->getPossibleValue( "Japanese" )->setSelectedByDefault( true );
-	u\DebugUtility::dump( $dmfd->toStdClass() );
-	
-	echo u\StringUtility::boolToString( $dmfd->hasPossibleValue( "Spanish" ) ), BR;
-	
-	// radio
-	$dmfd = $ms->getDynamicMetadataFieldDefinition( "gender" );
-	$dmfd->getPossibleValue( "Female" )->setSelectedByDefault( false );
-	$dmfd->getPossibleValue( "Male" )->setSelectedByDefault( true );
-	u\DebugUtility::dump( $dmfd->toStdClass() );
-	u\DebugUtility::dump( $dmfd->getPossibleValue( "Female" )->toStdClass() );
-	
+    echo u\StringUtility::boolToString( $english->getSelectedByDefault() ), BR;
+    
+    foreach( $dmfd->getPossibleValues() as $pv )
+        echo $pv->getValue(), BR;
+        
+    $dmfd->getPossibleValue( "Japanese" )->setSelectedByDefault( true );
+    u\DebugUtility::dump( $dmfd->toStdClass() );
+    
+    echo u\StringUtility::boolToString( $dmfd->hasPossibleValue( "Spanish" ) ), BR;
+    
+    // radio
+    $dmfd = $ms->getDynamicMetadataFieldDefinition( "gender" );
+    $dmfd->getPossibleValue( "Female" )->setSelectedByDefault( false );
+    $dmfd->getPossibleValue( "Male" )->setSelectedByDefault( true );
+    u\DebugUtility::dump( $dmfd->toStdClass() );
+    u\DebugUtility::dump( $dmfd->getPossibleValue( "Female" )->toStdClass() );
+    
 }
 catch( \Exception $e ) 
 {
@@ -41,7 +41,7 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 /*
 Useful code templates:
