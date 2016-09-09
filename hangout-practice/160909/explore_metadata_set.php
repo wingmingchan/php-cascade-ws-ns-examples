@@ -26,7 +26,8 @@ catch( \Error $er )
 
 function revealInfo( a\MetadataSet $ms )
 {
-    echo S_H2, "Wired Fields", E_H2, S_UL;
+	echo "<h1>", $ms->getName(), "</h1>",
+         S_H2, "Wired Fields", E_H2, S_UL;
     
     foreach( a\MetadataSet::$wired_fields as $field_name )
     {
