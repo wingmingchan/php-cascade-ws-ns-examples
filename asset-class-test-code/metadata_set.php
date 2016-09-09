@@ -92,11 +92,11 @@ try
             
             if( $ms->hasDynamicMetadataFieldDefinitions() )
             {
-				u\DebugUtility::dump( $ms->getDynamicMetadataFieldDefinitionNames() );
-				u\DebugUtility::dump( $ms->getDynamicMetadataFieldDefinitionsStdClass() );
-				u\DebugUtility::dump( $ms->getDynamicMetadataFieldPossibleValueStrings( "dropdown" ) );
-				u\DebugUtility::dump( $ms->getDynamicMetadataFieldPossibleValueStrings( "text" ) );
-			}
+                u\DebugUtility::dump( $ms->getDynamicMetadataFieldDefinitionNames() );
+                u\DebugUtility::dump( $ms->getDynamicMetadataFieldDefinitionsStdClass() );
+                u\DebugUtility::dump( $ms->getDynamicMetadataFieldPossibleValueStrings( "dropdown" ) );
+                u\DebugUtility::dump( $ms->getDynamicMetadataFieldPossibleValueStrings( "text" ) );
+            }
             
             u\DebugUtility::dump( $ms->getMetadata()->toStdClass() );
             
@@ -113,7 +113,7 @@ try
             
             if( $ms->isDynamicMetadataFieldRequired( "text" ) )
             {
-            	echo "The text field requires a value.", BR;
+                echo "The text field requires a value.", BR;
             }
             
             $ms->dump();
@@ -195,11 +195,11 @@ try
                 break;
                 
         case 'copy':
-        	$new_name = 'Test 2';
+            $new_name = 'Test 2';
             $new_ms   = $ms->copy( 
-            	$cascade->getAsset( 
-            		a\MetadataSetContainer::TYPE, $ms->getParentContainerId() ), 
-            	$new_name );
+                $cascade->getAsset( 
+                    a\MetadataSetContainer::TYPE, $ms->getParentContainerId() ), 
+                $new_name );
             $new_ms->dump( true );
             
             if( $mode != 'all' )
