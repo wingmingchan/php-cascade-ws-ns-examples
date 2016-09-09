@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
 use cascade_ws_asset as a;
@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 $mode = 'all';
 //$mode = 'display';
 //$mode = 'dump';
-//$mode = 'get';
+$mode = 'get';
 //$mode = 'set';
 //$mode = 'copy';
 //$mode = 'raw';
@@ -44,45 +44,61 @@ try
                  "Type: " .          $ms->getType() . BR .
                  
                  "Author field required: " . 
-                 $ms->getAuthorFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getAuthorFieldRequired() ) . BR .
                  "Author field visibility: " . 
                  $ms->getAuthorFieldVisibility() . BR .
                  "Description field required: " . 
-                 $ms->getDescriptionFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getDescriptionFieldRequired() ) . BR .
                  "Description field visibility: " . 
                  $ms->getDescriptionFieldVisibility() . BR .
                  "Display name field required: " . 
-                 $ms->getDisplayNameFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getDisplayNameFieldRequired() ) . BR .
                  "Display name field visibility: " . 
                  $ms->getDisplayNameFieldVisibility() . BR .
                  "End date field required: " . 
-                 $ms->getEndDateFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getEndDateFieldRequired() ) . BR .
                  "End date field visibility: " . 
                  $ms->getEndDateFieldVisibility() . BR .
+                 
+                 "Expiration folder field required: " . 
+                 u\StringUtility::boolToString( $ms->getExpirationFolderFieldRequired() ) . BR .
+                 "Expiration folder field visibility: " . 
+                 $ms->getExpirationFolderFieldVisibility() . BR .
+                 
                  "Keywords field required: " . 
-                 $ms->getKeywordsFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getKeywordsFieldRequired() ) . BR .
                  "Keywords field visibility: " . 
                  $ms->getKeywordsFieldVisibility() . BR .
                  "Review date field required: " . 
-                 $ms->getReviewDateFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getReviewDateFieldRequired() ) . BR .
                  "Review date field visibility: " . 
                  $ms->getReviewDateFieldVisibility() . BR .
                  "Start date field required: " . 
-                 $ms->getStartDateFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getStartDateFieldRequired() ) . BR .
                  "Start date field visibility: " . 
                  $ms->getStartDateFieldVisibility() . BR .
                  "Summary field required: " . 
-                 $ms->getSummaryFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getSummaryFieldRequired() ) . BR .
                  "Summary field visibility: " . 
                  $ms->getSummaryFieldVisibility() . BR .
                  "Teaser field required: " . 
-                 $ms->getTeaserFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getTeaserFieldRequired() ) . BR .
                  "Teaser field visibility: " . 
                  $ms->getTeaserFieldVisibility() . BR .
                  "Title field required: " . 
-                 $ms->getTitleFieldRequired() . BR .
+                 u\StringUtility::boolToString( $ms->getTitleFieldRequired() ) . BR .
                  "Title field visibility: " . 
                  $ms->getTitleFieldVisibility() . BR ;
+            
+            if( $ms->hasDynamicMetadataFieldDefinitions() )
+            {
+				u\DebugUtility::dump( $ms->getDynamicMetadataFieldDefinitionNames() );
+				u\DebugUtility::dump( $ms->getDynamicMetadataFieldDefinitionsStdClass() );
+				u\DebugUtility::dump( $ms->getDynamicMetadataFieldPossibleValueStrings( "dropdown" ) );
+				u\DebugUtility::dump( $ms->getDynamicMetadataFieldPossibleValueStrings( "text" ) );
+			}
+            
+            u\DebugUtility::dump( $ms->getMetadata()->toStdClass() );
             
             $name = "show-intra-icon";
             
@@ -90,13 +106,14 @@ try
             {
                 echo "Definition found" . BR;
                 $dmd = $ms->getDynamicMetadataFieldDefinition( $name );
-                echo S_PRE;
-                var_dump( $dmd );
-                echo E_PRE. BR;                
+                u\DebugUtility::dump( $dmd );
+                u\DebugUtility::dump( $dmd->getPossibleValueStrings() );
                 
-                echo S_PRE;
-                var_dump( $dmd->getPossibleValueStrings() );
-                echo E_PRE;
+            }
+            
+            if( $ms->isDynamicMetadataFieldRequired( "text" ) )
+            {
+            	echo "The text field requires a value.", BR;
             }
             
             $ms->dump();
@@ -157,7 +174,7 @@ try
             if( $ms->hasDynamicMetadataFieldDefinition( $field ) )
             {
                 // can be removed only once
-                $ms->removeDynamicMetadataFieldDefinition( $field )->edit();
+                $ms->removeDynamicMetadataFieldDefinition( $field );
             }
             */
             
@@ -171,8 +188,7 @@ try
             )
             {
                 $ms->swapDynamicMetadataFieldDefinitions( $field1, $field2 )->
-                    swapDynamicMetadataFieldDefinitions( $field1, $field3 )->
-                    edit();
+                    swapDynamicMetadataFieldDefinitions( $field1, $field3 );
             }
                 
             if( $mode != 'all' )
