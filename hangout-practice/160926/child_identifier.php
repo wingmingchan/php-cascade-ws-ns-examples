@@ -10,32 +10,33 @@ use cascade_ws_exception as e;
 
 try
 {
-	// create an identifier stdClass object
-	$id_std = $service->createId( a\Folder::TYPE, "cc1e51808b7ffe8364375ac78ba27f05" );
-	u\DebugUtility::dump( $id_std );
-	
-	// create a Child object
-	$id_child = new p\Child( $id_std );
-	u\DebugUtility::dump( $id_child );
-	u\DebugUtility::dump( $id_child->toStdClass() );
-	
-	// read the asset
-	$folder = $id_child->getAsset( $service ); //->dump();
-	
-	// list the content of the folder
-	$children = $folder->getChildren();
-	u\DebugUtility::dump( $children );
-	
-	// display each child
-	foreach( $children as $child )
-	{
-		$child->display();
-		
-		echo $child->getPathPath(), BR;
-	}
-	
-	u\ReflectionUtility::showMethodSignatures( "cascade_ws_property\Identifier" );
-	u\ReflectionUtility::showMethodSignatures( "cascade_ws_property\Path" );
+    // create an identifier stdClass object
+    $id_std = $service->createId( 
+        a\Folder::TYPE, "cc1e51808b7ffe8364375ac78ba27f05" );
+    u\DebugUtility::dump( $id_std );
+    
+    // create a Child object
+    $id_child = new p\Child( $id_std );
+    u\DebugUtility::dump( $id_child );
+    u\DebugUtility::dump( $id_child->toStdClass() );
+    
+    // read the asset
+    $folder = $id_child->getAsset( $service ); //->dump();
+    
+    // list the content of the folder
+    $children = $folder->getChildren();
+    u\DebugUtility::dump( $children );
+    
+    // display each child
+    foreach( $children as $child )
+    {
+        $child->display();
+        
+        echo $child->getPathPath(), BR;
+    }
+    
+    u\ReflectionUtility::showMethodSignatures( "cascade_ws_property\Identifier" );
+    u\ReflectionUtility::showMethodSignatures( "cascade_ws_property\Path" );
 }
 catch( \Exception $e ) 
 {
@@ -43,6 +44,6 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
