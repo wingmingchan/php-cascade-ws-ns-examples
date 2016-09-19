@@ -21,7 +21,7 @@ try
     u\DebugUtility::dump( $id_child->toStdClass() );
     
     // read the asset
-    $folder = $id_child->getAsset( $service ); //->dump();
+    $folder = $id_child->getAsset( $service );
     
     // list the content of the folder
     $children = $folder->getChildren();
@@ -35,8 +35,10 @@ try
         echo $child->getPathPath(), BR;
     }
     
-    u\ReflectionUtility::showMethodSignatures( "cascade_ws_property\Identifier" );
-    u\ReflectionUtility::showMethodSignatures( "cascade_ws_property\Path" );
+    u\ReflectionUtility::showMethodSignatures(
+        "cascade_ws_property\Identifier" );
+    u\ReflectionUtility::showMethodSignatures( 
+        "cascade_ws_property\Path" );
 }
 catch( \Exception $e ) 
 {
