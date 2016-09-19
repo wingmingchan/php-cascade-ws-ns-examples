@@ -1,5 +1,5 @@
-<?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+<?php
+require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,7 +10,32 @@ use cascade_ws_exception as e;
 
 try
 {
-
+	// create an identifier stdClass object
+	$id_std = $service->createId( a\Folder::TYPE, "cc1e51808b7ffe8364375ac78ba27f05" );
+	u\DebugUtility::dump( $id_std );
+	
+	// create a Child object
+	$id_child = new p\Child( $id_std );
+	u\DebugUtility::dump( $id_child );
+	u\DebugUtility::dump( $id_child->toStdClass() );
+	
+	// read the asset
+	$folder = $id_child->getAsset( $service ); //->dump();
+	
+	// list the content of the folder
+	$children = $folder->getChildren();
+	u\DebugUtility::dump( $children );
+	
+	// display each child
+	foreach( $children as $child )
+	{
+		$child->display();
+		
+		echo $child->getPathPath(), BR;
+	}
+	
+	u\ReflectionUtility::showMethodSignatures( "cascade_ws_property\Identifier" );
+	u\ReflectionUtility::showMethodSignatures( "cascade_ws_property\Path" );
 }
 catch( \Exception $e ) 
 {
@@ -18,28 +43,6 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-    echo S_PRE . $er . E_PRE; 
+	echo S_PRE . $er . E_PRE; 
 }
-
-/*
-Useful code templates:
-
-    u\ReflectionUtility::showMethodSignatures( 
-        "cascade_ws_utility\ReflectionUtility" );
-        
-    u\ReflectionUtility::showMethodSignature( 
-        "cascade_ws_asset\Page", "edit" );
-        
-    u\ReflectionUtility::showMethodDescription( 
-        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-        
-    u\ReflectionUtility::showMethodExample( 
-        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-
-    u\DebugUtility::dump( $page );
-
-    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump( true );
-
-
-*/
 ?>
