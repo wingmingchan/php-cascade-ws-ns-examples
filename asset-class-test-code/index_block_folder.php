@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_constants as c;
 use cascade_ws_asset as a;
@@ -10,14 +10,14 @@ use cascade_ws_exception as e;
 //$mode = 'all';
 //$mode = 'display';
 //$mode = 'dump';
-//$mode = 'get';
-$mode = 'set';
+$mode = 'get';
+//$mode = 'set';
 //$mode = 'raw';
 //$mode = 'none';
 
 try
 {
-    $id = "5f45243f8b7f08ee76b12c41758ae016"; // left-menu
+    $id = "aa0f2ebe8b7f08ee3489f9a93ed2a37a"; // folder-index
     $ifb  = $cascade->getAsset( a\IndexBlock::TYPE, $id );
     
     switch( $mode )
@@ -39,36 +39,49 @@ try
             echo c\L::ID . $ifb->getId() . BR .
                  "Index type: " . $ifb->getIndexBlockType() . BR .
                  "Append calling page data: " . 
-                     $ifb->getAppendCallingPageData() . BR .
+                     u\StringUtility::boolToString( 
+                         $ifb->getAppendCallingPageData() ) . BR .
                  "Depth of index: " . $ifb->getDepthOfIndex() . BR .
-                 "Index access rights: " . $ifb->getIndexAccessRights() . BR .
-                 "Index blocks: " . $ifb->getIndexBlocks() . BR .
-                 "Indexed content type ID: " . 
-                     $ifb->getIndexedContentTypeId() . BR .
-                 "Indexed content type path: " . 
-                     $ifb->getIndexedContentTypePath() . BR .
-                 "Indexed folder ID: " . $ifb->getIndexedFolderId() . BR .
-                 "Indexed folder path: " . $ifb->getIndexedFolderPath() . BR .
-                 "Indexed folder recycled: " . 
-                     $ifb->getIndexedFolderRecycled() . BR .
-                 "Index files: " . $ifb->getIndexFiles() . BR .
-                 "Index links: " . $ifb->getIndexLinks() . BR .
-                 "Index pages: " . $ifb->getIndexPages() . BR .
-                 "Index regular content: " . 
-                     $ifb->getIndexRegularContent() . BR .
-                 "Index system metadata: " . 
-                     $ifb->getIndexSystemMetadata() . BR .
-                 "Index user info: " . $ifb->getIndexUserInfo() . BR .
-                 "Index user metadata: " . $ifb->getIndexUserMetadata() . BR .
-                 "Index workflow info: " . $ifb->getIndexWorkflowInfo() . BR .
+                 "Index access rights: " . 
+                     u\StringUtility::boolToString( $ifb->getIndexAccessRights() ) . BR .
+                 "Index blocks: " . u\StringUtility::boolToString(
+                     $ifb->getIndexBlocks() ) . BR .
+                 "Indexed content type ID: " . u\StringUtility::getCoalescedString(
+                         $ifb->getIndexedContentTypeId() ) . BR .
+                 "Indexed content type path: " . u\StringUtility::getCoalescedString(
+                     $ifb->getIndexedContentTypePath() ) . BR .
+                 "Indexed folder ID: " . u\StringUtility::getCoalescedString(
+                     $ifb->getIndexedFolderId() ) . BR .
+                 "Indexed folder path: " . u\StringUtility::getCoalescedString(
+                     $ifb->getIndexedFolderPath() ) . BR .
+                 "Indexed folder recycled: " . u\StringUtility::boolToString(
+                     $ifb->getIndexedFolderRecycled() ) . BR .
+                 "Index files: " . u\StringUtility::boolToString(
+                     $ifb->getIndexFiles() ) . BR .
+                 "Index links: " . u\StringUtility::boolToString(
+                     $ifb->getIndexLinks() ) . BR .
+                 "Index pages: " . u\StringUtility::boolToString(
+                     $ifb->getIndexPages() ) . BR .
+                 "Index regular content: " . u\StringUtility::boolToString(
+                     $ifb->getIndexRegularContent() ) . BR .
+                 "Index system metadata: " . u\StringUtility::boolToString(
+                     $ifb->getIndexSystemMetadata() ) . BR .
+                 "Index user info: " . u\StringUtility::boolToString(
+                     $ifb->getIndexUserInfo() ) . BR .
+                 "Index user metadata: " . u\StringUtility::boolToString(
+                     $ifb->getIndexUserMetadata() ) . BR .
+                 "Index workflow info: " . u\StringUtility::boolToString(
+                     $ifb->getIndexWorkflowInfo() ) . BR .
                  "Max rendered assets: " . $ifb->getMaxRenderedAssets() . BR .
                  "Page xml: " . $ifb->getPageXML() . BR .
                  "Rendering behavior: " . $ifb->getRenderingBehavior() . BR .
                  "Sort method: " . $ifb->getSortMethod() . BR .
                  "Sort order: " . $ifb->getSortOrder() . BR .
-                 "Is content: " . $ifb->isContent() . BR .
-                 "Is folder: " . $ifb->isFolder() . BR .
-                 "";
+                 "Is content: " . u\StringUtility::boolToString(
+                     $ifb->isContent() ) . BR .
+                 "Is folder: " . u\StringUtility::boolToString(
+                     $ifb->isFolder() ) . BR;
+            $ifb->getFolder()->dump();
 
             if( $mode != 'all' )
                 break;
@@ -79,7 +92,7 @@ try
             //$folder = $cascade->getAsset( a\Folder::TYPE, $fid );
             
             $ifb->
-            	//setAppendCallingPageData( true )->
+                //setAppendCallingPageData( true )->
                 setDepthOfIndex( 3 )->
                 /*
                 setFolder( $folder )->
@@ -114,9 +127,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    u\ReflectionUtility::showMethodSignatures( "cascade_ws_asset\IndexBlock" );
 }
 catch( \Exception $e )
 {
     echo S_PRE. $e . E_PRE;
 }
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE; 
+} 
 ?>
