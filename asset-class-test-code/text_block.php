@@ -87,20 +87,20 @@ try
             
             if( $tb->hasDynamicField( $field_name ) )
             {
-            	$df = $tb->getDynamicField( $field_name );
+                $df = $tb->getDynamicField( $field_name );
             }
             else
             {
-            	echo "The dynamic field $field_name does not exist", BR;
+                echo "The dynamic field $field_name does not exist", BR;
             }
             
             if( $tb->hasDynamicFields() )
             {
-            	u\DebugUtility::dump( $tb->getDynamicFields() );
+                u\DebugUtility::dump( $tb->getDynamicFields() );
             }
             else
             {
-            	echo "There are no dynamic fields", BR;
+                echo "There are no dynamic fields", BR;
             }
             
             $tb->getMetadataSet()->dump();
@@ -137,7 +137,7 @@ try
             $tb->setText( $text )->edit();
             
             $tb->setExpirationFolder(
-            	$cascade->getAsset( a\Folder::TYPE, "2401bc368b7ffe834c5fe91e0027a274" )
+                $cascade->getAsset( a\Folder::TYPE, "2401bc368b7ffe834c5fe91e0027a274" )
             )->edit()->dump();
             
             $tb->setMetadataSet(
