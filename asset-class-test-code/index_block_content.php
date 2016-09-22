@@ -1,50 +1,57 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
 //$mode = 'display';
 //$mode = 'dump';
-//$mode = 'get';
+$mode = 'get';
 //$mode = 'set';
 //$mode = 'raw';
 
 try
 {
-    $id  = "d45af16e8b7f08560139425c08afe3d2"; // test-index-content
-    $ifb = $cascade->getAsset( a\IndexBlock::TYPE, $id );
+    $id  = "e975bf688b7f08ee4920cf1bf1aa508e"; // test-index-content
+    $icb = $cascade->getAsset( a\IndexBlock::TYPE, $id );
     
-    if( $ifb->isContent() ) echo "Type: " . c\T::CONTENTTYPEINDEX . BR;
+    if( $icb->isContent() ) echo "Type: " . c\T::CONTENTTYPEINDEX . BR;
     
     switch( $mode )
     {
         case 'all':
         case 'display':
-            $ifb->display();
+            $icb->display();
             
             if( $mode != 'all' )
                 break;
                 
         case 'dump':
-            $ifb->dump( true );
+            $icb->dump( true );
             
             if( $mode != 'all' )
                 break;
                 
         case 'get':
-            echo "ID: " . $ifb->getId() . BR .
-                 "Type: " . $ifb->getIndexBlockType() . BR;
+            echo "ID: " . $icb->getId() . BR .
+                 "Type: " . $icb->getIndexBlockType() . BR .
+                 "Indexed folder recycled: " . u\StringUtility::boolToString(
+                     $icb->getIndexedFolderRecycled() ) . BR .
+                 "Index files: " . u\StringUtility::boolToString(
+                     $icb->getIndexFiles() ) . BR .
+                 "Page xml: " . $icb->getPageXML() . BR .
+                     "";
+            $icb->getContentType()->dump();
 
             if( $mode != 'all' )
                 break;
              
         case 'set':
-            $ifb->
+            $icb->
                 setContentType( 
                     $cascade->getAsset( 
                         a\ContentType::TYPE, 
@@ -71,18 +78,24 @@ try
                 break;
                 
         case 'raw':
-            $ifb = $service->retrieve( $service->createId( 
+            $icb = $service->retrieve( $service->createId( 
                 c\T::INDEXBLOCK, $id ), c\P::INDEXBLOCK );
             echo S_PRE;
-            var_dump( $ifb );
+            var_dump( $icb );
             echo E_PRE;
         
             if( $mode != 'all' )
                 break;
     }
+
+    u\ReflectionUtility::showMethodSignatures( "cascade_ws_asset\IndexBlock" );
 }
 catch( \Exception $e )
 {
     echo S_PRE. $e . E_PRE;
 }
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE; 
+} 
 ?>
