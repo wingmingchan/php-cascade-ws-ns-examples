@@ -9,7 +9,7 @@ use cascade_ws_exception as e;
 try
 {
     // test static method
-    $id = "388f033b8b7ffe83164c9314c23a3f8f";
+    $id = "06e401898b7ffe83765c5582e367462b";
     $block = a\Block::getBlock( $service, $id ); //->dump( true ); // no type info supplied
     
     echo a\Block::getBlockType( $service, $id ), BR;
