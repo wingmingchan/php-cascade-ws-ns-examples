@@ -26,7 +26,7 @@ try
         $base_folder->contains( $blocks_folder ) ), BR;
 
     echo "isContainedBy: ", u\StringUtility::boolToString(     
-        $blocks_folder->isInContainer( $base_folder ) ), BR;
+        $blocks_folder->isContainedBy( $base_folder ) ), BR;
         
     u\DebugUtility::dump( $blocks_folder->getChildren() );
 }
