@@ -10,25 +10,25 @@ use cascade_ws_exception as e;
 
 try
 {
-	$site_name     = "ws-tutorial-wing";
-	$base_folder   = $cascade->getSite( $site_name )->
-		getBaseFolder();
-	$blocks_folder = $cascade->getAsset( 
-		a\Folder::TYPE, "blocks", $site_name );
-		
-	echo "isParentOf: ", u\StringUtility::boolToString( 	
-		$base_folder->isParentOf( $blocks_folder ) ), BR;
-		
-	echo "isChildOf: ", u\StringUtility::boolToString( 	
-		$blocks_folder->isChildOf( $base_folder ) ), BR;
-		
-	echo "contains: ", u\StringUtility::boolToString( 	
-		$base_folder->contains( $blocks_folder ) ), BR;
+    $site_name     = "ws-tutorial-wing";
+    $base_folder   = $cascade->getSite( $site_name )->
+        getBaseFolder();
+    $blocks_folder = $cascade->getAsset( 
+        a\Folder::TYPE, "blocks", $site_name );
+        
+    echo "isParentOf: ", u\StringUtility::boolToString(     
+        $base_folder->isParentOf( $blocks_folder ) ), BR;
+        
+    echo "isChildOf: ", u\StringUtility::boolToString(     
+        $blocks_folder->isChildOf( $base_folder ) ), BR;
+        
+    echo "contains: ", u\StringUtility::boolToString(     
+        $base_folder->contains( $blocks_folder ) ), BR;
 
-	echo "isContainedBy: ", u\StringUtility::boolToString( 	
-		$blocks_folder->isInContainer( $base_folder ) ), BR;
-		
-	u\DebugUtility::dump( $blocks_folder->getChildren() );
+    echo "isContainedBy: ", u\StringUtility::boolToString(     
+        $blocks_folder->isInContainer( $base_folder ) ), BR;
+        
+    u\DebugUtility::dump( $blocks_folder->getChildren() );
 }
 catch( \Exception $e ) 
 {
