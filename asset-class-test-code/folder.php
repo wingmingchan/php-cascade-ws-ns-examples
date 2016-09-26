@@ -1,32 +1,39 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
 //$mode = 'display';
 //$mode = 'dump';
-//$mode = 'get';
+$mode = 'get';
 //$mode = 'set';
 //$mode = 'copy';
 //$mode = 'delete';
 //$mode = 'metadata-set';
 //$mode = 'raw';
+//$mode = 'none';
+//$mode = 'workflow';
 
 try
 {
+    // velocity-test base folder
+    //$f = $cascade->getAsset( 
+        //a\Folder::TYPE, "a14dbeee8b7ffe830539acf038e9b57a" )->dump();
+    //u\DebugUtility::dump( $f->getFolderChildrenIds() );
+
     // base folder
-    //$id = '980a854e8b7f0856015997e463c84a37';
+    $id = '39d4cc568b7ffe834c5fe91ecdc40728';
     // test-child-folder
     //$id = '211c50a78b7f08560139425cdddf003a';
     // reports
     //$id = '5b9f96508b7f0856002a5e1165b08427';
     // test-Folder
-    $id = 'b8bf838f8b7f0856002a5e11586fba90';
+    //$id = 'b8bf838f8b7f0856002a5e11586fba90';
     
     $f = $cascade->getAsset( a\Folder::TYPE, $id );
 
@@ -55,22 +62,18 @@ try
                  c\L::TYPE .          $f->getType() .         BR .
                  c\L::PROPERTY_NAME . $f->getPropertyName() . HR;
                  
-            echo "Dumping identifier " . S_PRE;     
-            var_dump( $f->getIdentifier() );
-            echo E_PRE . HR;
+            echo "Dumping identifier: ", BR;     
+            u\DebugUtility::dump( $f->getIdentifier() );
             
-            echo "Dumping property " . S_PRE;     
-            //var_dump( $f->getProperty() );
-            echo E_PRE . HR;
+            echo "Dumping property: ", BR;     
+            u\DebugUtility::dump( $f->getProperty() );
             
             /* === methods from Container == */
             $children = $f->getChildren();
             
             foreach( $children as $child )
             {
-                echo S_PRE;
-                //var_dump( $child->toStdClass() );
-                echo E_PRE;
+                u\DebugUtility::dump( $child->toStdClass() );
             }
             
             $folder_children_ids = $f->getFolderChildrenIds();
@@ -79,8 +82,7 @@ try
             
             foreach( $folder_children_ids as $folder_id )
             {
-                var_dump( $folder_id );
-                echo BR;
+                u\DebugUtility::dump( $folder_id );
             }
             
             echo c\L::PARENT_CONTAINER_ID . $f->getParentFolderId() . BR .
@@ -91,50 +93,50 @@ try
             /* === methods from Folder == */
             echo c\L::CREATED_BY .   $f->getCreatedBy() .   BR .
                  c\L::CREATED_DATE . $f->getCreatedDate() . BR .
-                 c\L::EXPIRATION_FOLDER_ID .   $f->getExpirationFolderId() .   BR .
-                 c\L::EXPIRATION_FOLDER_PATH . $f->getExpirationFolderPath() . BR .
-                 c\L::LAST_MODIFIED_BY .   $f->getLastModifiedBy() .   BR .
-                 c\L::LAST_MODIFIED_DATE . $f->getLastModifiedDate() . BR .
-                 c\L::LAST_PUBLISHED_BY .   $f->getLastPublishedBy() .   BR .
-                 c\L::LAST_PUBLISHED_DATE . $f->getLastPublishedDate() . BR .
+                 c\L::EXPIRATION_FOLDER_ID . u\StringUtility::getCoalescedString(
+                     $f->getExpirationFolderId() ) . BR .
+                 c\L::EXPIRATION_FOLDER_PATH . u\StringUtility::getCoalescedString(
+                     $f->getExpirationFolderPath() ) . BR .
+                 c\L::EXPIRATION_FOLDER_RECYCLED . u\StringUtility::boolToString(
+                     $f->getExpirationFolderRecycled() ) . BR .
+                 c\L::LAST_MODIFIED_BY . u\StringUtility::getCoalescedString(
+                     $f->getLastModifiedBy() ) .   BR .
+                 c\L::LAST_MODIFIED_DATE . u\StringUtility::getCoalescedString(
+                     $f->getLastModifiedDate() ) . BR .
+                 c\L::LAST_PUBLISHED_BY .   u\StringUtility::getCoalescedString(
+                     $f->getLastPublishedBy() ) .   BR .
+                 c\L::LAST_PUBLISHED_DATE . u\StringUtility::getCoalescedString(
+                     $f->getLastPublishedDate() ) . BR .
                  c\L::METADATA_SET_ID .   $f->getMetadataSetId() .   BR .
                  c\L::METADATA_SET_PATH . $f->getMetadataSetPath() . BR .
-                 c\L::SHOULD_BE_INDEXED .   ( $f->getShouldBeIndexed() ?
-                     'true' : 'false' ) . BR .
-                 c\L::SHOULD_BE_PUBLISHED . ( $f->getShouldBePublished() ?
-                     'true' : 'false' ) . BR .
+                 c\L::SHOULD_BE_INDEXED . u\StringUtility::boolToString(
+                     $f->getShouldBeIndexed() ) . BR .
+                 c\L::SHOULD_BE_PUBLISHED . u\StringUtility::boolToString(
+                     $f->getShouldBePublished() ) . BR .
                  HR;
+                 
+            echo "Parent folder ID: ", u\StringUtility::getCoalescedString(
+                $f->getParentFolderId() ), BR;
+            echo "Parent folder path: ", u\StringUtility::getCoalescedString(
+                $f->getParentFolderPath() ), BR;
+            echo "Is folder publishable: ", u\StringUtility::boolToString(
+                $f->isPublishable() ), BR;
+                 
+            u\DebugUtility::dump( $f->getFolderChildrenIds() );    
+            u\DebugUtility::dump( $f->getMetadata()->toStdClass() );
+            u\DebugUtility::dump( $f->getMetadataStdClass() );
+            
+            $f->getMetadataSet()->dump();    
+            
                 
             $field_name = 'exclude-from-left';
-            echo "Dumping dynamic field $field_name" . S_PRE;
+            echo "Dumping dynamic field $field_name:";
             
             if( $f->hasDynamicField( $field_name ) )
-                var_dump( $f->getDynamicField( $field_name ) );
-            echo E_PRE . HR;
+                u\DebugUtility::dump( $f->getDynamicField( $field_name ) );
             
-            echo "Dumping dynamic fields" . S_PRE;
-            //var_dump( $f->getDynamicFields() );
-            echo E_PRE . HR;
-            
-            echo "Dumping workflow settings";
-
-            $wfs = $f->getWorkflowSettings();
-            echo S_PRE;
-            var_dump( $wfs->toStdClass() );
-            echo E_PRE;
-            
-            
-            //$wfs->unsetInheritWorkflows()->setRequireWorkflow( true );
-            //$f->editWorkflowSettings( true, true );
-
-            //$wf = a\Asset::getAsset( 
-                //$service, c\T::WORKFLOWDEFINITION, 
-                //'65221ba58b7f085600ae22825f36b20e' );
-            //$f->addWorkflow( $wf )->editWorkflowSettings( true, true );
-            
-            echo S_PRE;
-            //var_dump( $wfs->toStdClass() );
-            echo E_PRE;
+            echo "Dumping dynamic fields:";
+            u\DebugUtility::dump( $f->getDynamicFields() );
         
             if( $mode != 'all' )
                 break;
@@ -173,7 +175,29 @@ try
         
             if( $mode != 'all' )
                 break;
+                
+        case 'workflow':
+            $f  = $cascade->getAsset(
+                a\Folder::TYPE, "39d53c648b7ffe834c5fe91ec0cb0f27"
+            );
             
+            $wd = $cascade->getAsset(
+                a\WorkflowDefinition::TYPE, "9fe9a65e8b7ffe83164c9314b8a987d9"
+            );
+            
+            //u\DebugUtility::out( u\StringUtility::boolToString(
+                //$f->hasWorkflowDefinition( $wd ) ) );
+                
+            if( !$f->hasWorkflowDefinition( $wd ) )
+            {
+                $f->addWorkflow( $wd )->editWorkflowSettings( true, true );
+            }
+            
+            //u\DebugUtility::dump( $ws );
+        
+            if( $mode != 'all' )
+                break;
+
         case 'raw':
             $folder = $service->retrieve( 
                 $service->createId( c\T::FOLDER, $id), c\P::FOLDER );
@@ -189,5 +213,9 @@ try
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
