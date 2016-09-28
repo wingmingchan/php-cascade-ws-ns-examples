@@ -1,5 +1,5 @@
 <?php 
-require_once('auth_tutorial7.php');
+require_once( 'auth_tutorial7.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
