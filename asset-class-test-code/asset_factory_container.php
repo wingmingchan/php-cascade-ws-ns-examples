@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_tutorial7.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
 use cascade_ws_asset     as a;
@@ -16,8 +16,10 @@ $mode = 'all';
 
 try
 {
-    $id  = "fd2775ee8b7f08560159f3f0f5b977d4"; // Default
-    $afc = $cascade->getAsset( a\AssetFactoryContainer::TYPE, $id );
+    $id  = "a14dd6578b7ffe830539acf0371e2f5f"; // Default
+    $afc = $cascade->getAsset( a\AssetFactoryContainer::TYPE, $id )->dump();
+    //$afc->setDescription( "Upload" )->edit()->dump();
+    echo u\StringUtility::getCoalescedString( $afc->getDescription() ), BR;
 
     switch( $mode )
     {
@@ -100,9 +102,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\AssetFactoryContainer" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
 }
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
+}
+
 ?>
