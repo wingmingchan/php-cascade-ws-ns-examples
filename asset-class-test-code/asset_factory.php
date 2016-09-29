@@ -14,17 +14,25 @@ $mode = 'get';
 $mode = 'set';
 //$mode = 'raw';
 //$mode = "plugin";
+$mode = "none";
 
 try
 {
+
+	$cascade->getAsset( a\AssetFactory::TYPE, "a14dd57d8b7ffe830539acf083f86623" )->dump();
+
     // with plugin, various # of params
     //$id = "e85799f78b7f08560139425cc23ede84";
     // no plugin
     //$id = "4332be908b7f085601aaf3b9ab389f68";
     // Test
-    $id = "bddd362f8b7ffe8364375ac776dba124"; 
+    $id = "388e34788b7ffe83164c9314373a6741"; 
 
     $af = a\AssetFactory::getAsset( $service, a\AssetFactory::TYPE, $id );
+    
+    echo $af->setDescription( "blah" )->edit()->dump();
+    
+    //u\DebugUtility::dump( $service->getLastResponse() );
 
     switch( $mode )
     {
