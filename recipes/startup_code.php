@@ -1,5 +1,5 @@
 <?php 
-require_once('cascade_ws_ns/auth_tutorial7.php');
+require_once( 'auth_tutorial7.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-
+    u\DebugUtility::dump( $service );
 }
 catch( \Exception $e ) 
 {
