@@ -18,15 +18,15 @@ Note that the data is still in the database when a field is removed.
 try
 {
 /*
-	$page = $cascade->getAsset(
-	    a\Page::TYPE, "f195fa158b7ffe832dc7cebe6e43eecb" )->
-	    dump();
+    $page = $cascade->getAsset(
+        a\Page::TYPE, "f195fa158b7ffe832dc7cebe6e43eecb" )->
+        dump();
 */
-	$page = $service->retrieve(
-		$service->createId( 
-		    a\Page::TYPE, "f195fa158b7ffe832dc7cebe6e43eecb" )
-	);
-	u\DebugUtility::dump( $page );
+    $page = $service->retrieve(
+        $service->createId( 
+            a\Page::TYPE, "f195fa158b7ffe832dc7cebe6e43eecb" )
+    );
+    u\DebugUtility::dump( $page );
 }
 catch( \Exception $e ) 
 {
@@ -34,6 +34,6 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 ?>

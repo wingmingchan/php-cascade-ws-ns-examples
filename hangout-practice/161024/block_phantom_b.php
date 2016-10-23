@@ -23,13 +23,13 @@ The asset cannot be read at all, hence there is no fix.
 
 try
 {
-	$block = $service->retrieve(
-	    $service->createId( a\DataBlock::TYPE, "ec29d12c8b7ffe832dc7cebea81e066f" ) );
-	//$block = $cascade->getAsset(
-	    //a\DataBlock::TYPE, "ec29d12c8b7ffe832dc7cebea81e066f" );
-	u\DebugUtility::dump( $block );
-	
-	echo $service->getLastResponse();
+    $block = $service->retrieve(
+        $service->createId( a\DataBlock::TYPE, "ec29d12c8b7ffe832dc7cebea81e066f" ) );
+    //$block = $cascade->getAsset(
+        //a\DataBlock::TYPE, "ec29d12c8b7ffe832dc7cebea81e066f" );
+    u\DebugUtility::dump( $block );
+    
+    echo $service->getLastResponse();
 }
 catch( \Exception $e ) 
 {
@@ -37,6 +37,6 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 ?>

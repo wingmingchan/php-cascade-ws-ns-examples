@@ -15,9 +15,9 @@ Use edit to remove the unwanted data.
 */
 try
 {
-	$block = $cascade->getAsset(
-	    a\DataBlock::TYPE, "ec29d12c8b7ffe832dc7cebea81e066f" )->edit();
-	u\DebugUtility::dump( $block->getIdentifiers() );
+    $block = $cascade->getAsset(
+        a\DataBlock::TYPE, "ec29d12c8b7ffe832dc7cebea81e066f" )->edit();
+    u\DebugUtility::dump( $block->getIdentifiers() );
 }
 catch( \Exception $e ) 
 {
@@ -25,6 +25,6 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 ?>

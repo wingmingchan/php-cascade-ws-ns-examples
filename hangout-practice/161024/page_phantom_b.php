@@ -16,12 +16,10 @@ The new structured data node does not exist in the page.
 
 try
 {
-	$page = $cascade->getAsset(
-	    a\Page::TYPE, "f195fa158b7ffe832dc7cebe6e43eecb" )->
-	    dump();
-	//u\DebugUtility::dump( $page );
-	
-	echo $service->getLastResponse();
+    $page = $cascade->getAsset(
+        a\Page::TYPE, "f195fa158b7ffe832dc7cebe6e43eecb" )->
+        dump();
+    //u\DebugUtility::dump( $page );
 }
 catch( \Exception $e ) 
 {
@@ -29,6 +27,6 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
