@@ -1,23 +1,23 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
-//$mode = 'display';
+$mode = 'display';
 //$mode = 'dump';
-//$mode = 'get';
+$mode = 'get';
 //$mode = 'set';
 //$mode = 'unset';
 //$mode = 'raw';
 
 try
 {
-    $id = "030af8618b7f08560150c296ace632ba"; // test
+    $id = "0bb070388b7ffe83006a5cef31ea8c14"; // test
     $t  = $cascade->getAsset( a\Template::TYPE, $id );
     
     switch( $mode )
@@ -25,6 +25,7 @@ try
         case 'all':
         case 'display':
             $t->display();
+            $t->displayXml();
             
             if( $mode != 'all' )
                 break;
@@ -41,6 +42,16 @@ try
                 
         case 'get':
 
+            echo $t->getCreatedBy(), BR;
+            echo $t->getCreatedDate(), BR;
+            echo u\StringUtility::getCoalescedString( $t->getFormatId() ), BR;
+            echo u\StringUtility::getCoalescedString( $t->getFormatPath() ), BR;
+            echo u\StringUtility::boolToString( $t->getFormatRecycled() ), BR;
+            echo $t->getLastModifiedBy(), BR;
+            echo $t->getLastModifiedDate(), BR;
+            echo u\StringUtility::getCoalescedString( $t->getTargetId() ), BR;
+            echo u\StringUtility::getCoalescedString( $t->getTargetPath() ), BR;
+
             $f = $t->getFormat();
             
             if( $f != NULL )
@@ -49,8 +60,25 @@ try
             }
             
             echo S_PRE;
-            var_dump( $t->getPageRegion( 'STORAGE' ) );
+            //u\DebugUtility::dump( $t->getPageRegion( 'STORAGE' ) );
             echo E_PRE;
+            
+            $block = $t->getPageRegionBlock( 'STORAGE' );
+            
+            if( isset( $block ) )
+                $block->dump();
+            
+            $format = $t->getPageRegionFormat( 'STORAGE' );
+            
+            //echo $t->getXml(), BR;
+            echo u\StringUtility::boolToString( $t->hasPageRegion( 'STORAGE' ) ), BR;
+            
+            if( isset( $format ) )
+                $format->dump();
+                
+            //u\DebugUtility::dump( $t->getPageRegionNames() );
+            //u\DebugUtility::dump( $t->getPageRegions() );
+            //u\DebugUtility::dump( $t->getPageRegionStdForPageConfiguration() );
             
             if( $mode != 'all' )
                 break;
@@ -108,5 +136,9 @@ XML;
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
