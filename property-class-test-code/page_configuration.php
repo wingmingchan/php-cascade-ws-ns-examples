@@ -45,18 +45,18 @@ try
     u\DebugUtility::dump( $pc->setFormat(
         $cascade->getAsset( a\XsltFormat::TYPE, "255a4cec8b7ffe3b00a7e3433e083063" )
     )->toStdClass() );
-	*/
-	
-	//u\DebugUtility::dump( $pc->setIncludeXMLDeclaration( true )->toStdClass() );
-	//u\DebugUtility::dump( $pc->setOutputExtension( ".html" )->toStdClass() );
-	//u\DebugUtility::dump( $pc->setPageRegionBlock( "SEARCH PRINT" )->toStdClass() );
-	//u\DebugUtility::dump( $pc->setPageRegionFormat( "LAST MODIFIED" )->toStdClass() );
-	//u\DebugUtility::dump( $pc->setPublishable( false )->toStdClass() );
-	//u\DebugUtility::dump( $pc->setRegionNoBlock( "SEARCH PRINT", true )->toStdClass() );
-	//u\DebugUtility::dump( $pc->setRegionNoFormat( "SEARCH PRINT", true )->toStdClass() );
-	//u\DebugUtility::dump( $pc->setSerializationType( "XML" )->toStdClass() );
+    */
+    
+    //u\DebugUtility::dump( $pc->setIncludeXMLDeclaration( true )->toStdClass() );
+    //u\DebugUtility::dump( $pc->setOutputExtension( ".html" )->toStdClass() );
+    //u\DebugUtility::dump( $pc->setPageRegionBlock( "SEARCH PRINT" )->toStdClass() );
+    //u\DebugUtility::dump( $pc->setPageRegionFormat( "LAST MODIFIED" )->toStdClass() );
+    //u\DebugUtility::dump( $pc->setPublishable( false )->toStdClass() );
+    //u\DebugUtility::dump( $pc->setRegionNoBlock( "SEARCH PRINT", true )->toStdClass() );
+    //u\DebugUtility::dump( $pc->setRegionNoFormat( "SEARCH PRINT", true )->toStdClass() );
+    //u\DebugUtility::dump( $pc->setSerializationType( "XML" )->toStdClass() );
 
-	u\DebugUtility::dump( $pc->setSerializationType( "XML" )->toStdClass() );
+    u\DebugUtility::dump( $pc->setSerializationType( "XML" )->toStdClass() );
 }
 catch( \Exception $e ) 
 {
