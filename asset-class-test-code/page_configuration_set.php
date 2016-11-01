@@ -1,20 +1,21 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
 //$mode = 'display';
-//$mode = 'dump';
-//$mode = 'get';
-//$mode = 'set';
+$mode = 'dump';
+$mode = 'get';
+$mode = 'set';
 //$mode = 'raw';
 //$mode = 'xml';
 //$mode = 'add';
+//$mode = 'delete';
 
 try
 {
@@ -43,8 +44,14 @@ try
             if( $mode != 'all' )
                 break;
                 
+        case 'delete':
+            //$pcs->deletePageConfiguration( 'XML' )->dump();
+            
+            if( $mode != 'all' )
+                break;
+                
         case 'dump':
-            $pcs->dump( true );
+            $pcs->dump();
             
             if( $mode != 'all' )
                 break;
@@ -52,17 +59,20 @@ try
         case 'get':
             echo "ID: " . $pcs->getId() . BR;
             
-            echo S_PRE;
-            var_dump( $pcs->getPageConfigurationNames() );
-            echo E_PRE;
+            /*
+            u\DebugUtility::dump( $pcs->getPageConfigurationNames() );
             
             $default_config =  $pcs->getDefaultConfiguration();
+            
+            echo u\StringUtility::boolToString( 
+                $pcs->getIncludeXMLDeclaration( "PDF" ) ), BR;
+            
+            echo u\StringUtility::boolToString(
+                $pcs->getOutputExtension( "PDF" ) ), BR;
    
-            echo S_PRE;
-            var_dump( $pcs->getPageConfiguration( 
+            u\DebugUtility::dump( $pcs->getPageConfiguration( 
                 $default_config->getName() )->
                 getPageRegionNames() );
-            echo E_PRE;
             
             if( $pcs->getPublishable( $default_config->getName() ) )
             {
@@ -72,17 +82,47 @@ try
             {
                 echo "The default config is not publishable" . BR;
             }
-                   
+            */
+            //u\DebugUtility::dump( $pcs->getPageConfigurations() );
+            //$pcs->getPageConfigurationTemplate( "PDF" )->dump();
+            //u\DebugUtility::dump( $pcs->getPageRegionNames( "Mobile" ) );
+            //u\DebugUtility::dump( $pcs->getPageRegion( "Mobile", "DEFAULT" ) );
+            //u\DebugUtility::dump( $pcs->getPageRegion( "Mobile", "DEFAULT" ) );
+            //echo $pcs->getSerializationType( "PDF" ), BR;
+            
+            echo u\StringUtility::boolToString( $pcs->hasPageConfiguration( "XML" ) ), BR;
+            echo u\StringUtility::boolToString( $pcs->hasPageRegion( "Mobile", "DEFAULT" ) ), BR;
+                 
             if( $mode != 'all' )
                 break;
                 
         case 'set':
-            $pcs->setConfigurationPageRegionBlock( 'Desktop', 'TOP GRAPHICS',
+    /*
+            $pcs->setConfigurationPageRegionBlock( 'Mobile', 'DEFAULT',
                     $cascade->getAsset( 
                         a\DataBlock::TYPE, 
                         'c23e62358b7f0856002a5e11909ccae3' )
                 )->edit();
-        
+                
+            $pcs->setConfigurationPageRegionFormat( 'Mobile', 'DEFAULT',
+                    $cascade->getAsset( 
+                        a\XsltFormat::TYPE, 
+                        '404872688b7f0856002a5e11bb8c8642' )
+                )->edit();
+  
+            //$pcs->setDefaultConfiguration( "Mobile" )->edit();
+            $pcs->setFormat( "Mobile",
+                $cascade->getAsset( 
+                    a\XsltFormat::TYPE, 
+                    '404872688b7f0856002a5e11bb8c8642' )
+            )->edit();
+      */
+            //$pcs->setIncludeXMLDeclaration( "Mobile", true )->edit();
+            $pcs->setOutputExtension( "Mobile", ".php" )->
+                setPublishable( "Mobile", true )->
+                setSerializationType( "Mobile", "XML" )->
+                edit();
+                 
             if( $mode != 'all' )
                 break;
 
@@ -92,10 +132,8 @@ try
                 
             //$pr = new PageRegion( $pcs->pageConfigurations->
                 //pageConfiguration[3]->pageRegions->pageRegion[0] );
-            echo S_PRE;
             //var_dump( $pr );
-            var_dump( $pcs );
-            echo E_PRE;
+            u\DebugUtility::dump( $pcs );
         
             if( $mode != 'all' )
                 break;
