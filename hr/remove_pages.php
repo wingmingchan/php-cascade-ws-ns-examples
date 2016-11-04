@@ -18,13 +18,13 @@ u\DebugUtility::setTimeSpaceLimits();
 
 try
 {
-	$f  = $cascade->getAsset(
-		a\Folder::TYPE, '157dbeb18b7f08ee3d99a2112635dd3b' );
+    $f  = $cascade->getAsset(
+        a\Folder::TYPE, '157dbeb18b7f08ee3d99a2112635dd3b' );
 
-	// traverse the folder
-	$f->getAssetTree()->traverse(
-		array( a\Page::TYPE => array( 'assetTreeRemoveUnwantedPage' ) )
-	);
+    // traverse the folder
+    $f->getAssetTree()->traverse(
+        array( a\Page::TYPE => array( 'assetTreeRemoveUnwantedPage' ) )
+    );
     u\DebugUtility::outputDuration( $start_time );
 }
 catch( \Exception $e ) 
@@ -34,7 +34,7 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
     u\DebugUtility::outputDuration( $start_time );
 }
 
@@ -45,14 +45,14 @@ function assetTreeRemoveUnwantedPage(
     if( $child->getType() != a\Page::TYPE )
         return;
 
-	$page_path = $child->getPathPath();
-	
-	// junk page names
-	if( u\StringUtility::endsWith( $page_path, "/pdf" ) ||
-		u\StringUtility::endsWith( $page_path, "/word" ) ||
-		u\StringUtility::endsWith( $page_path, "/externallink" ) ||
-		u\StringUtility::endsWith( $page_path, "/keytiny" ) ||
-		u\StringUtility::endsWith( $page_path, "/index-2" ) )
-		$service->delete( $child->toStdClass() );
+    $page_path = $child->getPathPath();
+    
+    // junk page names
+    if( u\StringUtility::endsWith( $page_path, "/pdf" ) ||
+        u\StringUtility::endsWith( $page_path, "/word" ) ||
+        u\StringUtility::endsWith( $page_path, "/externallink" ) ||
+        u\StringUtility::endsWith( $page_path, "/keytiny" ) ||
+        u\StringUtility::endsWith( $page_path, "/index-2" ) )
+        $service->delete( $child->toStdClass() );
 }
 ?>

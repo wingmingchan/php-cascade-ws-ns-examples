@@ -18,8 +18,8 @@ u\DebugUtility::setTimeSpaceLimits();
 
 try
 {
-	$site_name = "hr";
-	$results = array();
+    $site_name = "hr";
+    $results = array();
     
     $cascade->getSite( $site_name )->getBaseFolderAssetTree()->
         traverse(
@@ -38,7 +38,7 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
     u\DebugUtility::outputDuration( $start_time );
 }
 
