@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
 use cascade_ws_asset as a;
@@ -8,16 +8,16 @@ use cascade_ws_utility as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
-//$mode = 'display';
-//$mode = 'dump';
-//$mode = 'get';
-//$mode = 'set';
-//$mode = 'inline';
+$mode = 'display';
+$mode = 'dump';
+$mode = 'get';
+$mode = 'set';
+$mode = 'inline';
 //$mode = 'raw';
 
 try
 {
-    $id = "9e1948fe8b7f08560053896c9a9a5071"; // article_old
+    $id = "493176ce8b7ffe83164c9314b87d55c2"; // RWD Old
     $ct  = $cascade->getAsset( a\ContentType::TYPE, $id );
     
     switch( $mode )
@@ -30,7 +30,7 @@ try
                 break;
                 
         case 'dump':
-            $ct->dump( true );
+            $ct->dump();
             
             if( $mode != 'all' )
                 break;
@@ -38,18 +38,39 @@ try
         case 'get':
             echo "ID: " . $ct->getId() . BR;
             echo "Dumping names of contentTypePageConfigurations: " . BR;
-            echo S_PRE;
-            var_dump( $ct->getContentTypePageConfigurationNames() );
-            echo E_PRE;
-            
-            $ct->getConfigurationSet()->dump( true );
-            
-            $ct->getDataDefinition()->dump( true );
+            u\DebugUtility::dump( $ct->getContentTypePageConfigurationNames() );
             
             echo "Inline editable field names", BR;
             u\DebugUtility::dump( $ct->getInlineEditableFieldNames() );
             
-            $ct->getMetadataSet()->dump( true );
+            //echo $ct->getDataDefinitionId(), BR;
+            //echo $ct->getDataDefinitionPath(), BR;
+            //echo $ct->getMetadataSetId(), BR;
+            //echo $ct->getMetadataSetPath(), BR;
+            //echo $ct->getPageConfigurationSetId(), BR;
+            //echo $ct->getPageConfigurationSetPath(), BR;
+            
+            echo $ct->getPublishMode( "RWD" ), BR;
+            echo u\StringUtility::boolToString(
+                $ct->hasDataDefinitionGroupPath( "right-column-group/right-setup" ) ), BR;
+            
+            echo u\StringUtility::boolToString(
+                $ct->hasInlineEditableField(
+                    "RWD;DEFAULT;NULL;wired-metadata;title" ) ), BR;
+                    
+            echo u\StringUtility::boolToString(
+                $ct->hasPageConfiguration( "RWD" ) ), BR;
+                
+            echo u\StringUtility::boolToString(
+                $ct->hasRegion( "RWD", "BANNER 12 COLUMNS" ) ), BR;
+            
+            //u\DebugUtility::dump( $ct->getInlineEditableFields() );
+            
+            //$ct->getConfigurationSet()->dump();
+            //$ct->getDataDefinition()->dump();
+            //$ct->getMetadataSet()->dump();
+            
+            //u\DebugUtility::dump( $ct->getDataDefinition()->getIdentifiers() );
             
             if( $mode != 'all' )
                 break;
@@ -69,15 +90,13 @@ try
                 break;
 
         case 'inline':
-            echo S_PRE;
-            var_dump( $ct->getInlineEditableFieldNames() );
-            echo E_PRE;
+            u\DebugUtility::dump( $ct->getInlineEditableFieldNames() );
         
-            $config_name = 'Desktop';
+            $config_name = 'RWD';
             $region_name = 'DEFAULT';
             $group_path  = 'NULL';
             $type        = c\T::WIRED_METADATA;
-            $name        = a\ContentType::SUMMARY;
+            $name        = a\ContentType::DISPLAY_NAME;
             
             if( $ct->hasRegion( $config_name, $region_name ) )
             {
@@ -89,7 +108,7 @@ try
                           $region_name . a\DataDefinition::DELIMITER .
                           $group_path . a\DataDefinition::DELIMITER .
                           $type . a\DataDefinition::DELIMITER . $name;
-            
+/*            
             if( $ct->hasInlineEditableField( $field_name ) )
             {
                 echo "The field is found. Now removing it:" . BR;
@@ -132,14 +151,9 @@ try
                     $config_name, $region_name, $group_path, 
                     $type, $name )->edit();
             }
-            
-/*            
-            echo S_PRE;
-            var_dump( $ct->getInlineEditableFieldNames() );
-            echo E_PRE;
-            
-            //$ct->dump( true );
-*/
+*/            
+            u\DebugUtility::dump( $ct->getInlineEditableFieldNames() );
+
             if( $mode != 'all' )
                 break;
 
