@@ -1,39 +1,23 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
 //$mode = 'display';
 //$mode = 'dump';
-//$mode = 'get';
-//$mode = 'set';
+$mode = 'get';
+$mode = 'set';
 //$mode = 'raw';
 
 try
 {
-    $wc_name = 'test-wordpress-connector';
-    $wc      = $cascade->getWordPressConnector( 
-        a\WordPressConnector::TYPE, $wc_name, 'cascade-admin' );
-        
-    if( !isset( $wc ) )
-    {
-        $wc = $cascade->createWordPressConnector(
-            $cascade->getAsset(
-                a\ConnectorContainer::TYPE, '980a826b8b7f0856015997e424411695'
-            ),
-            $wc_name,
-            'www.upstate.edu',
-            $cascade->getAsset( 
-                a\ContentType::TYPE, 
-                'a00d531c8b7f0856011c5ec62b24292d' ),
-            'RWD' // configuration
-       );
-    }
+    $wc_id = 'f95e2b688b7ffe8339ce5d131397b292';
+    $wc    = $cascade->getAsset( a\WordPressConnector::TYPE, $wc_id );
 
     switch( $mode )
     {
@@ -58,6 +42,9 @@ try
                  "Site name: " . $wc->getSiteName() . BR .
                  "Type: " . $wc->getType() . BR .
                  "";
+                 
+            echo $wc->getAuth1(), BR;
+            echo $wc->getAuth2(), BR;
                  
             if( $mode != 'all' )
                 break;
@@ -118,5 +105,9 @@ try
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
