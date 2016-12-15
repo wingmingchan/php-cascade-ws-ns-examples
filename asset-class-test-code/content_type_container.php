@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -35,7 +35,7 @@ try
 
         case 'get':
             echo c\L::ID . $ctc->getId() . BR .
-                 c\L::NAME . $ctc->getName() . R .
+                 c\L::NAME . $ctc->getName() . BR .
                  c\L::PATH . $ctc->getPath() . BR .
                  c\L::PROPERTY_NAME . $ctc->getPropertyName() . BR .
                  c\L::SITE_NAME . $ctc->getSiteName() . BR .
@@ -69,9 +69,16 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation(
+        "cascade_ws_asset\ContentTypeContainer" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>

@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 $mode = 'all';
 //$mode = 'display';
 //$mode = 'dump';
-//$mode = 'get';
+$mode = 'get';
 //$mode = 'raw';
 
 try
