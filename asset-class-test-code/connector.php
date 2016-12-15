@@ -16,12 +16,12 @@ try
     // RWD
     $ct2 = $cascade->getAsset( a\ContentType::TYPE, "5f4525208b7f08ee76b12c41beb6145a" );
     
-    /*
+    /*/
     $connector->addContentTypeLink(
         $cascade->getAsset( a\ContentType::TYPE, "1378b3e38b7f08ee1890c1e4df869132" ),
         "XML"
     )->edit() ->dump();
-    */
+    /*/
     
     echo u\StringUtility::getCoalescedString( $connector->getAuth1() ), BR;
     echo u\StringUtility::getCoalescedString( $connector->getAuth2() ), BR;
@@ -38,6 +38,8 @@ try
         a\Destination::TYPE, "0755e15e8b7f08ee3295aa6d6c19fbe2" );
         
     $connector->setDestination( $destination )->edit();
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Connector" );
 }
 catch( \Exception $e ) 
 {
