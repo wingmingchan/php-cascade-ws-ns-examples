@@ -12,6 +12,7 @@ $mode = 'rename';
 //$mode = 'move';
 $mode = 'get';
 //$mode = 'raw';
+$mode = 'none';
 
 try
 {
@@ -40,7 +41,7 @@ try
 
         case 'move':
             // moving Base Folder: exception
-            $id = '388e2b808b7ffe83164c9314a6f3cba9';
+            $id = '1f21734f8b7ffe834c5fe91e89f3d6c2';
             $bf = $cascade->getAsset( a\Folder::TYPE, $id );
             
             try
@@ -79,7 +80,7 @@ try
             }
 
             // Base Folder
-            $id = '388e2b808b7ffe83164c9314a6f3cba9';
+            $id = '1f21734f8b7ffe834c5fe91e89f3d6c2';
             $bf = $cascade->getAsset( a\Folder::TYPE, $id );
             u\DebugUtility::dump( $bf->getParentContainer() ); // NULL
 
@@ -116,7 +117,7 @@ try
                 break;
     }
     
-        echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\ContainedAsset" );
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\ContainedAsset" );
 }
 catch( \Exception $e )
 {
