@@ -20,14 +20,14 @@ $mode = 'none';
 
 try
 {
-    $page_id = "824b63c68b7ffe830539acf09bc3135b";
+    $page_id = "1f2373488b7ffe834c5fe91e2f1fb803";
     
     // test static method
     $page = a\Asset::getAsset(
         $service, a\Page::TYPE, $page_id ); //->dump();
     // static method can still be called through an object
     $folder = $page->getAsset(
-        $service, a\Folder::TYPE, "3890910f8b7ffe83164c93144ce01dbd" )->dump();
+        $service, a\Folder::TYPE, "1f22a5c48b7ffe834c5fe91ed438e192" )->dump();
         
     switch( $mode )
     {
