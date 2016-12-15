@@ -34,7 +34,7 @@ try
     
     //u\DebugUtility::dump( $service->getLastResponse() );
 
-/*
+/*/
     switch( $mode )
     {
         case 'all':
@@ -202,7 +202,7 @@ try
             if( $mode != 'all' )
                 break;
     }
-    */
+/*/
     
     echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\AssetFactory" );
 }
