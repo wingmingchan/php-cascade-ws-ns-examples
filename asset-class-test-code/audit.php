@@ -10,18 +10,18 @@ use cascade_ws_exception as e;
 
 try
 {
-    $page_id = "824b63c68b7ffe830539acf09bc3135b";
+    $page_id = "1f2376798b7ffe834c5fe91ead588ce1";
     $page    = $cascade->getAsset( a\Page::TYPE, $page_id );
     
     $audits = $page->getAudits();
-    //u\DebugUtility::dump( $audits );
+    u\DebugUtility::dump( $audits );
     
     $audit0 = $audits[ 0 ];
     $audit1 = $audits[ 1 ];
     
     $audit0->display();
     $audit1->display();
-    
+/*/    
     echo "Action: ", $audit0->getAction(), BR;
     echo "Audit asset: ", BR;
     u\DebugUtility::dump( $audit0->getAuditedAsset() );
@@ -35,7 +35,7 @@ try
     u\DebugUtility::dump( $audit0->toStdClass() );
     
     echo a\Audit::compare( $audit0, $audit1 ), BR;
-    
+/*/    
     echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Audit" );
 }
 catch( \Exception $e ) 
