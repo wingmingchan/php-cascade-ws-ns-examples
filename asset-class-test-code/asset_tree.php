@@ -10,15 +10,14 @@ use cascade_ws_exception as e;
 
 try
 {
-    $at = $cascade->getFolder( "39d4cc568b7ffe834c5fe91ecdc40728" )->
+    $at = $cascade->getFolder( "1f22a5c48b7ffe834c5fe91ed438e192" )->
         getAssetTree();
         
     if( $at->hasChildren() )
         echo "The tree has children", BR;
         
     //echo $at->toListString();
-    
-    //echo S_PRE, u\XmlUtility::replaceBrackets( $at->toXml() ), E_PRE;
+    //u\DebugUtility::dump( u\XmlUtility::replaceBrackets( $at->toXml() );
     
     $results = array();
     
