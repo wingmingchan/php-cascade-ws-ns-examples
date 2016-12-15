@@ -1,5 +1,6 @@
 <?php 
 require_once('auth_tutorial7.php');
+
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
 use cascade_ws_asset     as a;
@@ -9,10 +10,10 @@ use cascade_ws_exception as e;
 
 try
 {
-    $folder1 = $cascade->getAsset( a\Folder::TYPE, "e6a8b39d8b7ffe8364375ac7e4d72180" );
+    $folder1 = $cascade->getAsset( a\Folder::TYPE, "1f229ee38b7ffe834c5fe91e89724940" );
     $folder1->deleteAllChildren();
     
-    $folder2 = $cascade->getAsset( a\Folder::TYPE, "e231348c8b7ffe8364375ac74bbbc6fb" );
+    $folder2 = $cascade->getAsset( a\Folder::TYPE, "1f22a5c48b7ffe834c5fe91ed438e192" );
     u\DebugUtility::dump( $folder2->getChildren() );
     u\DebugUtility::dump( $folder2->getContainerChildrenIds() );
     
@@ -25,10 +26,14 @@ try
     
     u\DebugUtility::dump( $folder2->toChild() );
     
-    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Container" );
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
