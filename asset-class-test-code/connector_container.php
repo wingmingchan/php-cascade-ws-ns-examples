@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -15,7 +15,7 @@ $mode = 'all';
 
 try
 {
-    $id = "980a826b8b7f0856015997e424411695"; // Connectors
+    $id = "03dbe3628b7ffe8339ce5d132b740004"; // Connectors
     $cc = a\Asset::getAsset( $service, a\ConnectorContainer::TYPE, $id );
 
     switch( $mode )
@@ -28,7 +28,7 @@ try
                 break;
                 
         case 'dump':
-            $cc->dump( true );
+            $cc->dump();
             if( $mode != 'all' )
                 break;
 
@@ -51,9 +51,7 @@ try
                 }
             }
             
-            echo S_PRE;
-            var_dump( $cc->getContainerChildrenIds() );
-            echo E_PRE;
+            u\DebugUtility::dump( $cc->getContainerChildrenIds() );
             
             if( $mode != 'all' )
                 break;
@@ -64,16 +62,20 @@ try
                     c\T::CONNECTORCONTAINER, $id ), 
                     c\P::CONNECTORCONTAINER );
             
-            echo S_PRE;
-            var_dump( $cc_std );
-            echo E_PRE;
+            u\DebugUtility::dump( $cc_std );
             
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\ConnectorContainer" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
