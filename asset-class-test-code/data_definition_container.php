@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -15,7 +15,7 @@ $mode = 'all';
 
 try
 {
-    $id  = "5501cc048b7f085600ae2282a4d548b7"; // test
+    $id  = "041467e18b7ffe8339ce5d13dc778760"; // test
     $ddc = $cascade->getAsset( a\DataDefinitionContainer::TYPE, $id );
 
     switch( $mode )
@@ -65,9 +65,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\DataDefinitionContainer" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
