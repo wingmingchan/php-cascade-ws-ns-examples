@@ -135,9 +135,6 @@ try
             
             if( $mode != 'all' )
                 break;
-
-
-
                
         case 'list-sites':
             $sites = $cascade->getSites();
@@ -166,7 +163,7 @@ try
             echo S_PRE;
             var_dump( $ari->toStdClass() );
             echo E_PRE;
-/*               
+/*/               
                 
             $user1 = $cascade->getAsset( a\User::TYPE, 'chanw' );
             $user2 = $cascade->getAsset( a\User::TYPE, 'tuw' );
@@ -211,7 +208,7 @@ try
 
             $ari->denyGroupAccess( $group2 )->denyUserAccess( $user2 );
             $cascade->setAccessRights( $ari );
-*/           
+/*/           
             
             if( $mode != 'all' )
                 break;
@@ -219,11 +216,11 @@ try
         case 'move-asset':
             $page = $cascade->getAsset( 
                 a\Page::TYPE, "5f1f70828b7f08ee226116ffc5e5b1b9" );
-            /*
+            /*/
             $cascade->moveAsset( $page,
                 $cascade->getAsset( 
                     a\Folder::TYPE, "8b5193ee8b7f08ee26d2e6f290705401" ) );
-            */
+            /*/
             $cascade->renameAsset( $page, "my-new-page" );
             
             if( $mode != 'all' )
@@ -231,40 +228,40 @@ try
             
         case 'search':
             u\DebugUtility::dump(
-            	$cascade->searchForAssetMetadata(
-            		"Cascade",
-            		c\S::SEARCHPAGES
-            	)
+                $cascade->searchForAssetMetadata(
+                    "Cascade",
+                    c\S::SEARCHPAGES
+                )
             );
-        /*
+        /*/
             u\DebugUtility::dump(
-            	$cascade->searchForAssetName(
-            		"a*",
-            		c\S::SEARCHPAGES
-            	)
-            );
-            u\DebugUtility::dump(
-            	$cascade->searchForAssetContent(
-            		"Cascade",
-            		c\S::SEARCHPAGES
-            	)
+                $cascade->searchForAssetName(
+                    "a*",
+                    c\S::SEARCHPAGES
+                )
             );
             u\DebugUtility::dump(
-            	$cascade->searchForAll(
-            		"a*",
-            		"Cascade",
-            		"",
-            		c\S::SEARCHPAGES
-            	)
+                $cascade->searchForAssetContent(
+                    "Cascade",
+                    c\S::SEARCHPAGES
+                )
             );
-         */   
+            u\DebugUtility::dump(
+                $cascade->searchForAll(
+                    "a*",
+                    "Cascade",
+                    "",
+                    c\S::SEARCHPAGES
+                )
+            );
+         /*/   
             
             if( $mode != 'all' )
                 break;
-            
     }
     
     u\ReflectionUtility::showMethodSignatures( $cascade );
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Cascade" );
 }
 catch( \Exception $e )
 {
