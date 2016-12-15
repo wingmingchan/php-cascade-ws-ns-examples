@@ -1,23 +1,25 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
-//$mode = 'attributes';
+$mode = 'attributes';
 //$mode = 'display';
 //$mode = 'dump';
 //$mode = 'get';
 //$mode = 'set';
 //$mode = 'raw';
+//$mode = 'default';
 
 try
 {
-    $dd = $cascade->getAsset( a\DataDefinition::TYPE, '2329ad0b8b7f0856002a5e11a5cbe84d' );
+    $dd = 
+        $cascade->getAsset( a\DataDefinition::TYPE, '1f2406998b7ffe834c5fe91eec54dba9' );
    
     switch( $mode )
     {
@@ -26,9 +28,7 @@ try
             //$dd->displayXML();
             //$dd->displayAttributes();
             
-            echo S_PRE;
-            //var_dump( $dd->getIdentifiers() );
-            echo E_PRE;
+            u\DebugUtility::dump( $dd->getStructuredData() );
             
             if( $mode != 'all' )
                 break;
@@ -50,48 +50,48 @@ try
             echo S_STRONG . "Path: " . E_STRONG . $dd->getPath() . BR;
             echo S_STRONG . "Site name: " . E_STRONG . $dd->getSiteName() . BR;
             
-            echo S_PRE;
-            var_dump( $dd->getIdentifiers() );
-            echo S_PRE;
+            u\DebugUtility::dump( $dd->getIdentifiers() );
             
-            $identifier = "test-group1;test-calendar";
+            $identifier = "group;group-single";
             
             if( $dd->hasIdentifier( $identifier ) )
             {
-                echo S_PRE;
-                var_dump( $dd->getField( $identifier ) );
-                echo E_PRE;
+                u\DebugUtility::dump( $dd->getField( $identifier ) );
                 
                 echo ( $dd->isMultiple( $identifier ) ? 
                     'Multiple' : 'Not multiple' ) . BR;
             }
             
-            $identifier = "test-group1";
+            $identifier = "group;group-multiple-first";
             
             if( $dd->hasIdentifier( $identifier ) )
             {
-                echo S_PRE;
-                var_dump( $dd->getField( $identifier ) );
-                echo E_PRE;
+                u\DebugUtility::dump( $dd->getField( $identifier ) );
+                
+                echo ( $dd->isMultiple( $identifier ) ? 
+                    'Multiple' : 'Not multiple' ) . BR;
             }
+            
+            u\DebugUtility::dump( $dd->getStructuredData() );
+            u\DebugUtility::dump( $dd->getStructuredDataObject() );
+            
                 
             if( $mode != 'all' )
                 break;
-/*           
+         
         case 'set':
-$xml = <<<XML
-<system-data-structure>
-  <group identifier="brick-group" label="Brick" multiple="true" collapsed="true">
-    <text identifier="brick-identifier" label="Brick Identifier"/>
-    <text identifier="brick-value" label="Brick Value"/>
-  </group>
-</system-data-structure>
-XML;
+			$xml = $dd->getXml();
             $dd->setXML( $xml )->edit();
             $dd->displayXML();
             if( $mode != 'all' )
                 break;
-*/
+
+        case 'default':
+			$xml = $dd->display();
+            
+            
+            if( $mode != 'all' )
+                break;
 
         case 'raw':
             $block = $service->retrieve( 
@@ -118,9 +118,15 @@ XML;
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\DataDefinition" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
