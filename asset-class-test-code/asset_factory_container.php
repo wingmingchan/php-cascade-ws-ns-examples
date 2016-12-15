@@ -7,12 +7,13 @@ use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
-$mode = 'all';
-//$mode = 'display';
+//$mode = 'all';
+$mode = 'display';
 //$mode = 'dump';
-//$mode = 'get';
+$mode = 'get';
 //$mode = 'set';
 //$mode = 'raw';
+$mode = 'none';
 
 try
 {
@@ -102,7 +103,8 @@ try
             if( $mode != 'all' )
                 break;
     }
-    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\AssetFactoryContainer" );
+    echo u\ReflectionUtility::getClassDocumentation(
+        "cascade_ws_asset\AssetFactoryContainer" );
 }
 catch( \Exception $e )
 {
@@ -112,5 +114,4 @@ catch( \Error $er )
 {
     echo S_PRE . $er . E_PRE;
 }
-
 ?>
