@@ -2,9 +2,9 @@
 require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -108,7 +108,7 @@ try
                           $region_name . a\DataDefinition::DELIMITER .
                           $group_path . a\DataDefinition::DELIMITER .
                           $type . a\DataDefinition::DELIMITER . $name;
-/*            
+/*/            
             if( $ct->hasInlineEditableField( $field_name ) )
             {
                 echo "The field is found. Now removing it:" . BR;
@@ -151,7 +151,7 @@ try
                     $config_name, $region_name, $group_path, 
                     $type, $name )->edit();
             }
-*/            
+/*/            
             u\DebugUtility::dump( $ct->getInlineEditableFieldNames() );
 
             if( $mode != 'all' )
@@ -167,9 +167,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\ContentType" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
