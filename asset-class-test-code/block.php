@@ -10,7 +10,7 @@ try
 {
     // test static method
     $id = "06e401898b7ffe83765c5582e367462b";
-    $block = a\Block::getBlock( $service, $id ); //->dump( true ); // no type info supplied
+    $block = a\Block::getBlock( $service, $id ); //->dump(); // no type info supplied
     
     echo a\Block::getBlockType( $service, $id ), BR;
     // get methods
