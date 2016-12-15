@@ -2,9 +2,9 @@
 require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -19,7 +19,7 @@ $mode = "none";
 try
 {
 
-	$cascade->getAsset( a\AssetFactory::TYPE, "a14dd57d8b7ffe830539acf083f86623" )->dump();
+    $cascade->getAsset( a\AssetFactory::TYPE, "a14dd57d8b7ffe830539acf083f86623" )->dump();
 
     // with plugin, various # of params
     //$id = "e85799f78b7f08560139425cc23ede84";
@@ -34,6 +34,7 @@ try
     
     //u\DebugUtility::dump( $service->getLastResponse() );
 
+/*
     switch( $mode )
     {
         case 'all':
@@ -107,8 +108,6 @@ try
              $group_name = "cru";
              $group      = a\Asset::getAsset( $service, a\Group::TYPE, $group_name );
              $af->addGroup( $group )->edit();
-             
-             
              
              if( $af->isApplicableToGroup( $group ) )
              {
@@ -203,6 +202,7 @@ try
             if( $mode != 'all' )
                 break;
     }
+    */
     
     echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\AssetFactory" );
 }
