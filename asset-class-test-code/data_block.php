@@ -46,12 +46,48 @@ array(16) {
 */
 try
 {
+    /*   
     // part 1: no multiple nodes
     $block = $service->getAsset(
-        a\DataBlock::TYPE, "ec29d12c8b7ffe832dc7cebea81e066f" )->dump();
-/* 
+        a\DataBlock::TYPE, "ec29d12c8b7ffe832dc7cebea81e066f" );
+        
+    $block2 = $service->getAsset(
+        a\DataBlock::TYPE, "fd10a8778b7ffe832dc7cebe52acce74" );
+        
+    $xhtml = $service->getAsset(
+        a\DataBlock::TYPE, "fd14defe8b7ffe832dc7cebee8bcf3f0" );
+        
+    //$block->setStructuredData( $block2->getStructuredData() );
+    
+    //$block->setText( "group;text-box", "Good News" )->edit();
+    
+    $xhtml->setXhtml( "<span class='italic'>This is meaningless!</span>" )->
+        edit();
+    $xhtml->replaceXhtmlByPattern(
+        "/" . "<" . "p>([^<]+)<\/p>/", 
+        "<div class='text_red'>$1</div>" )->edit();
+    
+    //echo u\StringUtility::boolToString( $xhtml->searchXhtml( "hello" ) ), BR;
+    
+    $id = "group;wysiwyg";
+    echo u\StringUtility::boolToString( $block->isWYSIWYGNode( $id ) ), BR;
+        
+    //$block->copyDataTo( $block2 );
+    //$block->displayDataDefinition();
+    //echo u\StringUtility::getCoalescedString( $block->getXhtml() ), BR;
+    //$block->displayXhtml();
+    //$xhtml->displayXhtml();
+    
+    
+    //echo "Here", BR;
+    //echo u\StringUtility::boolToString( $xhtml->hasStructuredData() ), BR;
+    
+    //u\DebugUtility::dump( $block->getStructuredData()->toStdClass() );
+    
+    //$block->getDataDefinition()->dump();
+    //u\DebugUtility::dump( $block->getIdentifiers() );
 
-    $sd->setBlock(
+    $block->setBlock(
         "group;block-chooser",
         $cascade->getAsset(
             a\DataBlock::TYPE, "1f21e3268b7ffe834c5fe91e2e0a7b2d" ) )->
@@ -61,121 +97,125 @@ try
         setSymlink( "group;symlink-chooser" )->
         
         setText( "group;text-box", "Some new text" )->
-        getHostAsset()->edit();
+        edit();
 
-    //u\DebugUtility::dump( $sd->mapData()->toStdClass() );
+    //u\DebugUtility::dump( $block->mapData()->toStdClass() );
     
-    //echo $sd->getType(), BR;
+    //echo $block->getType(), BR;
 
-    //u\DebugUtility::dump( $sd->getService() );
-    //$sd->getHostAsset()->dump();
-    //u\DebugUtility::dump( $sd->toStdClass() );
-    //u\DebugUtility::dump( $sd->getIdentifiers() );
-    //$sd->getDataDefinition()->dump();
-    //echo $sd->getDefinitionId(), BR;
-    //echo $sd->getDefinitionPath(), BR;
-    
-    //u\DebugUtility::dump( $sd->getIdentifierNodeMap() );
+    //u\DebugUtility::dump( $block->getService() );
+    //$block->getHostAsset()->dump();
+    //u\DebugUtility::dump( $block->toStdClass() );
+    //u\DebugUtility::dump( $block->getIdentifiers() );
+    //$block->getDataDefinition()->dump();
+    //echo $block->getDefinitionId(), BR;
+    //echo $block->getDefinitionPath(), BR;
+   
+    //u\DebugUtility::dump( $block->getIdentifierNodeMap() );
     
     $id = "group;radio";
     
-    if( $sd->hasPossibleValues( $id ) )
-        u\DebugUtility::dump( $sd->getPossibleValues( $id ) );
-    
+    if( $block->hasPossibleValues( $id ) )
+        u\DebugUtility::dump( $block->getPossibleValues( $id ) );
+  
     $id = "group;wysiwyg";
-    //echo $sd->getTextNodeType( $id ), BR;
     
-    if( $sd->isWYSIWYGNode( $id ) )
+    if( $block->isText( $id ) )
+    	echo $block->getText( $id ), BR;
+    	
+    echo u\StringUtility::getCoalescedString( $block->getTextNodeType( $id ) ), BR;
+      
+      
+    if( $block2->isWYSIWYGNode( $id ) )
     {
-        $sd->replaceByPattern(
-            "/<p>([^<]+)<\/p>/", 
+        $block2->replaceByPattern(
+            "/" . "<" . "p>([^<]+)<\/p>/", 
             "<div class='text_red'>$1</div>", 
             array( $id )
-        )->getHostAsset()->edit();
-        // since the block has been updated, reload the structured data
-        $sd = $block->getStructuredData();
+        )->edit();
     }
     else
         echo "Not WYSIWYG node", BR;
-            
     // affects all text nodes    
-    $sd->replaceText( "Wonderful", "Amazing" )->getHostAsset()->edit();
-    $sd = $block->getStructuredData();
+    $block2->replaceText( "Wonderful", "Amazing" )->edit();
+   
+    //u\DebugUtility::dump( $block->searchText( "Amazing" ) );
     
-    //u\DebugUtility::dump( $sd->searchText( "Amazing" ) );
-    
-    u\DebugUtility::dump( $sd->searchWYSIWYGByPattern( "/<p>([^<]+)<\/p>/" ) );
+    u\DebugUtility::dump( $block->searchWYSIWYGByPattern( "/<p>([^<]+)<\/p>/" ) );
 
     
     $id = "group;symlink-chooser";
-    
-    if( $sd->hasNode( $id ) && $sd->isAsset( $id ) )
+    echo $block->getAssetNodeType( $id ), BR;
+    echo $block->getNodeType( $id ), BR;
+
+    if( $block->hasNode( $id ) && $block->isAsset( $id ) )
     {
-        if( $sd->isSymlinkChooserNode( $id ) )
+        if( $block->isSymlinkChooserNode( $id ) )
         {
-            echo u\StringUtility::getCoalescedString( $sd->getSymlinkId( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getSymlinkId( $id ) ), BR;
         }
     }
     
     $id = "group;symlink-chooser";
     
-    if( $sd->hasNode( $id ) && $sd->isAsset( $id ) )
+    if( $block->hasNode( $id ) && $block->isAsset( $id ) )
     {
-        if( $sd->getAssetNodeType( $id ) == c\T::SYMLINK )
+    	echo $block->getAssetNodeType( $id ), BR;
+
+        if( $block->getAssetNodeType( $id ) == c\T::SYMLINK )
         {
-            echo u\StringUtility::getCoalescedString( $sd->getSymlinkId( $id ) ), BR;
-            echo u\StringUtility::getCoalescedString( $sd->getSymlinkPath( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getSymlinkId( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getSymlinkPath( $id ) ), BR;
         }
     }
     
     $id = "group;page-chooser";
     
-    if( $sd->isAsset( $id ) )
+    if( $block->isAsset( $id ) )
     {
-        if( $sd->getAssetNodeType( $id ) == c\T::PAGE )
+        if( $block->getAssetNodeType( $id ) == c\T::PAGE )
         {
-            echo u\StringUtility::getCoalescedString( $sd->getPageId( $id ) ), BR;
-            echo u\StringUtility::getCoalescedString( $sd->getPagePath( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getPageId( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getPagePath( $id ) ), BR;
         }
     }
     
     $id = "group;linkable-chooser";
     
-    if( $sd->isAsset( $id ) )
+    if( $block->isAsset( $id ) )
     {
-        if( $sd->getAssetNodeType( $id ) == c\T::LINKABLE )
+        if( $block->getAssetNodeType( $id ) == c\T::LINKABLE )
         {
-            //echo u\StringUtility::getCoalescedString( $sd->getLinkableId( $id ) ), BR;
-            //echo u\StringUtility::getCoalescedString( $sd->getLinkablePath( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getLinkableId( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getLinkablePath( $id ) ), BR;
             
-            //u\DebugUtility::dump( $sd->getNode( $id )->toStdClass() );
-            echo $sd->getNodeType( $id ), BR;
+            //u\DebugUtility::dump( $block->getNode( $id )->toStdClass() );
+            echo $block->getNodeType( $id ), BR;
         }
     }
     
     $id = "group;file-chooser";
     
-    if( $sd->isAsset( $id ) )
+    if( $block->isAsset( $id ) )
     {
-        if( $sd->getAssetNodeType( $id ) == "file" )
+        if( $block->getAssetNodeType( $id ) == "file" )
         {
-            echo u\StringUtility::getCoalescedString( $sd->getFileId( $id ) ), BR;
-            echo u\StringUtility::getCoalescedString( $sd->getFilePath( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getFileId( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getFilePath( $id ) ), BR;
         }
     }
-    
     $id = "group;block-chooser";
-    
-    if( $sd->isAsset( $id ) )
+
+    if( $block->isAsset( $id ) )
     {
-        //echo $sd->getAssetNodeType( $id ), BR;
-        if( $sd->isBlockChooserNode( $id ) )
+        //echo $block->getAssetNodeType( $id ), BR;
+        if( $block->isBlockChooserNode( $id ) )
         {
-            echo u\StringUtility::getCoalescedString( $sd->getBlockId( $id ) ), BR;
-            echo u\StringUtility::getCoalescedString( $sd->getBlockPath( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getBlockId( $id ) ), BR;
+            echo u\StringUtility::getCoalescedString( $block->getBlockPath( $id ) ), BR;
         }
     }
-    */
+*/
     // part 2: multiple nodes
 /*
 array(11) {
@@ -202,33 +242,40 @@ array(11) {
   [10]=>
   string(29) "group;group-multiple-second;0"
 }
+*/
 
     $block = $service->getAsset(
         a\DataBlock::TYPE, "1f21cf0c8b7ffe834c5fe91e6dde13c2" );
-    $sd = $block->getStructuredData();
-
-    $sd->appendSibling( "multiple-first;0" )->
-        createNInstancesForMultipleField( 10, "multiple-first;0" )->
-        getHostAsset()->edit();
+    //$block->//appendSibling( "multiple-first;0" )->
+        //createNInstancesForMultipleField( 4, "multiple-first;0" );
+        //->
+        //edit();
+        
+    //echo $block->getNumberOfSiblings( "multiple-first;0" ), BR;
+    //$block->removeLastSibling( "multiple-first;0" );
+    $block->swapData( "multiple-first;0", "multiple-first;2" );
+/*
         
     // renew the object
-    $sd = $block->getStructuredData();
+    $block  = $block->getStructuredData();
     
-    echo $sd->getNumberOfChildren(), BR;
-    echo $sd->getNumberOfSiblings( "multiple-first;0" ), BR;
+    echo $block->getNumberOfChildren(), BR;
+    echo $block->getNumberOfSiblings( "multiple-first;0" ), BR;
     
     echo u\StringUtility::boolToString(
-        $sd->isIdentifierOfFirstNode( "multiple-second;1" ) ), BR;
+        $block->isIdentifierOfFirstNode( "multiple-second;1" ) ), BR;
         
     echo u\StringUtility::boolToString(
-        $sd->isMultiple( "multiple-second;1" ) ), BR;
+        $block->isMultiple( "multiple-second;1" ) ), BR;
         
-    $sd->removeLastSibling( "multiple-first;0" )->getHostAsset()->edit();
-    $sd = $block->getStructuredData();
+    $block->removeLastSibling( "multiple-first;0" )->getHostAsset()->edit();
+    $block  = $block->getStructuredData();
     
-    $sd->swapData( "multiple-first;0", "multiple-first;1" )->getHostAsset()->edit();
-    $sd = $block->getStructuredData();
+    $block->swapData( "multiple-first;0", "multiple-first;1" )->getHostAsset()->edit();
+    $block  = $block->getStructuredData();
 */
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\DataDefinitionBlock" );
+
 }
 catch( \Exception $e ) 
 {
@@ -238,22 +285,4 @@ catch( \Error $er )
 {
     echo S_PRE . $er . E_PRE; 
 }
-/*
-Useful code templates:
-    u\ReflectionUtility::showMethodSignatures( 
-        "cascade_ws_utility\ReflectionUtility" );
-        
-    u\ReflectionUtility::showMethodSignature( 
-        "cascade_ws_asset\Page", "edit" );
-        
-    u\ReflectionUtility::showMethodDescription( 
-        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-        
-    u\ReflectionUtility::showMethodExample( 
-        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-
-    u\DebugUtility::dump( $page );
-
-    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump();
-*/
 ?>
