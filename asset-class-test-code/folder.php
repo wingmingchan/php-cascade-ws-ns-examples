@@ -14,7 +14,6 @@ $mode = 'get';
 //$mode = 'set';
 //$mode = 'copy';
 //$mode = 'delete';
-//$mode = 'metadata-set';
 //$mode = 'raw';
 //$mode = 'none';
 //$mode = 'workflow';
@@ -27,7 +26,7 @@ try
     //u\DebugUtility::dump( $f->getFolderChildrenIds() );
 
     // base folder
-    $id = '39d4cc568b7ffe834c5fe91ecdc40728';
+    $id = '1f21734f8b7ffe834c5fe91e89f3d6c2';
     // test-child-folder
     //$id = '211c50a78b7f08560139425cdddf003a';
     // reports
@@ -166,16 +165,6 @@ try
             if( $mode != 'all' )
                 break;
             
-        case 'metadata-set':
-            // set it to _common:Directory Info
-            $f->setMetadataSet( $cascade->getAsset( 
-                    a\MetadataSet::TYPE, 
-                    '090c64688b7f0856015997e4a6d0d963' ) )->
-                    dump( true );
-        
-            if( $mode != 'all' )
-                break;
-                
         case 'workflow':
             $f  = $cascade->getAsset(
                 a\Folder::TYPE, "39d53c648b7ffe834c5fe91ec0cb0f27"
@@ -209,6 +198,8 @@ try
             if( $mode != 'all' )
                 break;
     }
+
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Folder" );
 }
 catch( \Exception $e )
 {
