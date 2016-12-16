@@ -88,7 +88,7 @@ try
                 break;
     }
 
-    u\ReflectionUtility::showMethodSignatures( "cascade_ws_asset\IndexBlock" );
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\IndexBlock" );
 }
 catch( \Exception $e )
 {
