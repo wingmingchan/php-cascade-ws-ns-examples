@@ -2,9 +2,9 @@
 require_once('auth_chanw.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 //$mode = 'all';
@@ -120,15 +120,14 @@ try
         case 'raw':
             $ifb = $service->retrieve( $service->createId( 
                 c\T::INDEXBLOCK, $id ), c\P::INDEXBLOCK );
-            echo S_PRE;
-            var_dump( $ifb );
-            echo E_PRE;
+
+            u\DebugUtility::dump( $ifb );
         
             if( $mode != 'all' )
                 break;
     }
     
-    u\ReflectionUtility::showMethodSignatures( "cascade_ws_asset\IndexBlock" );
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\IndexBlock" );
 }
 catch( \Exception $e )
 {
