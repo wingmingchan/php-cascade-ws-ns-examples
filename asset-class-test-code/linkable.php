@@ -11,7 +11,7 @@ use cascade_ws_exception as e;
 try
 {
     $page = $cascade->getAsset(
-        a\Page::TYPE, "06a23e5b8b7ffe830820c9fac501387b" );
+        a\Page::TYPE, "1f2376798b7ffe834c5fe91ead588ce1" );
 /*        
     echo $page->getCreatedBy(), BR;
     echo $page->getCreatedDate(), BR;
@@ -40,7 +40,9 @@ try
     //$page->setMetadataSet( $cascade->getAsset(
         //a\MetadataSet::TYPE, "35963bf48b7ffe83164c931407216994" ) );
     //echo a\Linkable::getLinkableType( $service, "06a23e5b8b7ffe830820c9fac501387b" ), BR;
-    a\Linkable::getLinkable( $service, "06a23e5b8b7ffe830820c9fac501387b" )->dump();
+    a\Linkable::getLinkable( $service, "1f2376798b7ffe834c5fe91ead588ce1" )->dump();
+
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Linkable" );
 }
 catch( \Exception $e ) 
 {
