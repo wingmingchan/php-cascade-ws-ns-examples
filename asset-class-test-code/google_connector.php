@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -16,19 +16,10 @@ $mode = 'all';
 
 try
 {
-	$gc_name = 'test-google-connector';
-	$gc      = $cascade->getGoogleAnalyticsConnector( 
-		a\GoogleAnalyticsConnector::TYPE, $gc_name, 'cascade-admin' );
+	$gc_id = '086439518b7ffe8339ce5d13b34124b6';
+	$gc    = $cascade->getAsset( 
+		a\GoogleAnalyticsConnector::TYPE, $gc_id );
 	
-	if( !isset( $gc ) )
-	{
-		$gc = $cascade->createGoogleAnalyticsConnector(
-			$cascade->getAsset( a\ConnectorContainer::TYPE, '980a826b8b7f0856015997e424411695' ),
-			$gc_name,
-			'3836e8'
-		);
-	}
-
     switch( $mode )
     {
         case 'all':
@@ -87,19 +78,23 @@ try
         case 'raw':
             $gc_std = $service->retrieve( 
                 $service->createId( 
-                    c\T::GOOGLEANALYTICSCONNECTOR, $gc_name, 'cascade-admin' ), 
+                    c\T::GOOGLEANALYTICSCONNECTOR, $gc_id ), 
                     c\P::GOOGLEANALYTICSCONNECTOR );
             
-            echo S_PRE;
-            var_dump( $gc_std );
-            echo E_PRE;
+            u\DebugUtility::dump( $gc_std );
             
             if( $mode != 'all' )
                 break;
     }
+
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\GoogleAnalyticsConnector" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
