@@ -69,15 +69,13 @@ try
         case 'raw':
             $fb = $service->retrieve( $service->createId( 
                 c\T::FEEDBLOCK, $id ), c\P::FEEDBLOCK );
-            echo S_PRE;
-            var_dump( $fb );
-            echo E_PRE;
+            u\DebugUtility::dump( $fb );
         
             if( $mode != 'all' )
                 break;
     }
     
-    u\ReflectionUtility::showMethodSignatures( "cascade_ws_asset\FeedBlock" );
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\FeedBlock" );
 }
 catch( \Exception $e )
 {
