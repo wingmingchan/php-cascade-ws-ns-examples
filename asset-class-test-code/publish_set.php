@@ -1,19 +1,18 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
 //$mode = 'display';
 $mode = 'dump';
-//$mode = 'get';
+$mode = 'get';
 //$mode = 'add';
 //$mode = 'remove';
-//$mode = 'set';
 //$mode = 'publish';
 //$mode = 'raw';
 
@@ -38,114 +37,37 @@ try
                 break;
                 
         case 'get':
-            echo "ID: " . $ps->getId() . BR;
-            
-            echo BR . S_PRE;
-            var_dump( $ps->getFilePaths() );
-            echo E_PRE;
-            
-            echo BR . S_PRE;
-            var_dump( $ps->getFolderPaths() );
-            echo E_PRE;
-            
-            echo BR . S_PRE;
-            var_dump( $ps->getPagePaths() );
-            echo E_PRE;            
+            u\DebugUtility::dump( $ps->getFilePaths() );
+            u\DebugUtility::dump( $ps->getFolderPaths() );
+            u\DebugUtility::dump( $ps->getPagePaths() );
 
             if( $mode != 'all' )
                 break;
              
         case 'add':
             // reference
-            $ps->addPage( a\Asset::getAsset( 
-                $service, a\Page::TYPE,
-                '08d27c2a8b7f08560139425c13e5ce17' ) )->
+            $ps->addPage( $cascade->getAsset(
+                    a\Page::TYPE, '1f2373488b7ffe834c5fe91e2f1fb803' ) )->
             // test.css
-                 addFile( a\Asset::getAsset( 
-                     $service, a\File::TYPE,
-                     '05ce824d8b7f08560139425c9aba7f6d' ) )->
+                 addFile( $cascade->getAsset(
+                     a\File::TYPE, '1f2259288b7ffe834c5fe91e55c1b66f' ) )->
             // test-folder
-                 addFolder( a\Asset::getAsset( 
-                     $service, a\Folder::TYPE,
-                     'b8bf838f8b7f0856002a5e11586fba90' ) )->
-            // test-folder2
-                 addFolder( a\Asset::getAsset( 
-                     $service, a\Folder::TYPE,
-                     'df9aa6628b7f085600adcd8159dd733a' ) )->
-                 edit();
+                 addFolder( $cascade->getAsset(
+                     a\Folder::TYPE, '1f229e908b7ffe834c5fe91e04cc2303' ) )->
+                 edit()->dump();
 
             if( $mode != 'all' )
                 break;
 
         case 'remove':
             // test.css
-            $ps->removeFile( a\Asset::getAsset( 
-                $service, a\File::TYPE,
-                '05ce824d8b7f08560139425c9aba7f6d' ) )->
+            $ps->removeFile( $cascade->getAsset(
+                     a\File::TYPE, '1f2259288b7ffe834c5fe91e55c1b66f' ) )->
             // test-folder2
-                 removeFolder( a\Asset::getAsset( 
-                     $service, a\Folder::TYPE,
-                     'df9aa6628b7f085600adcd8159dd733a' ) )->
-                 edit();
+                 removeFolder( $cascade->getAsset(
+                     a\Folder::TYPE, '1f229e908b7ffe834c5fe91e04cc2303' ) )->
+                 edit()->dump();
             
-            if( $mode != 'all' )
-                break;
-
-        case 'set':
-            // case 1: remove schedule
-            //$ps->unsetScheduledPublishing()->edit();
-            //$ps->setScheduledPublishing( false )->edit();
-            // case 2: exception thrown, additional value is required
-            //$ps->setScheduledPublishing( true )->edit();
-            // case 3a: every Friday at 12 am
-            //$ps->setScheduledPublishing( true, a\PublishSet::FRIDAY )->edit();
-            // case 3b: every Monday at 6:30 pm
-            //$ps->setDayOfWeek( a\PublishSet::MONDAY, '18:30:00.000' )->edit();
-            // case 3c: every Tuesday at 3 am
-            /*
-            $ps->setScheduledPublishing( 
-                true, a\PublishSet::TUESDAY, NULL, NULL, '03:00:00.000' )->edit();
-            */
-            // case 4a: every Tuesday and Thursday at 6:30 am
-            /*
-            $ps->setScheduledPublishing( true, 
-                array( a\PublishSet::TUESDAY, a\PublishSet::THURSDAY ), 
-                NULL, NULL, '06:30:00.000' )->edit();
-            */
-            // case 4b: every Friday and Sunday at 1:00 am
-            /*
-            $ps->setDayOfWeek( 
-                array( a\PublishSet::FRIDAY, a\PublishSet::SUNDAY ),
-                '01:00:00.000' )->edit();
-            */
-            // case 5a: everyday at 6:30 am, 
-            // intentionally having repeated weekdays and random order
-            /*
-            $ps->setScheduledPublishing( true, 
-                array( a\PublishSet::FRIDAY, a\PublishSet::FRIDAY, 
-                    a\PublishSet::THURSDAY, a\PublishSet::SATURDAY, 
-                    a\PublishSet::SUNDAY, a\PublishSet::WEDNESDAY,
-                    a\PublishSet::TUESDAY, a\PublishSet::THURSDAY, 
-                    a\PublishSet::MONDAY, a\PublishSet::SUNDAY ), 
-                NULL, NULL, '06:30:00.000' )->edit();
-            */
-            // case 5b: everyday at 12 am
-            //$ps->setDayOfWeek( $ps->getDaysOfWeek() )->edit();
-            // case 6a: every 2 hours starting at 6:15 am
-            /*
-            $ps->setScheduledPublishing( 
-                true, NULL, 2, NULL, '06:15:00.000' )->edit();
-            */
-            // case 6b: every 4 hours
-            //$ps->setPublishIntervalHours( 4 )->edit();
-            // case 7a: cron expression
-            /*
-            $ps->setScheduledPublishing( 
-                true, NULL, NULL, "0 0 12 * * ?" )->edit();
-            */
-            // case 7b: cron expression
-            $ps->setCronExpression( "0 4 12 * * ?" )->edit();
-                
             if( $mode != 'all' )
                 break;
 
@@ -198,9 +120,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\PublishSet" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
