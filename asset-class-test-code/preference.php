@@ -16,14 +16,14 @@ try
         //setValue( a\Preference::ALLOW_FONT_FORMATTING, "on" )->
         //setValue( a\Preference::ASSET_TREE_MODE, "fastest" )->
         //dump();
-        
-    $pref->setValue( a\Preference::ALLOW_TABLE_EDITING, "on" );
-    
-    $pref->dump();
+    //$pref->setValue( a\Preference::ALLOW_TABLE_EDITING, "on" );
+    //$pref->dump();
     
     echo $pref->getValue( a\Preference::ASSET_TREE_MODE );
     
-    u\DebugUtility::dump( $pref->toStdClass() );
+    //u\DebugUtility::dump( $pref->toStdClass() );
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Preference" );
 }
 catch( \Exception $e ) 
 {
