@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -16,7 +16,7 @@ $mode = 'all';
 
 try
 {
-    $id = '4b68dde38b7f085600ae22829258cd7c'; // test-fs
+    $id = '08378e518b7ffe8339ce5d1372331a0f'; // test-fs
     $t  = $cascade->getAsset( a\FileSystemTransport::TYPE, $id );
     
     switch( $mode )
@@ -55,16 +55,20 @@ try
         case 'raw':
             $t = $service->retrieve( $service->createId( 
                 c\T::FSTRANSPORT, $id ), c\P::FILESYSTEMTRANSPORT );
-            echo S_PRE;
-            var_dump( $t );
-            echo E_PRE;
+            u\DebugUtility::dump( $t );
        
             if( $mode != 'all' )
                 break;
     }
+
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\FileSystemTransport" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
