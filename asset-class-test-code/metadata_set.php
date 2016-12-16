@@ -215,13 +215,14 @@ try
             
             $ms = $service->retrieve( 
                 $service->createId( c\T::METADATASET, $id ), c\P::METADATASET );
-            echo S_PRE;
-            var_dump( $ms );
-            echo E_PRE;
+
+            u\DebugUtility::dump( $ms );
             
             if( $mode != 'all' )
                 break;
     }
+
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\MetadataSet" );
 }
 catch( \Exception $e )
 {
