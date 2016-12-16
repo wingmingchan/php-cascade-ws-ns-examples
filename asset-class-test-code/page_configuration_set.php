@@ -132,15 +132,21 @@ try
                 
             //$pr = new PageRegion( $pcs->pageConfigurations->
                 //pageConfiguration[3]->pageRegions->pageRegion[0] );
-            //var_dump( $pr );
+            //u\DebugUtility::dump( $pr );
             u\DebugUtility::dump( $pcs );
         
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\PageConfigurationSet" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
