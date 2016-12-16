@@ -159,8 +159,8 @@ try
             
             $d->setSendReportOnErrorOnly( false )->edit();
             echo u\StringUtility::boolToString( $d->getSendReportOnErrorOnly() ), BR;
-            echo u\StringUtility::boolToString( $d->getSendReportToGroups() ), BR;
-            echo u\StringUtility::boolToString( $d->getSendReportToUsers() ), BR;
+            echo u\StringUtility::getCoalescedString( $d->getSendReportToGroups() ), BR;
+            echo u\StringUtility::getCoalescedString( $d->getSendReportToUsers() ), BR;
             echo u\StringUtility::boolToString( $d->getUsesScheduledPublishing() ), BR;
             /*//*/
                 
@@ -197,6 +197,8 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Destination" );
 }
 catch( \Exception $e )
 {
