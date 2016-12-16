@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -12,11 +12,11 @@ $mode = 'all';
 //$mode = 'dump';
 //$mode = 'get';
 //$mode = 'raw';
-$mode = 'set';
+//$mode = 'set';
 
 try
 {
-    $id = 'ebe262c38b7f085601e990b4821e309d'; // page reference
+    $id = '09632b148b7f08ee689d91ad208ed081'; // page reference
     $r  = $cascade->getAsset( a\Reference::TYPE, $id );
 
     switch( $mode )
@@ -62,9 +62,9 @@ try
             
         case 'set':
             $r->setAsset( 
-                $cascade->getAsset( a\Page::TYPE, '96f6e5138b7f0856002a5e11fa547b61' )
+                $cascade->getAsset( a\Page::TYPE, 'aefe9f168b7f08ee02067bea0e5de36b' )
             );
-            $r->getReferencedAsset()->publish();
+            //$r->getReferencedAsset()->publish();
             
             if( $mode != 'all' )
                 break;
@@ -73,17 +73,20 @@ try
             $r = $service->retrieve( 
                 $service->createId( c\T::REFERENCE, $id), c\P::REFERENCE );
 
-            echo S_PRE;
-            var_dump( $r );
-            echo E_PRE;
+            u\DebugUtility::dump( $r );
             
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Reference" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
 }
-
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE; 
+}
 ?>
