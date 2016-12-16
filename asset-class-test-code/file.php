@@ -1,17 +1,16 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
 //$mode = 'display';
 //$mode = 'dump';
 //$mode = 'get';
-//$mode = 'metadata';
 //$mode = 'copy';
 //$mode = 'set';
 //$mode = 'metadata-set';
@@ -24,7 +23,7 @@ this has to be changed to re-run the test!
 
 try
 {
-    $id = "05ce824d8b7f08560139425c9aba7f6d"; // test.css
+    $id = "081d805b8b7ffe8339ce5d1303b53a50"; // test.css
     $f  = $cascade->getAsset( a\File::TYPE, $id );
     
     switch( $mode )
@@ -86,65 +85,6 @@ try
 
             if( $mode != 'all' )
                 break;
-             
-        case 'metadata':
-            $m = $f->getMetadata();
-            //$m->setEndDate( '2013-12-20T08:00:00.000Z' );
-          
-            $df_name = "text";
-            // case 1: empty string
-            // case 4: empty string for a required field: exception
-            //$m->setDynamicField( $df_name, '' );
-            // case 2: NULL
-            // case 5: NULL for a required field: exception
-            //$m->setDynamicField( $df_name, NULL );
-            // case 3: non-empty string
-            $m->setDynamicField( $df_name, "New text to be inserted" );
-            
-            $df_name = "dropdown";
-            // case 1: nothing selected
-            $m->setDynamicField( $df_name, NULL );
-            // case 2: an item selected
-            $m->setDynamicField( $df_name, 'Two' );
-            // case 3: value not defined, exception
-            //$m->setDynamicField( $df_name, 'Four' );
-            
-            $df_name = "radio";
-            // case 1: nothing checked
-            // case 4: required, exception
-            //$m->setDynamicField( $df_name, NULL );
-            // case 2: a radio button checked
-            $m->setDynamicField( $df_name, "No" );
-            // case 3: value not defined, exception
-            //$m->setDynamicField( $df_name, "Maybe" );
-
-            $df_name = "multiselect";
-            // case 1: no value
-            $m->setDynamicField( $df_name, NULL );
-            // case 2: one value
-            $m->setDynamicField( $df_name, array( "Those" ) );
-            // case 3: more than one value
-            $m->setDynamicField( $df_name, array( 
-                'This', 'That', 'These' ) );
-            // case 4: value not defined, exception
-            //$m->setDynamicField( $df_name, array( 
-                //'This', 'That', 'Nada' ) );
-            
-            $df_name = "show-intra-icon";
-            // case 1: nothing checked
-            $m->setDynamicField( $df_name, NULL );
-            // case 2: a checkbox selected
-            //$m->setDynamicField( $df_name, "Yes" );
-            // case 3: value not defined, exception
-            //$m->setDynamicField( $df_name, "yes" );
-            
-            $df_name = "exclude-from-menu";
-            $m->setDynamicField( $df_name, NULL );
-
-            $f->edit()->dump( true );
-
-            if( $mode != 'all' )
-                break;
                 
         case 'set':
             $text = $f->getText();
@@ -187,9 +127,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\File" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
 }
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE; 
+} 
 ?>
