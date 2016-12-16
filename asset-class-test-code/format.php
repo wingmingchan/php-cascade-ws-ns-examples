@@ -17,6 +17,8 @@ try
     	"getCreatedDate: ", $f->getCreatedDate(), BR,
     	"getLastModifiedBy: ", $f->getLastModifiedBy(), BR,
     	"getLastModifiedDate: ", $f->getLastModifiedDate(), BR;
+
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Format" );
 }
 catch( \Exception $e )
 {
