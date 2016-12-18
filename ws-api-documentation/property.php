@@ -17,7 +17,9 @@ try
         "cascade_ws_property\Abilities" =>
             "/web-services/api/property-classes/abilities",
         "cascade_ws_property\AccessRightsInformation" =>
-            "/web-services/api/property-classes/access-rights-information",
+/*/
+           "/web-services/api/property-classes/access-rights-information",
+/*/
         "cascade_ws_property\AclEntry" =>
             "/web-services/api/property-classes/acl-entry",
             
@@ -77,7 +79,6 @@ try
             "/web-services/api/property-classes/structured-data",
         "cascade_ws_property\StructuredDataNode" =>
             "/web-services/api/property-classes/structured-data-node",
-/*/
         "cascade_ws_property\TriggerDefinition" =>
             "/web-services/api/property-classes/trigger-definition",
         "cascade_ws_property\Workflow" =>
@@ -85,7 +86,8 @@ try
         "cascade_ws_property\WorkflowSettings" =>
             "/web-services/api/property-classes/workflow-settings",
 /*/
-/*/  
+/*/  /*/
+
     );
     
     foreach( $class_page_array as $class_name => $page_path )
