@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -18,7 +18,7 @@ $mode = 'all';
 
 try
 {
-    $id = "9b4286798b7f08560139425ca3edcdb5"; // test-xhtml
+    $id = "17d404608b7ffe834304cee2fc7c8313"; // test-xhtml
     $xb = $cascade->getAsset( a\DataDefinitionBlock::TYPE, $id );
     
     switch( $mode )
@@ -79,16 +79,21 @@ try
         case 'raw':
             $xb = $service->retrieve( $service->createId( 
                 c\T::DATABLOCK, $id ), c\P::DATABLOCK );
-            echo S_PRE;
-            var_dump( $xb );
-            echo E_PRE;
-        
+
+            u\DebugUtility::dump( $xb );
+
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\DataDefinitionBlock" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
