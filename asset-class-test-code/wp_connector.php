@@ -29,7 +29,7 @@ try
                 break;
                 
         case 'dump':
-            $wc->dump( true );
+            $wc->dump();
             
             if( $mode != 'all' )
                 break;
@@ -95,12 +95,14 @@ try
                     c\P::WORDPRESSCONNECTOR );
             
             echo S_PRE;
-            var_dump( $wc_std );
+            u\DebugUtility::dump( $wc_std );
             echo E_PRE;
             
             if( $mode != 'all' )
                 break;
     }
+
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\WordPressConnector" );
 }
 catch( \Exception $e )
 {
