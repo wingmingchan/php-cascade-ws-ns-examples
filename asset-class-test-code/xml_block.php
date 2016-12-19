@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -16,7 +16,7 @@ $mode = 'all';
 
 try
 {
-    $id = "a14d54158b7f08560139425cd29a9958"; // test-xml
+    $id = "1f21f6508b7ffe834c5fe91e5e26557b"; // test-xml
     $xb  = $cascade->getAsset( a\XmlBlock::TYPE, $id );
     
     switch( $mode )
@@ -29,7 +29,7 @@ try
                 break;
                 
         case 'dump':
-            $xb->dump( true );
+            $xb->dump();
             
             if( $mode != 'all' )
                 break;
@@ -54,16 +54,21 @@ try
         case 'raw':
             $xb = $service->retrieve( $service->createId( 
                 c\T::XMLBLOCK, $id ), c\P::XMLBLOCK );
-            echo S_PRE;
-            var_dump( $xb );
-            echo E_PRE;
+
+            u\DebugUtility::dump( $xb );
         
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\XmlBlock" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
