@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -17,7 +17,7 @@ $mode = 'all';
 
 try
 {
-    $id = 'df9c18a08b7f085600adcd817d0f5060';
+    $id = '1f240a868b7ffe834c5fe91eb5e9d34a';
     $s  = $cascade->getAsset( a\Symlink::TYPE, $id );
 
     switch( $mode )
@@ -110,9 +110,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Symlink" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
