@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -15,7 +15,7 @@ $mode = 'all';
 
 try
 {
-    $id = '8d9b9fac8b7f085600ebf23e56c33fd1';
+    $id = '1f2422858b7ffe834c5fe91ecd110f7a';
     $f  =  $cascade->getXsltFormat( $id );
     
     switch( $mode )
@@ -77,14 +77,18 @@ XML;
             $f->setXML( $xml )->edit();
             $f->displayXML();
             
-            echo $f->getService()->getMessage();
-            
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\XsltFormat" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
