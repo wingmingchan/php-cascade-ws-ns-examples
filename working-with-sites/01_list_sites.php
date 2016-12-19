@@ -1,7 +1,7 @@
 <?php
 $start_time = time();
 
-require_once( 'auth_tutorial7.php' );
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -12,7 +12,7 @@ use cascade_ws_exception as e;
 
 try
 {
-    // set parameters for timing
+    // set parameters for timing: about 20 seconds
     u\DebugUtility::setTimeSpaceLimits();
     
     // $sites store an array of Child objects
@@ -31,6 +31,8 @@ try
         echo $site_obj->getUrl(), BR;
         // output recycle bin expiration
         echo $site_obj->getRecycleBinExpiration(), BR;
+        
+        echo HR;
     }
     
     // output the duration taken
