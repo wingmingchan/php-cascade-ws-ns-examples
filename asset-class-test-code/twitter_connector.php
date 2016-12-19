@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -16,26 +16,10 @@ $mode = 'all';
 
 try
 {
-    $tc_name = 'test-twitter-connector';
-    $tc      = $cascade->getTwitterConnector( 
-        a\TwitterConnector::TYPE, $tc_name, 'cascade-admin' );
+    $tc_id = '17c737d88b7ffe834304cee25d9c0145';
+    $tc      = $cascade->getAsset( a\TwitterConnector::TYPE, $tc_id );
         
-    if( !isset( $tc ) )
-    {
-        $tc = $cascade->createTwitterConnector(
-            $cascade->getAsset( a\ConnectorContainer::TYPE, '980a826b8b7f0856015997e424411695' ),
-            $tc_name,
-            $cascade->getAsset( 
-                a\Destination::TYPE, 
-                '4a37ff4d8b7f085600ae2282113b40c5' ),
-            'H',  // hash tag
-            't',  // prefix
-            $cascade->getAsset( 
-                a\ContentType::TYPE, 
-                'a00d531c8b7f0856011c5ec62b24292d' ),
-            'RWD' // configuration
-        );
-    }
+
     switch( $mode )
     {
         case 'all':
@@ -128,19 +112,23 @@ try
         case 'raw':
             $tc_std = $service->retrieve( 
                 $service->createId( 
-                    c\T::TWITTERCONNECTOR, '03276c068b7f08560150c2965239b3ee' ), 
+                    c\T::TWITTERCONNECTOR, '17c737d88b7ffe834304cee25d9c0145' ), 
                     c\P::TWITTERCONNECTOR );
             
-            echo S_PRE;
-            var_dump( $tc_std );
-            echo E_PRE;
+            u\DebugUtility::dump( $tc_std );
             
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\TwitterConnector" );
 }
-catch( \Exception $e )
+catch( \Exception $e ) 
 {
-    echo S_PRE . $e . E_PRE;
-}
+    echo S_PRE . $e . E_PRE; 
+} 
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE; 
+} 
 ?>
