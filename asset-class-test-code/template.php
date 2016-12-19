@@ -17,7 +17,7 @@ $mode = 'get';
 
 try
 {
-    $id = "0bb070388b7ffe83006a5cef31ea8c14"; // test
+    $id = "a55d61298b7f0856002a5e11de80a550"; // test
     $t  = $cascade->getAsset( a\Template::TYPE, $id );
     
     switch( $mode )
@@ -59,9 +59,7 @@ try
                 $f->display();
             }
             
-            echo S_PRE;
             //u\DebugUtility::dump( $t->getPageRegion( 'STORAGE' ) );
-            echo E_PRE;
             
             $block = $t->getPageRegionBlock( 'STORAGE' );
             
@@ -73,8 +71,8 @@ try
             //echo $t->getXml(), BR;
             echo u\StringUtility::boolToString( $t->hasPageRegion( 'STORAGE' ) ), BR;
             
-            if( isset( $format ) )
-                $format->dump();
+            //if( isset( $format ) )
+                //$format->dump();
                 
             //u\DebugUtility::dump( $t->getPageRegionNames() );
             //u\DebugUtility::dump( $t->getPageRegions() );
@@ -132,6 +130,8 @@ XML;
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Template" );
 }
 catch( \Exception $e )
 {
