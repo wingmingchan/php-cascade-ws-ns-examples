@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -15,7 +15,7 @@ $mode = 'all';
 
 try
 {
-    $id = "64f4f31c8b7f085600ae2282dddc781f"; // Test
+    $id = "1f2421b28b7ffe834c5fe91effa66c81"; // Test
     $wdc = $cascade->getAsset( a\WorkflowDefinitionContainer::TYPE, $id );
 
     switch( $mode )
@@ -28,7 +28,7 @@ try
                 break;
                 
         case 'dump':
-            $wdc->dump( true );
+            $wdc->dump();
             
             if( $mode != 'all' )
                 break;
@@ -49,9 +49,7 @@ try
                 echo $child->getPathPath() . BR;
             }
             
-            echo S_PRE;
-            var_dump( $wdc->getContainerChildrenIds() );
-            echo E_PRE;
+            u\DebugUtility::dump( $wdc->getContainerChildrenIds() );
             
             if( $mode != 'all' )
                 break;
@@ -62,16 +60,20 @@ try
                     c\T::WORKFLOWDEFINITIONCONTAINER, $id ), 
                     c\P::WORKFLOWDEFINITIONCONTAINER );
             
-            echo S_PRE;
-            var_dump( $wdc_std );
-            echo E_PRE;
+            u\DebugUtility::dump( $wdc_std );
             
             if( $mode != 'all' )
                 break;
     }
+
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\WorkflowDefinitionContainer" );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
