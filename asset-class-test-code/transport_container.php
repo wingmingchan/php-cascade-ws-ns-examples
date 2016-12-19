@@ -1,10 +1,10 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_tutorial7.php');
 
 use cascade_ws_constants as c;
-use cascade_ws_asset as a;
-use cascade_ws_property as p;
-use cascade_ws_utility as u;
+use cascade_ws_asset     as a;
+use cascade_ws_property  as p;
+use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $mode = 'all';
@@ -15,7 +15,7 @@ $mode = 'all';
 
 try
 {
-    $id = "64ca4ec88b7f085600ae2282d4530175"; // Test
+    $id = "042b48d78b7ffe8339ce5d13f348500d"; // Test
     $tc = $cascade->getAsset( a\TransportContainer::TYPE, $id );
 
     switch( $mode )
@@ -68,9 +68,15 @@ try
             if( $mode != 'all' )
                 break;
     }
+    
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\TransportContainer" );
 }
-catch( \Exception $e )
+catch( \Exception $e ) 
 {
-    echo S_PRE . $e . E_PRE;
-}
+    echo S_PRE . $e . E_PRE; 
+} 
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE; 
+} 
 ?>
