@@ -22,15 +22,16 @@ try
     foreach( $sites as $site )
     {
         // access the site name through the Child object
-        echo $site->getPathPath(), BR;
+    	// output site name
+        echo "Site name: ", $site->getPathPath(), BR;
         
         // get the Site object through the Child object
         $site_obj = $site->getAsset( $service );
         
         // output the URL
-        echo $site_obj->getUrl(), BR;
+        echo "Site URL: ", $site_obj->getUrl(), BR;
         // output recycle bin expiration
-        echo $site_obj->getRecycleBinExpiration(), BR;
+        echo "Recyle bin expiration: ", $site_obj->getRecycleBinExpiration(), BR;
         
         echo HR;
     }
