@@ -1,6 +1,6 @@
 <?php
 /*
-This file contains admin functions used by other probrams.
+This file contains admin functions used by other programs.
 */
 require_once( 'cascade_ws_ns/auth_chanw.php' );
 
@@ -11,7 +11,7 @@ use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
-function setSitePermissions( a\Cascade $cascade, $new_name )
+function setSitePermissions( a\Cascade $cascade, string $new_name )
 {
     // set group abilities
     $new_group = $cascade->getAsset( a\Group::TYPE, $new_name );
@@ -131,9 +131,9 @@ function setSitePermissions( a\Cascade $cascade, $new_name )
 
 function setAccessRightsForAsset( 
     a\Cascade $cascade, 
-    $type, $path, $site_name,
-    $access_type, $access_name, $access_level, 
-    $applied_to_children, $all_level=NULL ) 
+    string $type, string $path, string $site_name,
+    string $access_type, string $access_name, string $access_level, 
+    bool $applied_to_children, string $all_level=NULL ) 
 {
     $ari = $cascade->getAccessRights( $type, $path, $site_name );
     $group_user = $cascade->getAsset( $access_type, $access_name );
@@ -147,8 +147,8 @@ function setAccessRightsForAsset(
 
 function removeAccessRightsFromAllGroupsForAsset(
     a\Cascade $cascade,
-    $type, $path, $site_name,
-    $applied_to_children )
+    string $type, string $path, string $site_name,
+    bool $applied_to_children )
 {
     $ari = $cascade->getAccessRights( $type, $path, $site_name );
     $ari->denyAccessToAllGroups()->setAllLevel( c\T::NONE );
@@ -156,14 +156,16 @@ function removeAccessRightsFromAllGroupsForAsset(
 }
 
 function setAccessRightsForAssetForAllLevel( 
-    a\Cascade $cascade, $type, $path, $site_name, $all_level, $applied_to_children )
+    a\Cascade $cascade, string $type, string $path, string $site_name, 
+    string $all_level, bool $applied_to_children )
 {
     $ari = $cascade->getAccessRights( $type, $path, $site_name );
     $ari->setAllLevel( $all_level );
     $cascade->setAccessRights( $ari, $applied_to_children );
 }
 
-function setAvailableToGroupsForAssetFactoryContainer( $cascade, $site_name, $group_name='' )
+function setAvailableToGroupsForAssetFactoryContainer(
+    a\Cascade $cascade, string $site_name, string $group_name='' )
 {
     // retrieve CWT-Designers
     $cwt = $cascade->getAsset( a\Group::TYPE, "CWT-Designers" );
@@ -198,7 +200,8 @@ function setAvailableToGroupsForAssetFactoryContainer( $cascade, $site_name, $gr
     }
 }
 
-function createDestinationForSites( a\Cascade $cascade, $site_name, $group_name='' )
+function createDestinationForSites(
+    a\Cascade $cascade, string $site_name, string $group_name='' )
 {
     // normally site and group are assigned the same name
     if( $group_name == '' )
