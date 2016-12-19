@@ -149,7 +149,7 @@ try
                 break;
     }
     
-    u\ReflectionUtility::showMethodSignatures( "cascade_ws_asset\TextBlock" );
+    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\TextBlock" );
 }
 catch( \Exception $e ) 
 {
