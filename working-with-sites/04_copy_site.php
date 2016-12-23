@@ -1,4 +1,11 @@
-<?php 
+<?php
+/*
+This program is similar to 03_create_site.php. But we are not creating a site.
+Instead, we copy an existing site. Copying is generally better than creating,
+because the site to be copied can have everything already set up and ready
+to use. Site-copying will preserve the independence of site-specific assets,
+so that relationships are maintained within the site.
+*/
 require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
