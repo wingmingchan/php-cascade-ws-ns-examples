@@ -1,4 +1,14 @@
 <?php
+/*
+Listing sites can be seen as the starting point of site management using web services.
+From a site object, we can get to amost anything existing in that site.
+Note that while $cascade->getSite( $site_name ) returns a Site object,
+$cascade->getSites() returns an array of Child object. With a Child object,
+use $child->getAsset( $service ) to get the site object.
+
+From a site, we can get the base folder and any root container containing components like
+data definitions and metadata sets.
+*/
 $start_time = time();
 
 require_once( 'auth_chanw.php' );
