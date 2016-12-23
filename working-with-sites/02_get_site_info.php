@@ -1,4 +1,9 @@
 <?php
+/*
+This program shows how to access different containers of a site.
+Once a container is retrieved, we can use asset trees to traverse
+it, or we can work with its children.
+*/
 $start_time = time();
 
 require_once('auth_chanw.php');
@@ -25,13 +30,16 @@ try
         echo "Root Asset Factory Container ID: ",
             $site->getRootAssetFactoryContainerId(), BR;
         
+        // work with a container
         $afc = $site->getRootAssetFactoryContainer();
         echo "Root Asset Factory Container has ", count( $afc->getChildren() ),
             " child(ren).", BR;
         echo "Root Content Type Container ID: ",
             $site->getRootContentTypeContainerId(), BR;
+        // $site->getRootContentTypeContainer()->dump();   
         echo "Root Destination Container ID: ",
             $site->getRootSiteDestinationContainerId(), BR;
+        // $site->getRootSiteDestinationContainer()->dump(); 
             
         echo HR;
     }
