@@ -4,7 +4,8 @@ This program is similar to 03_create_site.php. But we are not creating a site.
 Instead, we copy an existing site. Copying is generally better than creating,
 because the site to be copied can have everything already set up and ready
 to use. Site-copying will preserve the independence of site-specific assets,
-so that relationships are maintained within the site.
+so that relationships are maintained within the site. If there are cross-site
+relationships, they will also be preserved.
 */
 require_once('auth_chanw.php');
 
