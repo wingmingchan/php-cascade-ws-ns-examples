@@ -1,4 +1,10 @@
-<?php 
+<?php
+/*
+This program shows how to test if a site exists, and if it does not,
+how to create it. Note that $cascade->getSite( $site_name ) throws an exception
+if the site does not exist. When we use this to perform the test, we need to
+catch the exception. The creation of the site appears in the catch block.
+*/
 require_once('auth_tutorial7.php');
 
 use cascade_ws_AOHS      as aohs;
