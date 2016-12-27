@@ -32,39 +32,39 @@ u\DebugUtility::setTimeSpaceLimits();
 
 try
 {
-	$block_ms = $cascade->getAsset(
-	    a\MetadataSet::TYPE, "5f4526018b7f08ee76b12c413ab40518" );
-	$folder_ms = $cascade->getAsset(
-	    a\MetadataSet::TYPE, "5f4526098b7f08ee76b12c412063f8b8" );
-	$symlink_ms = $cascade->getAsset(
-	    a\MetadataSet::TYPE, "5f45261b8b7f08ee76b12c416580b064" );
-	
-	// set up the parameter array to pass in metadata sets   
-	$params = array(
-		a\DataBlock::TYPE  => array( a\MetadataSet::TYPE => $block_ms ),
-		a\FeedBlock::TYPE  => array( a\MetadataSet::TYPE => $block_ms ),
-		a\IndexBlock::TYPE => array( a\MetadataSet::TYPE => $block_ms ),
-		a\TextBlock::TYPE  => array( a\MetadataSet::TYPE => $block_ms ),
-		a\XmlBlock::TYPE   => array( a\MetadataSet::TYPE => $block_ms ),
-		a\Folder::TYPE     => array( a\MetadataSet::TYPE => $folder_ms ),
-		a\Symlink::TYPE    => array( a\MetadataSet::TYPE => $symlink_ms )
-	);
-	    
-	$site_name = "cascade-database";
-	$site      = $cascade->getSite( $site_name );
-	
-	$site->getAssetTree()->traverse(
-		array(
-			a\DataBlock::TYPE  => array( "assetTreeAssociateWithMetadataSet" ),
-			a\FeedBlock::TYPE  => array( "assetTreeAssociateWithMetadataSet" ),
-			a\IndexBlock::TYPE => array( "assetTreeAssociateWithMetadataSet" ),
-			a\TextBlock::TYPE  => array( "assetTreeAssociateWithMetadataSet" ),
-			a\XmlBlock::TYPE   => array( "assetTreeAssociateWithMetadataSet" ),
-			a\Folder::TYPE     => array( "assetTreeAssociateWithMetadataSet" ),
-			a\Symlink::TYPE    => array( "assetTreeAssociateWithMetadataSet" )
-		),
-		$params
-	);
+    $block_ms = $cascade->getAsset(
+        a\MetadataSet::TYPE, "5f4526018b7f08ee76b12c413ab40518" );
+    $folder_ms = $cascade->getAsset(
+        a\MetadataSet::TYPE, "5f4526098b7f08ee76b12c412063f8b8" );
+    $symlink_ms = $cascade->getAsset(
+        a\MetadataSet::TYPE, "5f45261b8b7f08ee76b12c416580b064" );
+    
+    // set up the parameter array to pass in metadata sets   
+    $params = array(
+        a\DataBlock::TYPE  => array( a\MetadataSet::TYPE => $block_ms ),
+        a\FeedBlock::TYPE  => array( a\MetadataSet::TYPE => $block_ms ),
+        a\IndexBlock::TYPE => array( a\MetadataSet::TYPE => $block_ms ),
+        a\TextBlock::TYPE  => array( a\MetadataSet::TYPE => $block_ms ),
+        a\XmlBlock::TYPE   => array( a\MetadataSet::TYPE => $block_ms ),
+        a\Folder::TYPE     => array( a\MetadataSet::TYPE => $folder_ms ),
+        a\Symlink::TYPE    => array( a\MetadataSet::TYPE => $symlink_ms )
+    );
+        
+    $site_name = "cascade-database";
+    $site      = $cascade->getSite( $site_name );
+    
+    $site->getAssetTree()->traverse(
+        array(
+            a\DataBlock::TYPE  => array( "assetTreeAssociateWithMetadataSet" ),
+            a\FeedBlock::TYPE  => array( "assetTreeAssociateWithMetadataSet" ),
+            a\IndexBlock::TYPE => array( "assetTreeAssociateWithMetadataSet" ),
+            a\TextBlock::TYPE  => array( "assetTreeAssociateWithMetadataSet" ),
+            a\XmlBlock::TYPE   => array( "assetTreeAssociateWithMetadataSet" ),
+            a\Folder::TYPE     => array( "assetTreeAssociateWithMetadataSet" ),
+            a\Symlink::TYPE    => array( "assetTreeAssociateWithMetadataSet" )
+        ),
+        $params
+    );
 
     u\DebugUtility::outputDuration( $start_time );
 }
@@ -74,6 +74,6 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
