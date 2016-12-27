@@ -133,7 +133,7 @@ function setAccessRightsForAsset(
     a\Cascade $cascade, 
     string $type, string $path, string $site_name,
     string $access_type, string $access_name, string $access_level, 
-    bool $applied_to_children, string $all_level=NULL ) 
+    bool $applied_to_children=true, string $all_level=c\T::NONE ) 
 {
     $ari = $cascade->getAccessRights( $type, $path, $site_name );
     $group_user = $cascade->getAsset( $access_type, $access_name );
