@@ -2,7 +2,7 @@
 /*
 This file contains admin functions used by other programs.
 */
-require_once( 'cascade_ws_ns/auth_chanw.php' );
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
