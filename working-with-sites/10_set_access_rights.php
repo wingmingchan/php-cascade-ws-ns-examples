@@ -29,9 +29,7 @@ try
         // the block we are granting access to
         a\IndexBlock::TYPE, "_cascade/blocks/index/top-site-menu", $site_name,
         // the group with read access
-        a\Group::TYPE, "CWT-Designers", c\T::READ,
-        // applied to children (does not matter here) and all level
-        true, c\T::NONE );
+        a\Group::TYPE, "CWT-Designers", c\T::READ );
 }
 catch( \Exception $e ) 
 {
