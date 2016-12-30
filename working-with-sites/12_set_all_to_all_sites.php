@@ -21,7 +21,7 @@ try
         $cascade->setAllLevel(
             a\Folder::TYPE,
             '/', 
-            $site->getPathSiteName(),
+            $site->getPathPath(),
             c\T::READ, 
             true );
     }
