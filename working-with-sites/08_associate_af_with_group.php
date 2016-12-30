@@ -4,6 +4,7 @@ $start_time = time();
 This program shows how to traverse a container,
 and possibly modify its contents.
 It can be used as a frame to house useful code.
+Also see 13_assign_groups_to_af_in_sites.php
 */
 require_once( 'auth_chanw.php' );
 
