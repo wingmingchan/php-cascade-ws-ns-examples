@@ -1,4 +1,7 @@
-<?php 
+<?php
+/*
+This program shows how to work with plugins.
+*/
 require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
