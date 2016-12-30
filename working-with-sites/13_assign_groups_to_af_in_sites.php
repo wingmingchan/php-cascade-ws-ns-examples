@@ -2,6 +2,7 @@
 /*
 This program shows how to assign a group or groups to
 asset factories in all sites.
+Also see 08_associate_af_with_group.php
 */
 require_once( 'auth_chanw.php' );
 
