@@ -1,4 +1,9 @@
 <?php 
+/*
+This program shows how to list all assets within a folder.
+There are two ways to show the result: either as a list, or
+as an XML document.
+*/
 require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
