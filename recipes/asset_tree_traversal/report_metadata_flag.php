@@ -1,5 +1,9 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+/*
+This program uses a pre-defined global function to report
+on pages in which a certain metadata field contains a certain value.
+*/
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -12,15 +16,12 @@ $start_time = time();
 
 try
 {
-    // to prevent time-out
-    set_time_limit ( 10000 );
-    // to prevent using up memory when traversing a large site
-    ini_set( 'memory_limit', '2048M' );
+    u\DebugUtility::setTimeSpaceLimits();
 
     $results = array();
    
     // get all pages with a certain checkbox checked
-    $cascade->getAsset( a\Folder::TYPE, 'a66686468b7f085601ed95548368a4dc' )->
+    $cascade->getAsset( a\Folder::TYPE, '4a4fc2d38b7f085600ebf23e49dfc2fd' )->
         getAssetTree()->traverse(
             array( a\Page::TYPE => array( c\F::REPORT_METADATA_FLAG ) ), 
             array( c\F::REPORT_METADATA_FLAG => array(
@@ -44,13 +45,16 @@ try
     {
         echo "There are none." . BR;
     }
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
+    u\DebugUtility::outputDuration( $start_time );
 }
 ?>
