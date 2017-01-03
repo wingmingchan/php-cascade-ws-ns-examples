@@ -1,4 +1,7 @@
 <?php
+/*
+This program shows how to find all orphaned pages.
+*/
 require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
