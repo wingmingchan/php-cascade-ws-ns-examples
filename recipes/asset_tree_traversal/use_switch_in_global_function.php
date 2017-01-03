@@ -54,7 +54,7 @@ function assetTreeSimpleFunction(
             break;
             
         default:
-        	echo "Encountered a $type. ";
+            echo "Encountered a $type. ";
             echo "Do Nothing", BR;
             break;
     }
