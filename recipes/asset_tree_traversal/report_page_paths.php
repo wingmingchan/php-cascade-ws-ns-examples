@@ -2,7 +2,7 @@
 /*
 This program can be used to report paths of all pages in a site.
 */
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -13,29 +13,33 @@ use cascade_ws_exception as e;
 
 try
 {
-	$site_name = "imtpublic";
-	
-	$cascade->getSite( $site_name )->
-		getBaseFolderAssetTree()->
-			traverse(
-				array( a\Page::TYPE => array( "assetTreeReportPagePath" ) )
-			);
+    $site_name = "imtpublic";
+    
+    $cascade->getSite( $site_name )->
+        getBaseFolderAssetTree()->
+            traverse(
+                array( a\Page::TYPE => array( "assetTreeReportPagePath" ) )
+            );
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
 }
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
+}
 
 function assetTreeReportPagePath(
-	aohs\AssetOperationHandlerService $service, p\Child $child, 
+    aohs\AssetOperationHandlerService $service, p\Child $child, 
     $params=NULL, &$results=NULL
 )
 {
-	$type = $child->getType();
-	
-	if( $type != a\Page::TYPE )
-		return;
-		
-	echo $child->getPathPath(), BR;
+    $type = $child->getType();
+    
+    if( $type != a\Page::TYPE )
+        return;
+        
+    echo $child->getPathPath(), BR;
 }
 ?>
