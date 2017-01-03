@@ -1,4 +1,8 @@
 <?php 
+/*
+This program shows how to search for assets of a certain type containing a sepecific
+string value.
+*/
 require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
