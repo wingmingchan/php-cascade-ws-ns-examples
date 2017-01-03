@@ -1,5 +1,10 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+/*
+This program uses a pre-defined global function to report
+on data definition blocks in which a certain structured data node contains
+a certain value.
+*/
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -13,7 +18,7 @@ try
     $results = array();
 
     // get all data definition blocks with a certain radio button selected
-    $cascade->getAsset( a\Folder::TYPE, 'ede7fca98b7f08560139425c897612d8' )->
+    $cascade->getAsset( a\Folder::TYPE, '980d67ab8b7f0856015997e4b8d84c5d' )->
         getAssetTree()->traverse(
             array( a\DataBlock::TYPE => 
                 array( c\F::REPORT_DATA_DEFINITION_FLAG ) ), 
@@ -43,5 +48,9 @@ try
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
