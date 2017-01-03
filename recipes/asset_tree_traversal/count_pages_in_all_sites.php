@@ -17,6 +17,8 @@ $start_time = time();
 // My run lasts for more than 6 minutes.
 try
 {
+    u\DebugUtility::setTimeSpaceLimits();
+
     $site_name = 'cascade-admin';
 
     $sites   = $cascade->getSites();
