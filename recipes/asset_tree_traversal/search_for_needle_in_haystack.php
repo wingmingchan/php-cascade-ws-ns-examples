@@ -1,5 +1,5 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -12,6 +12,9 @@ $start_time = time();
 
 try
 {
+    u\DebugUtility::setTimeSpaceLimits();
+
+    // folder to be searched
     $folder_id = 'fd279b248b7f08560159f3f0614d475b';
     $results   = array();
     
@@ -28,14 +31,17 @@ try
         );
         
     u\DebugUtility::dump( $results );
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
 }
 catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
+    u\DebugUtility::outputDuration( $start_time );
 }
 
 function assetTreeSearchForNeedleInHaystack( 
