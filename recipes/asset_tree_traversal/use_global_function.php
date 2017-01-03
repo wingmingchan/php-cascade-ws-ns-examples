@@ -1,5 +1,9 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+/*
+This program shows how a global function, designed for tree traversal,
+can be called directly for testing purposes.
+*/
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -21,6 +25,11 @@ catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE; 
 }
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
+}
+
 
 function assetTreeSimpleFunction(
     aohs\AssetOperationHandlerService $service, 
