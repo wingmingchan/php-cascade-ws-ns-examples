@@ -1,5 +1,8 @@
 <?php
 /*
+This program uses a pre-defined global function to report
+on assets of various types and have no relationships.
+
 In order to make this program work for multiple types,
 I have to use variables for types and method names.
 This is not very efficient if the assets are contained in the base folder.
@@ -7,7 +10,7 @@ They should be combined into one single traversal.
 */
 $start_time = time();
 
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -18,8 +21,10 @@ use cascade_ws_exception as e;
 
 try
 {
+    u\DebugUtility::setTimeSpaceLimits();
+
     // change the site name
-    $site_name = "cascade-admin";
+    $site_name = "cascade-admin-old";
     
     // depending on what types of assets to be examined,
     // declare enough variables
@@ -62,13 +67,16 @@ try
     }
 
     u\DebugUtility::dump( $results );
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
 }
 catch( \Exception $e )
 {
     echo $e;
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
+    u\DebugUtility::outputDuration( $start_time );
 }
 ?>
