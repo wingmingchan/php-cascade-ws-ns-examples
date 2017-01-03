@@ -1,4 +1,8 @@
 <?php 
+/*
+This program shows how to retrieve asset trees assciated with various types
+of containers.
+*/
 require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
