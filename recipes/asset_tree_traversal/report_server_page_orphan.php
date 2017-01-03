@@ -1,5 +1,5 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -43,7 +43,7 @@ try
     
     foreach( $server_pages as $page )
     {
-    	// remove site name and .php
+        // remove site name and .php
         $page_path = substr( $page, strlen( $site_name ) + 1 ); // the slash
         $page_path = substr( $page_path, 0, -4 );  
         
@@ -63,6 +63,10 @@ try
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 
 function processFolder( $dir, &$array ) 
