@@ -1,6 +1,8 @@
 <?php
 /*
-This program shows how to map data.
+This program shows how to map data within a data definition block,
+switching from an old data definition to a new one, and keeping
+all current data.
 The two data definitions involved:
 Old: old_data_definition
 New: new_data_definition
@@ -38,7 +40,7 @@ array(6) {
 }
 */
 
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -114,5 +116,9 @@ try
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
