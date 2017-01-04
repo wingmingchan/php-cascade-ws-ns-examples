@@ -1,5 +1,9 @@
 <?php
-require_once('cascade_ws_ns/auth_chanw.php');
+/*
+This program shows how to copy the data definition as well as data
+from one block to another block.
+*/
+require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -20,5 +24,9 @@ try
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
