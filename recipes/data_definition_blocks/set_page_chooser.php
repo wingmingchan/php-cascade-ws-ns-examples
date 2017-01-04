@@ -1,5 +1,8 @@
 <?php 
-require_once('cascade_ws_ns/auth_wing.php');
+/*
+This program shows how to attach a page to a page chooser.
+*/
+require_once('auth_wing.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -19,5 +22,9 @@ try
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
 }
 ?>
