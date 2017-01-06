@@ -1,6 +1,8 @@
 <?php
 /*
 This program is used to create destinations for a site.
+The included admin_functions_rwd.php can be found in
+https://github.com/wingmingchan/php-cascade-ws-ns-examples/blob/master/working-with-sites/
 */
 require_once( 'auth_chanw.php' );
 require_once( 'admin_functions_rwd.php' );
