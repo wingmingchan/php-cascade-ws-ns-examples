@@ -40,7 +40,7 @@ try
     $images = "images";
     $pdf    = "pdf";
     
-    // the three workflow definition in _common_assets
+    // the three workflow definitions in _common_assets
     $file_wfd_id  = "a0d9a8f18b7f08ee0990fe6e6359ba4b";
     $image_wfd_id = "8df491bd8b7f08ee03f6d9bbf01d5937";
     $pdf_wfd_id   = "8e0495b78b7f08ee03f6d9bbf84c9846";
