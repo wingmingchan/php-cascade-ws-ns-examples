@@ -1,2 +1,0 @@
-# php-cascade-ws-ns-examples/hangout-practice
-Programs posted here are those created during the web service hangout sessions, to be shared by participants, so that they can copy or download the code and run the programs locally on their machines. Files are organized in folders named using dates of meetings.
