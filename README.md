@@ -5,7 +5,7 @@
 
 <ul>
 <li>asset-class-test-code: code used to test various Asset classes.</li>
-<li>hangout-practice: small programs written for the hangout tutorials</li>
+<li>tutorial: programs written for the tutorials</li>
 <li>hr: programs used to convert our non-responsive hr site to a new responsive site</li>
 <li>property-class-test-code: code used to test various Property classes.</li>
 
