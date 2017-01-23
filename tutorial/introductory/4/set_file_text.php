@@ -11,8 +11,10 @@ use cascade_ws_exception as e;
 try
 {
     $file = $cascade->getAsset( a\File::TYPE, "081f5b248b7ffe8339ce5d137fcdb3f8" );
-    //$file->setText( "body{color:#ffffff}" )->edit();
-    $file->setData( "body{color:#ffffff}" )->edit();
+    
+    // the color will be #ff0000, not #ffffff
+    $file->setText( "body{color:#ff0000}" )->
+        setData( "body{color:#ffffff}" )->edit()->dump();
 }
 catch( \Exception $e ) 
 {
