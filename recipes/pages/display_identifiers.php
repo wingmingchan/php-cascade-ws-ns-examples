@@ -1,7 +1,9 @@
 <?php 
 /*
 This program shows how to display all fully qualified identifiers
-in the structured data of a page.
+in the structured data of a page. These identifiers are used
+to access individual nodes. We can also use a foreach loop to
+loop through them.
 */
 require_once( 'auth_chanw.php' );
 
