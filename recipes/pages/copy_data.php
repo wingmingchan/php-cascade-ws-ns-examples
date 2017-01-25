@@ -1,7 +1,7 @@
 <?php 
 /*
-This program shows how to copy all data from the source page
-to the target page. This assumes that the two pages are associated
+This program shows how to copy all data from the source page to a pre-existing
+target page. This assumes that the two pages are associated
 with the same data definition.
 */
 require_once( 'auth_chanw.php' );
