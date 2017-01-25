@@ -1,5 +1,9 @@
-<?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+<?php
+/*
+This program shows how to get a new and empty structured data out of
+a data definition.
+*/
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,19 +14,30 @@ use cascade_ws_exception as e;
 
 try
 {
-    $page   = $cascade->getAsset( a\Page::TYPE, "beda1ad58b7f08ee7691912d9470a54f" );
-    $dd     = $page->getDataDefinition();
+    $site_name = "cascade-admin-old";
+    $page_name = "test/new-page";
+    $page      = $cascade->getAsset( a\Page::TYPE, $page_name, $site_name );
+    $dd        = $page->getDataDefinition();
     
-    // stdClass object, used when new StructuredData( $new_sd_stdClass )
+    // stdClass object, used with new StructuredData( $new_sd_stdClass )
+    // this is an empty container
     $new_sd_stdClass = $dd->getStructuredData();
     u\DebugUtility::dump( $new_sd_stdClass );
     
     // StructuredData object, use this to map data and setStructuredData
+    // the same empty container
     $new_sd = $dd->getStructuredDataObject();
-    u\DebugUtility::dump( $new_sd_stdClass );
+    u\DebugUtility::dump( $new_sd->toStdClass() );
+    
+    // StructuredData object of the page, containing data
+    u\DebugUtility::dump( $page->getStructuredData()->toStdClass() );
 }
-catch( \Exception $e ) 
+catch( \Exception $e )
 {
-    echo S_PRE . $e . E_PRE; 
+    echo S_PRE . $e . E_PRE;
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
