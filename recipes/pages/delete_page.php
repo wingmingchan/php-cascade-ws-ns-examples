@@ -16,6 +16,8 @@ try
     // there is no point in loading the page to delete it
     // just pass in the ID
     $cascade->deletePage( "d5f5eb358b7f08ee18c89a8f3914a4e9" );
+    // or path/site name
+    $cascade->deletePage( "test/new-page1", "cascade-admin-old" );
 }
 catch( \Exception $e ) 
 {
