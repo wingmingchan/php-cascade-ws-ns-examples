@@ -1,5 +1,8 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+/*
+This program shows how to delete a page.
+*/
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -11,10 +14,15 @@ use cascade_ws_exception as e;
 try
 {
     // there is no point in loading the page to delete it
-    $cascade->deletePage( "2a47653d8b7f08ee3c48c4e996f9054a" );
+    // just pass in the ID
+    $cascade->deletePage( "d5f5eb358b7f08ee18c89a8f3914a4e9" );
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
