@@ -1,5 +1,11 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+/*
+This program shows how to change the associated content type.
+Note that this program does not deal with data mapping, and
+current data may disappear due to this fact.
+See https://github.com/wingmingchan/php-cascade-ws-ns-examples/tree/master/recipes/data_mapping and https://github.com/wingmingchan/php-cascade-ws-ns-examples/blob/master/hr/switch_content_type.php for more details.
+*/
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -20,5 +26,9 @@ try
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
