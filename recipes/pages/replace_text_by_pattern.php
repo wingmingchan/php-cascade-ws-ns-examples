@@ -1,5 +1,9 @@
-<?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+<?php
+/*
+This program shows how to use an asset tree to search for a pattern in pages
+and replace it with a textual value.
+*/
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -12,11 +16,9 @@ $start_time = time();
 
 try
 {
-    // to prevent time-out
-    set_time_limit ( 10000 );
-    // to prevent using up memory when traversing a large site
-    ini_set( 'memory_limit', '2048M' );
+    u\DebugUtility::setTimeSpaceLimits();
     
+    // replace web.upstate.edu with www.upstate.edu
     $pattern     = "/<(a[^>]+href=['\"]\S+)web(\.upstate\.edu)/";
     $replacement = '<${1}www${2}';
 
@@ -31,22 +33,24 @@ try
             array( a\Page::TYPE => array( "assetTreeReplaceTextByPattern" ) ),
             $params
         );
-
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
 }
-catch( \Exception $e ) 
+catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
+    u\DebugUtility::outputDuration( $start_time );
 }
 
 function assetTreeReplaceTextByPattern( 
     aohs\AssetOperationHandlerService $service, 
     p\Child $child, $params=NULL, &$results=NULL )
 {
-    $type      = $child->getType();
+    $type = $child->getType();
     
     if( $type != a\Page::TYPE && $type != a\DataBlock::TYPE )
     {
@@ -71,6 +75,7 @@ function assetTreeReplaceTextByPattern(
     if( count( $asset->searchTextByPattern( $pattern ) ) > 0 )
     {
         echo $child->getPathPath(), BR;
+        // apply to all text nodes
         $asset->replaceByPattern( $pattern, $replacement )->edit();
     }
 }
