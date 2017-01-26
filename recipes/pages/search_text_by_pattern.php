@@ -1,5 +1,8 @@
-<?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+<?php
+/*
+This program shows how to use an asset tree to search for a pattern in pages.
+*/
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -12,10 +15,7 @@ $start_time = time();
 
 try
 {
-    // to prevent time-out
-    set_time_limit ( 10000 );
-    // to prevent using up memory when traversing a large site
-    ini_set( 'memory_limit', '2048M' );
+    u\DebugUtility::setTimeSpaceLimits();
     
     $pattern = "/<a[^>]+href=['\"]\S+web\.upstate\.edu/";
     $params  = array( "pattern" => $pattern );
@@ -30,15 +30,17 @@ try
         );
         
     u\DebugUtility::dump( $results );
-
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
 }
-catch( \Exception $e ) 
+catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE;
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    u\DebugUtility::outputDuration( $start_time );
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE;
+    u\DebugUtility::outputDuration( $start_time );
 }
 
 function assetTreeSearchTextByPattern( 
@@ -71,4 +73,5 @@ function assetTreeSearchTextByPattern(
     {
         $results[ $child->getPathPath() ] = $identifiers;
     } 
-}?>
+}
+?>
