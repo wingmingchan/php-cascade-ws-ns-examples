@@ -1,6 +1,6 @@
 <?php
 /*
-This program shows how to move a page.
+This program shows how to retrieve the textual value from a wired field.
 */
 require_once( 'auth_chanw.php' );
 
@@ -14,7 +14,7 @@ use cascade_ws_exception as e;
 try
 {
     // page to be moved
-    $page = $cascade->getAsset( a\Page::TYPE, '2a47653d8b7f08ee3c48c4e996f9054a' );
+    $page   = $cascade->getAsset( a\Page::TYPE, '2a47653d8b7f08ee3c48c4e996f9054a' );
     
     // folder to which the page should be moved
     $folder = $cascade->getAsset( a\Folder::TYPE, 'fff3a7538b7f08ee3e513744ae475537' );
