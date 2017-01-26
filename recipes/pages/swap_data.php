@@ -1,5 +1,12 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+/*
+This program shows how to swap two instances of a multiple group.
+This technique works for any two instances of the same set of multiple nodes.
+The prerequisite is that the two fully qualified identifiers involved
+differ only in the last digital part, meaning the two nodes must be siblings
+and both are instances of the same set.
+*/
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -18,5 +25,9 @@ try
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
+}
+catch( \Error $er )
+{
+    echo S_PRE . $er . E_PRE; 
 }
 ?>
