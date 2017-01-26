@@ -1,7 +1,7 @@
 <?php
 /*
-This program shows how to get a new and empty structured data out of
-a data definition.
+This program shows how to retrieve information regarding blocks and formats
+attached to regions at the page level.
 */
 require_once( 'auth_chanw.php' );
 
