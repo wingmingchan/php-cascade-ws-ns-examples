@@ -16,7 +16,7 @@ try
     // join a group
     if( !$user->isInGroup( $group ) )
     {
-    	$user->joinGroup( $group );
+        $user->joinGroup( $group );
     }
     
     echo $group->getUsers(), BR;
@@ -25,18 +25,18 @@ try
     $user->leaveGroup( $group );
     echo $group->getUsers(), BR;
 
-	// disable the user
-	$user->disable()->edit();
-	echo u\StringUtility::boolToString( $user->getEnabled() ), BR;
-	
-	// enable the user
-	$user->enable()->edit();
-	
-	// get the auth type
-	echo $user->getAuthType(), BR;
-	
-	// set the password
-	$user->setPassword( 'easy' )->edit();
+    // disable the user
+    $user->disable()->edit();
+    echo u\StringUtility::boolToString( $user->getEnabled() ), BR;
+    
+    // enable the user
+    $user->enable()->edit();
+    
+    // get the auth type
+    echo $user->getAuthType(), BR;
+    
+    // set the password
+    $user->setPassword( 'easy' )->edit();
 }
 catch( \Exception $e ) 
 {
