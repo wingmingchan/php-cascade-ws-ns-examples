@@ -2,7 +2,14 @@
 /*
 This program shows how to search for a string in a page.
 All text nodes are searched, and the result array stores
-fully qualified identiers of nodes where the string is found.
+fully qualified identiers of nodes where the string is found. Example:
+
+array(2) {
+  [0]=>
+  string(18) "main-content-title"
+  [1]=>
+  string(20) "main-content-content"
+}
 */
 require_once( 'auth_chanw.php' );
 
@@ -22,7 +29,7 @@ try
     $result = $page->searchText( "Format and Page" );
     
     if( isset( $result ) )
-        u\DebugUtility::dump( $result ); // "main-content-title", "main-content-content"
+        u\DebugUtility::dump( $result );
     else
         echo "String not found" . BR;
         
@@ -31,7 +38,7 @@ try
     $result = $page->searchText( "Format" );
     
     if( isset( $result ) )
-        u\DebugUtility::dump( $result ); // "main-content-title", "main-content-content"
+        u\DebugUtility::dump( $result );
     else
         echo "String not found" . BR;
 }
