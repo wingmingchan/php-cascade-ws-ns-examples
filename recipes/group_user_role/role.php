@@ -12,6 +12,7 @@ try
 {
     $role = $cascade->getAsset( a\Role::TYPE, 10 );
     
+    // get the Abilities object
     if( $role->getRoleType() == "global" )
     {
     	$abillities = $role->getGlobalAbilities();
@@ -22,9 +23,10 @@ try
     }
     
     u\DebugUtility::dump( $abillities );
+    
+    // set an ability
     $abillities->setAccessContentTypes( false );
     $role->edit()->dump();
-    
 }
 catch( \Exception $e ) 
 {
