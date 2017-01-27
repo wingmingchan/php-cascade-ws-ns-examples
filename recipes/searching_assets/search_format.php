@@ -16,21 +16,21 @@ use cascade_ws_exception as e;
 
 try
 {
-	$site_name = "_common_assets_wing";
-	$params    = array();
-	$params[ a\ScriptFormat::TYPE ][ "needle" ] = "processScript";
-	$params[ a\ScriptFormat::TYPE ][ "method" ] = "getScript";
-	
-	$results   = array();
-	
-	$cascade->getSite( $site_name )->getAssetTree()->
-		traverse(
-			array( 
-				a\ScriptFormat::TYPE => array( "assetTreeSearchForNeedleInHaystack" ) ),
-			$params,
-			$results
-		);
-	
+    $site_name = "_common_assets_wing";
+    $params    = array();
+    $params[ a\ScriptFormat::TYPE ][ "needle" ] = "processScript";
+    $params[ a\ScriptFormat::TYPE ][ "method" ] = "getScript";
+    
+    $results   = array();
+    
+    $cascade->getSite( $site_name )->getAssetTree()->
+        traverse(
+            array( 
+                a\ScriptFormat::TYPE => array( "assetTreeSearchForNeedleInHaystack" ) ),
+            $params,
+            $results
+        );
+    
     u\DebugUtility::dump( $results );
 }
 catch( \Exception $e ) 
