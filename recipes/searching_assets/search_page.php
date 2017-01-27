@@ -22,7 +22,7 @@ try
     $result = $page->searchText( "Format and Page" );
     
     if( isset( $result ) )
-        u\DebugUtility::dump( $result ); // "main-content-title"
+        u\DebugUtility::dump( $result ); // "main-content-title", "main-content-content"
     else
         echo "String not found" . BR;
         
