@@ -14,13 +14,13 @@ $start_time = time();
 
 try
 {
-	$folder = $cascade->getAsset( a\Folder::TYPE, "1f22a4ec8b7ffe834c5fe91e57655349" );
-	$ms = $cascade->getAsset( a\MetadataSet::TYPE, "358be6af8b7ffe83164c9314f9a3c1a6" );
-	
-	$at_util = new ex\AssetTreeUtility( $cascade );
-	$at_util->associateBlocksWithMetadataSet( $folder, $ms );
-	
-	u\DebugUtility::outputDuration( $start_time );
+    $folder = $cascade->getAsset( a\Folder::TYPE, "1f22a4ec8b7ffe834c5fe91e57655349" );
+    $ms = $cascade->getAsset( a\MetadataSet::TYPE, "358be6af8b7ffe83164c9314f9a3c1a6" );
+    
+    $at_util = new ex\AssetTreeUtility( $cascade );
+    $at_util->associateBlocksWithMetadataSet( $folder, $ms );
+    
+    u\DebugUtility::outputDuration( $start_time );
 }
 catch( \Exception $e ) 
 {
@@ -29,7 +29,7 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
     u\DebugUtility::outputDuration( $start_time );
 }
 ?>
