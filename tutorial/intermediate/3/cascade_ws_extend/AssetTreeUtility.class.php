@@ -19,7 +19,7 @@ class AssetTreeUtility
         
     public function associateBlocksWithMetadataSet( a\Folder $folder, a\MetadataSet $ms )
     {
-    	// global function in global_functions.php
+        // global function in global_functions.php
         $global_function_name = "assetTreeAssociateWithMetadataSet";
         
         $folder->getAssetTree()->traverse(
