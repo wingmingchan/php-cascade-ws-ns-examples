@@ -31,13 +31,13 @@ class UpstateReport extends a\Report
     
     public function reportTemplatePaths()
     {
-    	return $this->traverse( a\Template::TYPE, "assetTreeReportTemplatePaths" );
+        return $this->traverse( a\Template::TYPE, "assetTreeReportTemplatePaths" );
     }
     
     private function traverse( string $type, string $func )
     {
-    	$my_root = $this->getRoot();
-    	
+        $my_root = $this->getRoot();
+        
         if( !isset( $my_root ) )
             throw new e\ReportException( c\M::ROOT_FOLDER_NOT_SET );
 
