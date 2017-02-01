@@ -14,15 +14,14 @@ $start_time = time();
 
 try
 {
-	$ur = new ex\UpstateReport( $cascade );
-	$ur->setRootFolder(
-		$cascade->getAsset( a\Folder::TYPE, "345f43438b7ffe83164c9314b1de4131" ) );
-		
-	u\DebugUtility::dump( $ur->reportNumberOfTemplates() );
-	//u\DebugUtility::dump( $ur->reportTemplateFormatPaths() );
-	
-	
-	u\DebugUtility::outputDuration( $start_time );
+    $ur = new ex\UpstateReport( $cascade );
+    $ur->setRootFolder(
+        $cascade->getAsset( a\Folder::TYPE, "345f43438b7ffe83164c9314b1de4131" ) );
+        
+    u\DebugUtility::dump( $ur->reportNumberOfTemplates() );
+    //u\DebugUtility::dump( $ur->reportTemplateFormatPaths() );
+    
+    u\DebugUtility::outputDuration( $start_time );
 }
 catch( \Exception $e ) 
 {
@@ -31,7 +30,7 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
     u\DebugUtility::outputDuration( $start_time );
 }
 ?>
