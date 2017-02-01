@@ -21,9 +21,12 @@ try
     $mode = 'empty';
     $mode = 'mixed';
     $mode = 'contain';
-    $mode = 'wired';
-    $mode = 'dynamic';
-    $mode = 'last';
+    $mode = 'wired1';
+    //$mode = 'wired2';
+    //$mode = 'wired3';
+    //$mode = 'dynamic';
+    //$mode = 'last';
+    //$mode = 'date';
     
     switch( $mode )
     {
@@ -204,7 +207,38 @@ try
             u\DebugUtility::dump( $results ); // 0
             break;
             
-        case 'wired':
+        case 'wired1':
+            // get pages with authors containing a substring
+            $results = $report->
+                setRootFolder( 
+                    $cascade->getFolder( 
+                        'edcomm/web/not-in-use-classes/showcase-old', 'imt-intra' )
+                // the first time, need to pass in the substring
+                // and to retraverse, hence true
+                )->reportAuthorContains( a\Page::TYPE, true, "nw" );
+                
+            echo S_H2 . "Pages with Author Containing 'nw'" . E_H2;
+            u\DebugUtility::dump( $results );
+        
+            // get pages with authors
+            // $results already contains the information from the first traversal
+            // no need to retraverse
+            $results = $report->
+                setRootFolder( 
+                    $cascade->getFolder( 
+                        'edcomm/web/not-in-use-classes/showcase-old', 'imt-intra' )
+                // the second time, no substring, hence false
+                )->reportHasAuthor( a\Page::TYPE, false );
+                
+            echo S_H2 . "Pages with Authors" . E_H2;
+            u\DebugUtility::dump( $results );
+            
+            // this line will take a very long time to execute!!!
+            //u\DebugUtility::dump( $report->getCache() );
+            
+            break;
+            
+        case 'wired2':
             // get page with empty displayName
             $results = $report->
                 setRootFolder( 
@@ -214,7 +248,7 @@ try
                     array( "displayName" ) );
                     
             echo S_H2 . "Pages with Empty Display Name" . E_H2;
-            u\DebugUtility::dump( $results ); // 2
+            u\DebugUtility::dump( $results );
             
             // get page with empty displayName or title
             $results = $report->
@@ -226,7 +260,7 @@ try
                     true); // disjunctive
                     
             echo S_H2 . "Pages with Empty Display Name or Title" . E_H2;
-            u\DebugUtility::dump( $results ); // 3
+            u\DebugUtility::dump( $results );
             
             // get page with empty displayName and title
             $results = $report->
@@ -238,7 +272,7 @@ try
                     false); // conjunctive
                     
             echo S_H2 . "Pages with Empty Display Name and Title" . E_H2;
-            u\DebugUtility::dump( $results ); // 1
+            u\DebugUtility::dump( $results );
             
             // get page with empty summary
             $results = $report->
@@ -249,8 +283,50 @@ try
                     array( "summary" ) );
                     
             echo S_H2 . "Pages with Empty Summary" . E_H2;
-            u\DebugUtility::dump( $results ); // 12
+            u\DebugUtility::dump( $results );
             break;
+            
+        case 'wired3':
+            $results = $report->
+                setRootFolder( 
+                    $cascade->getFolder( 
+                        '636ff42c8b7f08ee226116ff6b335718' )
+                )->reportMetadataWiredFields( 25 );
+               
+            echo S_H2 . "Pages with Long Title" . E_H2;
+            // 24 seconds
+            u\DebugUtility::dump( $report->reportLongTitle() ); 
+        
+            echo S_H2 . "Pages with Long Display Names" . E_H2;
+             // 1 second
+            u\DebugUtility::dump( $report->reportLongDisplayName() );
+            
+            echo S_H2 . "Pages with No Author" . E_H2;
+            // 0 seconds
+            u\DebugUtility::dump( $report->reportHasNoAuthor( a\Page::TYPE ) ); 
+            
+            echo S_H2 . "Pages with No Display Name" . E_H2;
+            // 0 seconds
+            u\DebugUtility::dump( $report->reportHasNoDisplayName( a\Page::TYPE ) ); 
+        
+            //$report->clearResults();
+        
+            // by itself, 24 seconds
+        /*
+            u\DebugUtility::dump(
+                $report->
+                    setRootFolder( 
+                        $cascade->getFolder( 
+                            '636ff42c8b7f08ee226116ff6b335718' )
+                    )->reportLongDisplayName( 25, a\Page::TYPE, true ) );
+        */
+            break;
+            
+        case 'wired4':
+        	
+        
+        
+        	break;
             
         case 'dynamic':
             // get page with empty dynamic field
@@ -392,6 +468,29 @@ try
             echo S_H2 . "Files/Pages Created in the Last Three Months" . E_H2;
             u\DebugUtility::dump( $results );
 
+            break;
+            
+        case 'date':
+            $date = new DateTime('2011-01-01T00:00:00.012345Z');
+            
+            $results = $report->
+                setRootFolder( 
+                    $cascade->getFolder( '2c7a19888b7f08ee603d6820e25d3dc9' )
+                // called the first time, retraversal required, hence true
+                )->reportStartDateBefore( $date, a\Page::TYPE, true );
+            
+            echo S_H2 . "Pages with End Date Set to Before 1/1/2011" . E_H2;
+            u\DebugUtility::dump( $results );
+            
+            $results = $report->
+                setRootFolder( 
+                    $cascade->getFolder( '2c7a19888b7f08ee603d6820e25d3dc9' )
+                // no new DateTime, retraversal not needed, hence false
+                )->reportStartDateAfter( $date, a\Page::TYPE, false );
+            
+            echo S_H2 . "Pages with End Date Set to 1/1/2011 or After" . E_H2;
+            u\DebugUtility::dump( $results );
+        
             break;
     }    
     
