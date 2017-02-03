@@ -1,6 +1,6 @@
 <?php
 /*
-This program is used to folder, blocks, and symlinks with the proper metadata sets.
+This program is used to associate folder, blocks, and symlinks with the proper metadata sets.
 */
 
 $start_time = time();
