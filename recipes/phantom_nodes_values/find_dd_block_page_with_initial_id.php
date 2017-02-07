@@ -13,8 +13,7 @@ Copy the partial id string and paste it as the value of $initial_id. Note that b
 the site name is also required. Once the full id is found, paste it into the URL field and hand-edit 
 the block or page to fix the problem.
 */
-require_once( 'cascade_ws_ns/auth_chanw.php' );
-require_once( '/webfs/www/nosync/cascade/admin_functions_rwd.php' );
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -25,8 +24,8 @@ use cascade_ws_exception as e;
 
 try
 {
-    $initial_id  = "344fe2498b7f085";
-    $site_name   = "cascade-admin";
+    $initial_id  = "5bfdb6428b7f08e";
+    $site_name   = "cascade-admin-old";
     
     $cascade->getAsset( a\Site::TYPE, $site_name )->getBaseFolderAssetTree()->
         traverse( 
@@ -38,10 +37,14 @@ catch( \Exception $e )
 {
     echo S_PRE . $e . E_PRE; 
 }
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE; 
+}
 
 function assetTreeFindDDBlockPageWithIntialId( 
     aohs\AssetOperationHandlerService $service, 
-    p\Child $child, $params=NULL, &$results=NULL )
+    p\Child $child, array $params=NULL, array &$results=NULL )
 {
     if( !isset( $params[ 'partial-id' ] ) )
         throw new \Exception( "The id is not included" );
