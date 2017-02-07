@@ -5,12 +5,7 @@ It program can take a very long time to run.
 */
 $start_time = time();
 
-require_once( 'cascade_ws_ns/auth_chanw.php' );
-
-// to prevent time-out
-set_time_limit( 10000 );
-// to prevent using up memory when traversing a large site
-ini_set( 'memory_limit', '2048M' );
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -25,6 +20,8 @@ $folder_id = "bafa363d8b7f08ee2dbad4e8a9bc49dd";
 
 try
 {
+    u\DebugUtility::setTimeSpaceLimits();
+
     $results = array();
     
     //$cascade->getSite( $site_name )->getBaseFolderAssetTree()->
@@ -38,21 +35,22 @@ try
     
     u\DebugUtility::dump( $results );
     
-    $end_time = time();
-    echo BR . "Total time taken: " . ( $end_time - $start_time ) . " seconds" . BR;
-
+    u\DebugUtility::outputDuration( $start_time );
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE;
-    $end_time = time();
-    echo BR . "Total time taken: " . ( $end_time - $start_time ) . " seconds" . BR;
+    u\DebugUtility::outputDuration( $start_time );
 }
-
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE;
+    u\DebugUtility::outputDuration( $start_time );
+}
 
 function assetTreeReportPhantomNodes( 
     aohs\AssetOperationHandlerService $service, 
-    p\Child $child, $params=NULL, &$results=NULL )
+    p\Child $child, array $params=NULL, array &$results=NULL )
 {
     if( !isset( $results ) || !is_array( $results ) )
         throw new \Exception( "The results array is required" );
