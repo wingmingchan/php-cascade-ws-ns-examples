@@ -5,12 +5,7 @@ It can take a very long time to run.
 */
 $start_time = time();
 
-require_once( 'cascade_ws_ns/auth_chanw.php' );
-
-// to prevent time-out
-set_time_limit( 10000 );
-// to prevent using up memory when traversing a large site
-ini_set( 'memory_limit', '2048M' );
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -24,6 +19,8 @@ $folder_id = "9d6b193f8b7f08ee42e2f3672f4d5488";
 
 try
 {
+    u\DebugUtility::setTimeSpaceLimits();
+
     //$cascade->getSite( $site_name )->getBaseFolderAssetTree()->
     $cascade->getAsset( a\Folder::TYPE, $folder_id )->getAssetTree()->
         traverse(
@@ -31,20 +28,22 @@ try
                    a\DataBlock::TYPE => array( "assetTreeFixPhantomNodes" ) )
         );
     
-    $end_time = time();
-    echo BR . "Total time taken: " . ( $end_time - $start_time ) . " seconds" . BR;
-
+    u\DebugUtility::outputDuration( $start_time );
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE;
-    $end_time = time();
-    echo BR . "Total time taken: " . ( $end_time - $start_time ) . " seconds" . BR;
+    u\DebugUtility::outputDuration( $start_time );
+}
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE;
+    u\DebugUtility::outputDuration( $start_time );
 }
 
 function assetTreeFixPhantomNodes( 
     aohs\AssetOperationHandlerService $service, 
-    p\Child $child, $params=NULL, &$results=NULL )
+    p\Child $child, array $params=NULL, array &$results=NULL )
 {
     // skip entire folder
     if( strpos( $child->getPathPath(), "_extra/" ) !== false )
