@@ -1,4 +1,8 @@
 <?php
+/*
+This program is used to fix a phantom value.
+Since we are fixing the data, fully identifiers are required to change the data.
+*/
 $start_time = time();
 
 require_once( 'auth_chanw.php' );
