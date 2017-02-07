@@ -24,7 +24,7 @@ try
             $healthy_sd   = $healthy_sd->removePhantomNodes( $phantom_sd );
     
             $phantom_page->setStructuredData( $healthy_sd );
-            $cascade->getAsset( a\Page::TYPE, $page_id )->dump( true );
+            $cascade->getAsset( a\Page::TYPE, $page_id )->dump();
 
             break;
         
@@ -38,7 +38,7 @@ try
             $healthy_sd    = $healthy_sd->removePhantomNodes( $phantom_sd );
             
             $phantom_block->setStructuredData( $healthy_sd );
-            $cascade->getAsset( a\DataBlock::TYPE, $block_id )->dump( true );
+            $cascade->getAsset( a\DataBlock::TYPE, $block_id )->dump();
 
             break;
     }
