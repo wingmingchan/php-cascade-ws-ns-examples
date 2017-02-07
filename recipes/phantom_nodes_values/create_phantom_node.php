@@ -1,5 +1,5 @@
 <?php 
-require_once('cascade_ws_ns/auth_chanw.php');
+require_once( 'auth_chanw.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -17,23 +17,36 @@ try
     $phantom_block = new a\DataDefinitionBlockPhantom( $service, $service->createId( a\DataDefinitionBlockPhantom::TYPE, $block_id ) );
     
     $block_property = $phantom_block->getProperty();
-    $sd_array       = $block_property->structuredData->structuredDataNodes->structuredDataNode;
+    $sd_array       = $block_property->structuredData->
+        structuredDataNodes->structuredDataNode;
     
     // add another phantom node
     $phantom             = new \stdClass();
     $phantom->type       = "text";
     $phantom->identifier = "phantom";
     $phantom->text       = "Phantom value";
-    $sd_array[]          = $phantom;
+    
+    if( is_array( $sd_array ) )
+    	$sd_array[]      = $phantom;
+    else
+    	$sd_array        = $phantom;
     
     $asset = a\AssetTemplate::getDataDefinitionBlock();
     $asset->xhtmlDataDefinitionBlock = $block_property;
-    $asset->xhtmlDataDefinitionBlock->structuredData->structuredDataNodes->structuredDataNode =
+    $asset->xhtmlDataDefinitionBlock->structuredData->
+        structuredDataNodes->structuredDataNode =
         $sd_array;
     $service->edit( $asset );
+    
+    // exception thrown here!
+    $cascade->getAsset( a\DataBlock::TYPE, $block_id );
 }
 catch( \Exception $e ) 
 {
     echo S_PRE . $e . E_PRE; 
 } 
+catch( \Error $er ) 
+{
+    echo S_PRE . $er . E_PRE;
+}
 ?>
