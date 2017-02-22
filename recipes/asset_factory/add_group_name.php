@@ -1,4 +1,8 @@
 <?php
+/*
+This program shows how to add a group to
+an asset factory container and all its direct child asset factories.
+*/
 require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
@@ -18,11 +22,11 @@ try
     
     if( count( $afs ) > 0 )
     {
-    	foreach( $afs as $af_child )
-    	{
-    		$af = $af_child->getAsset( $service );
-    		$af->addGroupName( "22q" )->edit();
-    	}
+        foreach( $afs as $af_child )
+        {
+            $af = $af_child->getAsset( $service );
+            $af->addGroupName( "22q" )->edit();
+        }
     }
     
 }
@@ -32,24 +36,6 @@ catch( \Exception $e )
 }
 catch( \Error $er )
 {
-	echo S_PRE . $er . E_PRE; 
+    echo S_PRE . $er . E_PRE; 
 }
-/*
-Useful code templates:
-    u\ReflectionUtility::showMethodSignatures( 
-        "cascade_ws_utility\ReflectionUtility" );
-        
-    u\ReflectionUtility::showMethodSignature( 
-        "cascade_ws_asset\Page", "edit" );
-        
-    u\ReflectionUtility::showMethodDescription( 
-        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-        
-    u\ReflectionUtility::showMethodExample( 
-        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-
-    u\DebugUtility::dump( $page );
-
-    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump( true );
-*/
 ?>
