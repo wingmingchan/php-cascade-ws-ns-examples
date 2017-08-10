@@ -11,9 +11,9 @@ use cascade_ws_exception as e;
 try
 {
     $xml  = $cascade->getAsset(
-	    a\XmlBlock::TYPE, "c1c150508b7f08ee4fe76bb8883e80b5" )->getXml();
-	$xsl  = $cascade->getAsset(
-	    a\XsltFormat::TYPE, "c1cdc7488b7f08ee4fe76bb8b0635d4a" )->getXml();
+        a\XmlBlock::TYPE, "c1c150508b7f08ee4fe76bb8883e80b5" )->getXml();
+    $xsl  = $cascade->getAsset(
+        a\XsltFormat::TYPE, "c1cdc7488b7f08ee4fe76bb8b0635d4a" )->getXml();
     $xslt = new XSLTProcessor();
     
     $xslt->importStylesheet( new SimpleXMLElement( $xsl ) );
