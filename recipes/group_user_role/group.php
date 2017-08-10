@@ -30,16 +30,6 @@ try
     // test existence of a user
     echo u\StringUtility::boolToString( $group->hasUser( $user ) ), BR;
     echo u\StringUtility::boolToString( $group->hasUserName( "chanw" ) ), BR;
-    
-    // set various flags
-    $group->
-        setWysiwygAllowFontAssignment( false )->            
-        setWysiwygAllowFontFormatting( false )->            
-        setWysiwygAllowImageInsertion( true )->            
-        setWysiwygAllowTableInsertion( true )->            
-        setWysiwygAllowTextFormatting( false )->            
-        setWysiwygAllowViewSource( true )->            
-        edit();
 }
 catch( \Exception $e ) 
 {
