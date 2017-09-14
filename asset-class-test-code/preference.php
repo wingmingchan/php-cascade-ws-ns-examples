@@ -10,18 +10,30 @@ use cascade_ws_exception as e;
 
 try
 {
-    // through Cascade
-    $pref = $cascade->getPreference(); //->
-        //setValue( a\Preference::ALLOW_TEXT_FORMATTING, "on" )->
-        //setValue( a\Preference::ALLOW_FONT_FORMATTING, "on" )->
-        //setValue( a\Preference::ASSET_TREE_MODE, "fastest" )->
-        //dump();
-    //$pref->setValue( a\Preference::ALLOW_TABLE_EDITING, "on" );
-    //$pref->dump();
-    
-    echo $pref->getValue( a\Preference::ASSET_TREE_MODE );
-    
-    //u\DebugUtility::dump( $pref->toStdClass() );
+	$preference = $cascade->getPreference();
+	u\DebugUtility::dump( $preference->toStdClass() );
+	
+	//u\DebugUtility::dump( $preference->getMap() );
+	
+	$names      = $preference->getNames();
+	u\DebugUtility::dump( $names );
+
+	$common     = array();
+	$difference = array();
+	
+	foreach( $preference->toStdClass()->preference as $pref )
+	{
+		if( !in_array( $pref->name, $common ) )
+		{
+			$common[] = $pref->name;
+		}
+		else
+		{
+			$difference[] = $pref->name;
+		}
+	}
+	
+	u\DebugUtility::dump( $difference );
     
     echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Preference" );
 }
