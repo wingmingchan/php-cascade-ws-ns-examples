@@ -10,37 +10,38 @@ use cascade_ws_exception as e;
 
 try
 {
-    $site_name = "cascade-admin";
+    $site_name = "web-services";
     
     $class_page_array = array(
+
         "cascade_ws_AOHS\AssetOperationHandlerService" =>
-            "/web-services/api/AssetOperationHandlerService/api",
+            "/api/AssetOperationHandlerService",
+/*/
         "cascade_ws_utility\Cache" =>
-            "/web-services/api/utility-classes/cache",
+            "/api/utility-classes/cache",
         "cascade_ws_utility\DebugUtility" =>
-            "/web-services/api/utility-classes/debug-utility",
+            "/api/utility-classes/debug-utility",
         "cascade_ws_utility\ReflectionUtility" =>
-            "/web-services/api/utility-classes/reflection-utility",
+            "/api/utility-classes/reflection-utility",
         "cascade_ws_utility\StringUtility" =>
-            "/web-services/api/utility-classes/string-utility",
+            "/api/utility-classes/string-utility",
         "cascade_ws_utility\XmlUtility" =>
-            "/web-services/api/utility-classes/xml-utility",
+            "/api/utility-classes/xml-utility",
+/*/
+/*//*/
     );
     
     foreach( $class_page_array as $class_name => $page_path )
     {
         $page = $cascade->getAsset( a\Page::TYPE, $page_path, $site_name );  
         $page->setText(
-            "main-content-content",
+            "main-group;wysiwyg",
             u\ReflectionUtility::getClassDocumentation( $class_name )
-        )->edit()->publish();
-        
-        if( u\ReflectionUtility::getClassDocumentation( $class_name ) == "" )
-        	echo "Warning!!!!", BR;
+        )->edit()->publish();        
     }
     
     // publish the index page
-    $page_id = $service->createId( a\Page::TYPE,  "/web-services/api/utility-classes/index", $site_name );
+    $page_id = $service->createId( a\Page::TYPE,  "/api/utility-classes/index", $site_name );
     $service->publish( $page_id );
 }
 catch( \Exception $e ) 
