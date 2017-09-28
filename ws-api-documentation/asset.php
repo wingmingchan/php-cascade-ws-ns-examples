@@ -1,5 +1,4 @@
 <?php
-//require_once('auth_chanw.php');
 require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
