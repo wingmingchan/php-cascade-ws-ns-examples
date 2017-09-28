@@ -10,27 +10,27 @@ use cascade_ws_exception as e;
 
 try
 {
-    $site_name = "cascade-admin";
+    $site_name = "web-services";
     
     $class_page_array = array(
         "cascade_ws_constants\F" =>
-            "/web-services/api/constant-classes/f",
+            "/api/constant-classes/f",
         "cascade_ws_constants\L" =>
-            "/web-services/api/constant-classes/l",
+            "/api/constant-classes/l",
         "cascade_ws_constants\M" =>
-            "/web-services/api/constant-classes/m",
+            "/api/constant-classes/m",
         "cascade_ws_constants\P" =>
-            "/web-services/api/constant-classes/p",
+            "/api/constant-classes/p",
         "cascade_ws_constants\S" =>
-            "/web-services/api/constant-classes/s",
+            "/api/constant-classes/s",
         "cascade_ws_constants\T" =>
-            "/web-services/api/constant-classes/t",
+            "/api/constant-classes/t",
         "cascade_ws_constants\AuditTypes" =>
-            "/web-services/api/constant-classes/audit-types",
+            "/api/constant-classes/audit-types",
         "cascade_ws_constants\BooleanValues" =>
-            "/web-services/api/constant-classes/boolean-values",
+            "/api/constant-classes/boolean-values",
         "cascade_ws_constants\LevelValues" =>
-            "/web-services/api/constant-classes/level-values",
+            "/api/constant-classes/level-values",
 
     );
     
@@ -38,13 +38,13 @@ try
     {
         $page = $cascade->getAsset( a\Page::TYPE, $page_path, $site_name );  
         $page->setText(
-            "main-content-content",
+            "main-group;wysiwyg",
             u\ReflectionUtility::getClassDocumentation( $class_name )
         )->edit()->publish();
     }
     
     // publish the index page
-    $page_id = $service->createId( a\Page::TYPE,  "/web-services/api/constant-classes/index", $site_name );
+    $page_id = $service->createId( a\Page::TYPE,  "/api/constant-classes/index", $site_name );
     $service->publish( $page_id );
 }
 catch( \Exception $e ) 
