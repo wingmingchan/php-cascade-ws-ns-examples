@@ -1,4 +1,5 @@
 <?php
+//require_once('auth_chanw.php');
 require_once('auth_chanw.php');
 
 use cascade_ws_AOHS      as aohs;
@@ -7,145 +8,171 @@ use cascade_ws_asset     as a;
 use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
-
+/*//*/
 try
 {
-    $site_name = "cascade-admin";
+    $site_name = "web-services";
     
     $class_page_array = array(
-/*/
+/*/  /*/  
+
         "cascade_ws_asset\Asset" =>
-            "/web-services/api/asset-classes/asset",
-        "cascade_ws_asset\Audit" =>
-            "/web-services/api/audit",
+            "/api/asset-classes/asset",
         "cascade_ws_asset\AssetFactory" =>
-            "/web-services/api/asset-classes/asset-factory",
+            "/api/asset-classes/asset-factory",
         "cascade_ws_asset\AssetFactoryContainer" =>
-            "/web-services/api/asset-classes/asset-factory-container",
+            "/api/asset-classes/asset-factory-container",
+        "cascade_ws_asset\Audit" =>
+            "/api/audit",
         "cascade_ws_asset\Block" =>
-            "/web-services/api/asset-classes/block",
+            "/api/asset-classes/block",
         "cascade_ws_asset\Cascade" =>
-            "/web-services/api/cascade",
+            "/api/cascade",
+        "cascade_ws_asset\CloudTransport" =>
+            "/api/asset-classes/cloud-transport",
         "cascade_ws_asset\ContainedAsset" =>
-            "/web-services/api/asset-classes/contained-asset",
+            "/api/asset-classes/contained-asset",
         "cascade_ws_asset\Connector" =>
-            "/web-services/api/asset-classes/connector",
+            "/api/asset-classes/connector",
         "cascade_ws_asset\ConnectorContainer" =>
-            "/web-services/api/asset-classes/connector-container",
+            "/api/asset-classes/connector-container",
         "cascade_ws_asset\ContainedAsset" =>
-            "/web-services/api/asset-classes/contained-asset",
+            "/api/asset-classes/contained-asset",
         "cascade_ws_asset\Container" =>
-            "/web-services/api/asset-classes/container",
+            "/api/asset-classes/container",
         "cascade_ws_asset\ContentType" =>
-            "/web-services/api/asset-classes/content-type",
+            "/api/asset-classes/content-type",
         "cascade_ws_asset\ContentTypeContainer" =>
-            "/web-services/api/asset-classes/content-type-container",
+            "/api/asset-classes/content-type-container",
         "cascade_ws_asset\DatabaseTransport" =>
-            "/web-services/api/asset-classes/database-transport",
+            "/api/asset-classes/database-transport",
         "cascade_ws_asset\DataDefinition" =>
-            "/web-services/api/asset-classes/data-definition",
+            "/api/asset-classes/data-definition",
         "cascade_ws_asset\DataBlock" =>
-            "/web-services/api/asset-classes/data-block",
+            "/api/asset-classes/data-block",
         "cascade_ws_asset\DataDefinitionBlock" =>
-            "/web-services/api/asset-classes/data-definition-block",
+            "/api/asset-classes/data-definition-block",
         "cascade_ws_asset\DataDefinitionContainer" =>
-            "/web-services/api/asset-classes/data-definition-container",
+            "/api/asset-classes/data-definition-container",
         "cascade_ws_asset\Destination" =>
-            "/web-services/api/asset-classes/destination",
+            "/api/asset-classes/destination",
         "cascade_ws_asset\FeedBlock" =>
-            "/web-services/api/asset-classes/feed-block",
+            "/api/asset-classes/feed-block",
         "cascade_ws_asset\File" =>
-            "/web-services/api/asset-classes/file",
-        "cascade_ws_asset\FileSystemTransport" =>
-            "/web-services/api/asset-classes/file-system-transport",
+            "/api/asset-classes/file",
+       "cascade_ws_asset\FileSystemTransport" =>
+            "/api/asset-classes/file-system-transport",
+/*//*/ 
         "cascade_ws_asset\Folder" =>
-            "/web-services/api/asset-classes/folder",
+            "/api/asset-classes/folder",
+
         "cascade_ws_asset\Format" =>
-            "/web-services/api/asset-classes/format",
+            "/api/asset-classes/format",
         "cascade_ws_asset\FtpTransport" =>
-            "/web-services/api/asset-classes/ftp-transport",
+            "/api/asset-classes/ftp-transport",
         "cascade_ws_asset\GoogleAnalyticsConnector" =>
-            "/web-services/api/asset-classes/google-analytics-connector",
+            "/api/asset-classes/google-analytics-connector",
         "cascade_ws_asset\Group" =>
-            "/web-services/api/asset-classes/group",
+            "/api/asset-classes/group",
         "cascade_ws_asset\IndexBlock" =>
-            "/web-services/api/asset-classes/index-block",
+            "/api/asset-classes/index-block",
         "cascade_ws_asset\Linkable" =>
-            "/web-services/api/asset-classes/linkable",
+            "/api/asset-classes/linkable",
         "cascade_ws_asset\MetadataSet" =>
-            "/web-services/api/asset-classes/metadata-set",
+            "/api/asset-classes/metadata-set",
         "cascade_ws_asset\MetadataSetContainer" =>
-            "/web-services/api/asset-classes/metadata-set-container",
+            "/api/asset-classes/metadata-set-container",
         "cascade_ws_asset\Page" =>
-            "/web-services/api/asset-classes/page",
+            "/api/asset-classes/page",
         "cascade_ws_asset\PageConfigurationSet" =>
-            "/web-services/api/asset-classes/page-configuration-set",
+            "/api/asset-classes/page-configuration-set",
         "cascade_ws_asset\PageConfigurationSetContainer" =>
-            "/web-services/api/asset-classes/page-configuration-set-container",
+            "/api/asset-classes/page-configuration-set-container",
         "cascade_ws_asset\PublishSet" =>
-            "/web-services/api/asset-classes/publish-set",
+            "/api/asset-classes/publish-set",
         "cascade_ws_asset\PublishSetContainer" =>
-            "/web-services/api/asset-classes/publish-set-container",
+            "/api/asset-classes/publish-set-container",
         "cascade_ws_asset\Reference" =>
-            "/web-services/api/asset-classes/reference",
+            "/api/asset-classes/reference",
         "cascade_ws_asset\Role" =>
-            "/web-services/api/asset-classes/role",
+            "/api/asset-classes/role",
         "cascade_ws_asset\ScheduledPublishing" =>
-            "/web-services/api/asset-classes/scheduled-publishing",
+            "/api/asset-classes/scheduled-publishing",
         "cascade_ws_asset\ScriptFormat" =>
-            "/web-services/api/asset-classes/script-format",
+            "/api/asset-classes/script-format",
         "cascade_ws_asset\Site" =>
-            "/web-services/api/asset-classes/site",
+            "/api/asset-classes/site",
         "cascade_ws_asset\SiteDestinationContainer" =>
-            "/web-services/api/asset-classes/site-destination-container",
+            "/api/asset-classes/site-destination-container",
+/*/
+/*/
+
         "cascade_ws_asset\Symlink" =>
-            "/web-services/api/asset-classes/symlink",
+            "/api/asset-classes/symlink",
+/*//*/
         "cascade_ws_asset\Template" =>
-            "/web-services/api/asset-classes/template",
+            "/api/asset-classes/template",
         "cascade_ws_asset\TextBlock" =>
-            "/web-services/api/asset-classes/text-block",
+            "/api/asset-classes/text-block",
         "cascade_ws_asset\Transport" =>
-            "/web-services/api/asset-classes/transport",
+            "/api/asset-classes/transport",
         "cascade_ws_asset\TransportContainer" =>
-            "/web-services/api/asset-classes/transport-container",
+            "/api/asset-classes/transport-container",
         "cascade_ws_asset\TwitterConnector" =>
-            "/web-services/api/asset-classes/twitter-connector",
+            "/api/asset-classes/twitter-connector",
         "cascade_ws_asset\User" =>
-            "/web-services/api/asset-classes/user",
+            "/api/asset-classes/user",
+        "cascade_ws_asset\TransportContainer" =>
+            "/api/asset-classes/transport-container",
         "cascade_ws_asset\WordPressConnector" =>
-            "/web-services/api/asset-classes/wordpress-connector",
+            "/api/asset-classes/wordpress-connector",
         "cascade_ws_asset\WorkflowDefinition" =>
-            "/web-services/api/asset-classes/workflow-definition",
+            "/api/asset-classes/workflow-definition",
         "cascade_ws_asset\WorkflowDefinitionContainer" =>
-            "/web-services/api/asset-classes/workflow-definition-container",
-/*/
+            "/api/asset-classes/workflow-definition-container",
+        "cascade_ws_asset\XhtmlDataDefinitionBlock" =>
+            "/api/asset-classes/xhtml-data-definition-block",
         "cascade_ws_asset\XmlBlock" =>
-            "/web-services/api/asset-classes/xml-block",
-/*/
+            "/api/asset-classes/xml-block",
         "cascade_ws_asset\XsltFormat" =>
-            "/web-services/api/asset-classes/xslt-format",
-            
+            "/api/asset-classes/xslt-format",
+/*/    
+/*/
         // other classes
         "cascade_ws_asset\AssetTree" =>
-            "/web-services/api/asset-tree/index",
-        "cascade_ws_asset\MessageArrays" =>
-            "/web-services/api/message-arrays",
-        "cascade_ws_asset\Preference" =>
-            "/web-services/api/preference",
+            "/api/asset-tree/index",
+
+        "cascade_ws_asset\CascadeInstances" =>
+            "/api/cascade-instances",
+
 /*/
+/*/
+
+        "cascade_ws_asset\Message" =>
+            "/api/message",
+        "cascade_ws_asset\MessageArrays" =>
+            "/api/message-arrays",
+/*//*/
+        "cascade_ws_asset\Preference" =>
+            "/api/preference",
+		"cascade_ws_asset\Report" =>
+        	"/api/report",
+/*/ /*/  
     );
     
     foreach( $class_page_array as $class_name => $page_path )
     {
         $page = $cascade->getAsset( a\Page::TYPE, $page_path, $site_name );  
         $page->setText(
-            "main-content-content",
+            "main-group;wysiwyg",
             u\ReflectionUtility::getClassDocumentation( $class_name )
         )->edit()->publish();
+        
+        //echo u\ReflectionUtility::getClassDocumentation( $class_name );
     }
     
     // publish the index page
-    $page_id = $service->createId( a\Page::TYPE,  "/web-services/api/asset-classes/index", $site_name );
+    $page_id = $service->createId( a\Page::TYPE,  "/api/asset-classes/index", $site_name );
     $service->publish( $page_id );
 }
 catch( \Exception $e ) 
