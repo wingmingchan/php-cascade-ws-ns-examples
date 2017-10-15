@@ -13,10 +13,12 @@ try
     $site_name = "web-services";
     
     $class_page_array = array(
-/*/  /*/  
+
 
         "cascade_ws_asset\Asset" =>
             "/api/asset-classes/asset",
+/*/              
+            
         "cascade_ws_asset\AssetFactory" =>
             "/api/asset-classes/asset-factory",
         "cascade_ws_asset\AssetFactoryContainer" =>
@@ -156,12 +158,46 @@ try
             "/api/preference",
 		"cascade_ws_asset\Report" =>
         	"/api/report",
-/*/ /*/  
+/*/ /*/  /*/  
     );
+    
+    $index_page = $cascade->getAsset(
+    	a\Page::TYPE, 'index', $site_name );
     
     foreach( $class_page_array as $class_name => $page_path )
     {
-        $page = $cascade->getAsset( a\Page::TYPE, $page_path, $site_name );  
+        $page = $cascade->getPage( $page_path, $site_name );
+        
+        if( is_null( $page ) )
+        {
+        	$class_name_without_ns = substr( $class_name, 17 );
+        	
+        	$page_path_array = explode( '/', $page_path );
+        	$last_index      = count( $page_path_array ) - 1;
+        	$page_name       = 
+        		$page_path_array[ $last_index ];
+        	$index       = 0;
+        	$folder_path = "";
+        	
+        	while( $index != $last_index )
+        	{
+        		$folder_path .=  
+        			$page_path_array[ $index ] . '/';
+        		$index++;
+        	}
+        	
+        	$folder_path = trim( $folder_path, '/' );
+        	$page = $index_page->
+        		copy( $cascade->getAsset(
+        			a\Folder::TYPE, $folder_path, $site_name ),
+        			$page_name );
+        	$page->getMetadata()->
+        		setTitle( $class_name_without_ns )->
+        		setDisplayName( $class_name_without_ns )->
+        		getHostAsset()->setText(
+        			"main-group;h1", $class_name_without_ns );
+        }
+        
         $page->setText(
             "main-group;wysiwyg",
             u\ReflectionUtility::getClassDocumentation( $class_name )
