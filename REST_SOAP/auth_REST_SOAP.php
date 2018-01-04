@@ -53,22 +53,22 @@ if( file_exists( $folderPath . $fileName ) && is_file( $folderPath . $fileName )
 // step 2: pick the correct authentication file pointing to the correct server
 if( $soap && $webapp )
 {
-	echo "<p style='color:red;font-weight:bold'>SOAP, sandbox</p>";
+echo "<p style='color:red;font-weight:bold'>SOAP, sandbox</p>";
     require_once( "auth_tutorial7.php" );
 }
 elseif( $soap && !$webapp )
 {
-	echo "<p style='color:red;font-weight:bold'>SOAP, production</p>";
+echo "<p style='color:red;font-weight:bold'>SOAP, production</p>";
     require_once( "auth_chanw.php" );
 }
 elseif( !$soap && $webapp )
 {
-	echo "<p style='color:red;font-weight:bold'>REST, sandbox</p>";
+echo "<p style='color:red;font-weight:bold'>REST, sandbox</p>";
     require_once( "auth_rest_webapp.php" );
 }
 elseif( !$soap && !$webapp )
 {
-	echo "<p style='color:red;font-weight:bold'>REST, production</p>";
+echo "<p style='color:red;font-weight:bold'>REST, production</p>";
     require_once( "auth_rest_web.php" );
 }
 ?>
