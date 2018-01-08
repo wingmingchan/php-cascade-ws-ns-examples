@@ -66,7 +66,7 @@ try
         setUploadImagesFromWysiwyg( true )->
         setViewPublishQueue( true )->
         setViewVersions( true );
-    $site_role->edit()->dump();
+    $site_role->edit()->dumpJSON();
 
     if( !$soap )
     {
