@@ -15,9 +15,36 @@ try
     $group      = $cascade->getGroup( $group_name );
 
     if( isset( $group ) )
+    {
+    	echo "Deleting group", BR;
+    	$user_names = explode( ";", $group->getUsers() );
+    	
+    	// remove all users first
+    	foreach( $user_names as $user_name )
+    	{
+    		if( $user_name != "" )
+    			$group->removeUserName( $user_name );
+    	}
+    	$group->edit();
+    	
         $cascade->deleteAsset( $group );
-    
+    }
+
     $group = $cascade->createGroup( $group_name, $role_name );
+    
+    // add the users back
+    if( isset( $user_name ) )
+    {
+    	foreach( $user_names as $user_name )
+    	{
+    		if( $user_name != "" )
+    			$group->addUserName( $user_name );
+    	}
+    	$group->edit();
+    }
+    
+    // cannot deal with roles because in WS, only one role is read
+    
     $group->dump();
     
     u\DebugUtility::dumpRESTCommands( $service );
