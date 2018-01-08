@@ -16,7 +16,13 @@ try
     $role      = $cascade->getAsset( a\Role::TYPE, 10 );
 
     if( isset( $user ) )
+    {
         $cascade->deleteAsset( $user );
+    }
+    else
+    {
+    	echo "User does not exist", BR;
+    }
     
     $user = $cascade->createUser( $user_name, "password", $group, $role );
     $user->dump();
