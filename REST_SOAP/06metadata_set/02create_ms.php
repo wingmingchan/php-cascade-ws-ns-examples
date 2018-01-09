@@ -36,11 +36,4 @@ catch( \Error $er )
 {
     echo S_PRE . $er . E_PRE; 
 }
-/*
-
-    u\DebugUtility::dump( $page );
-    echo u\StringUtility::getCoalescedString( $m->getEndDate() ), BR;
-
-    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump();
-*/
 ?>
