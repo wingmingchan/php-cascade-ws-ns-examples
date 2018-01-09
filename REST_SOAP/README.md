@@ -1,6 +1,6 @@
 # REST/SOAP Test Code
 <p>While I am upgrading my library code to deal with REST, I need some programs to test both REST and SOAP. I want to do this thoroughly, covering all major asset types.</p>
 
-<p>As I pointed out elsewhere, as far as the client code is concerned, there is no difference between REST and SOAP. The same program can be hooked up with either. The only requirement is that the correct version of AssetOperationHandlerService class must be selected. Other than that, everything else is the same for both.</p>
+<p>As I pointed out elsewhere, as far as the client code is concerned, there is no difference between REST and SOAP. The same program can be hooked up with either. The only requirement is that the correct version of the <code>AssetOperationHandlerService</code> class must be selected. Other than that, everything else is the same for both.</p>
 
 <p>Each of the programs provided here is run twice. The first time it is run using REST. Then all the changes made by the program are rolled back. And then the program is run the second time using SOAP. To roll back all changes made by the first run, I have to write code to delete all assets created by the program. This is NOT a normal practice, but one required by the special setup for testing both REST and SOAP. For this reason, all programs provided here can be run again and again without generating unwanted assets. Also note that assets must be generated in a certain order. Therefore, all folders and programs are prefixed with numbers.</p>
