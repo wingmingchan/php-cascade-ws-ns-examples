@@ -41,7 +41,7 @@ try
         $xml
     )->dump();
     
-    u\DebugUtility::dumpRESTCommands( $service );    
+    u\DebugUtility::dumpRESTCommands( $service );
 }
 catch( \Exception $e ) 
 {
