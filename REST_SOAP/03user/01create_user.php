@@ -21,7 +21,7 @@ try
     }
     else
     {
-    	echo "User does not exist", BR;
+        echo "User does not exist", BR;
     }
     
     $user = $cascade->createUser( $user_name, "password", $group, $role );
