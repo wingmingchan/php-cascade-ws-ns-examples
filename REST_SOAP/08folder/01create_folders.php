@@ -15,24 +15,25 @@ try
     $root_folder->deleteAllChildren();
     
     $folder_paths = array(
-    	"_cascade"               => array( "/", "_cascade" ),
-    	"_cascade/blocks"        => array( "_cascade", "blocks" ),
-    	"_cascade/blocks/code"   => array( "_cascade/blocks", "code" ),
-    	"_cascade/blocks/data"   => array( "_cascade/blocks", "data" ),
-    	"_cascade/blocks/script" => array( "_cascade/blocks", "script" ),
-    	"_cascade/formats"       => array( "_cascade", "formats" ),
-    	"_cascade/template"      => array( "_cascade", "template" ),
-    	"_extra"                 => array( "/", "_extra" )
+        "_cascade"               => array( "/", "_cascade" ),
+        "_cascade/blocks"        => array( "_cascade", "blocks" ),
+        "_cascade/blocks/code"   => array( "_cascade/blocks", "code" ),
+        "_cascade/blocks/data"   => array( "_cascade/blocks", "data" ),
+        "_cascade/blocks/index"  => array( "_cascade/blocks", "index" ),
+        "_cascade/blocks/script" => array( "_cascade/blocks", "script" ),
+        "_cascade/formats"       => array( "_cascade", "formats" ),
+        "_cascade/template"      => array( "_cascade", "template" ),
+        "_extra"                 => array( "/", "_extra" )
     );
     
     foreach( $folder_paths as $folder_path => $array )
     {
-    	$parent = $cascade->getAsset( a\Folder::TYPE, $array[ 0 ], $site_name );
-    	$cascade->createFolder(
-    		$parent,
-    		$array[ 1 ],
-    		$site_name
-    	);
+        $parent = $cascade->getAsset( a\Folder::TYPE, $array[ 0 ], $site_name );
+        $cascade->createFolder(
+            $parent,
+            $array[ 1 ],
+            $site_name
+        );
     }
     
     u\DebugUtility::dumpRESTCommands( $service );    
