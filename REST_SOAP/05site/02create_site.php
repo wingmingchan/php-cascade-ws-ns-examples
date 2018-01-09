@@ -10,20 +10,24 @@ use cascade_ws_exception as e;
 
 try
 {
-	$site_name = "test-about";
+    $site_name = "about-test";
     
     try
     {
-        $cascade->getSite( $site_name );
-        u\DebugUtility::out( "The site already exist" );
+        $site = $cascade->getSite( $site_name ); // inheritDataChecksEnabled
+        $cascade->deleteAsset( $site );
     }
     catch( e\NoSuchSiteException $e )
     {
-        $cascade->createSite( 
-        	$site_name,
-    		"http://www.upstate.edu",
-    		c\T::FIFTEEN )->dump();
+        // do nothing
     }
+    $cascade->createSite( 
+        $site_name,
+        "http://www.upstate.edu",
+        c\T::FIFTEEN )->dump();
+/*/
+/*/
+    u\DebugUtility::dumpRESTCommands( $service );
 }
 catch( \Exception $e ) 
 {
