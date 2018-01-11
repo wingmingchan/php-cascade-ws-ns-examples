@@ -55,12 +55,7 @@ try
         setViewUsersInMemberGroups( true );
     $global_role->edit()->dump();
 
-    if( !$soap )
-    {
-        u\DebugUtility::dump( $service->getCommands() );
-        // clean up
-        $service->clearCommands();
-    }
+    u\DebugUtility::dumpRESTCommands( $service );    
 }
 catch( \Exception $e ) 
 {

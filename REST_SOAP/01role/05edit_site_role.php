@@ -68,12 +68,7 @@ try
         setViewVersions( true );
     $site_role->edit()->dumpJSON();
 
-    if( !$soap )
-    {
-        u\DebugUtility::dump( $service->getCommands() );
-        // clean up
-        $service->clearCommands();
-    }
+    u\DebugUtility::dumpRESTCommands( $service );    
 }
 catch( \Exception $e ) 
 {

@@ -24,12 +24,7 @@ try
     //$role = $cascade->getRole( $site_role_id );
     //echo $role->getRoleType(), BR;
     
-    if( !$soap )
-    {
-        u\DebugUtility::dump( $service->getCommands() );
-        // clean up
-        $service->clearCommands();
-    }
+    u\DebugUtility::dumpRESTCommands( $service );
 }
 catch( \Exception $e ) 
 {

@@ -17,12 +17,7 @@ try
     $site_role = $cascade->createRole( $new_site_role_name, a\Site::TYPE );
     $site_role->dump();
     
-    if( !$soap )
-    {
-        u\DebugUtility::dump( $service->getCommands() );
-        // clean up
-        $service->clearCommands();
-    }
+    u\DebugUtility::dumpRESTCommands( $service );    
 }
 catch( \Exception $e ) 
 {
