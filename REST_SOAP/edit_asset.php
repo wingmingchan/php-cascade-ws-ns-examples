@@ -1,4 +1,8 @@
 <?php
+/*
+This program is used to test the edit operation on all asset types.
+*/
+
 require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
@@ -14,13 +18,13 @@ try
 {
     switch( $case )
     {
-    	// asset factory
+        // asset factory
         case "af":
             $type = a\AssetFactory::TYPE;
             $id   = "a14dd4e58b7ffe830539acf06baf07b3";
             break;
     
-    	// asset factory container
+        // asset factory container
         case "afc":
             $type = a\AssetFactoryContainer::TYPE;
             $id   = "a14dd3958b7ffe830539acf004d370d7";
@@ -91,19 +95,19 @@ try
             $id   = "54b505c28b7f085600ae2282a4b7ed71";
             break;
 
-		// data definition
+        // data definition
         case "dd":
             $type = a\DataDefinition::TYPE;
             $id   = "fd27a12d8b7f08560159f3f087ef9165";
             break;
-		
-		// data definition container       
+        
+        // data definition container       
         case "ddc":
             $type = a\DataDefinitionContainer::TYPE;
             $id   = "5501cc048b7f085600ae2282a4d548b7";
             break;
 
-		// destination       
+        // destination       
         case "des":
             $type = a\Destination::TYPE;
             $id   = "c12dad828b7ffe83129ed6d81fc31265";
@@ -147,90 +151,90 @@ try
             $type = a\User::TYPE;
             $id   = "wing";
             break;
-      	      
-		// metadata set
+                
+        // metadata set
         case "ms":
             $type = a\MetadataSet::TYPE;
             $id   = "647e77e18b7f085600ae2282629d7ea0";
             break;
-      	      
-		// metadata set container
+                
+        // metadata set container
         case "msc":
             $type = a\MetadataSetContainer::TYPE;
             $id   = "647db3ab8b7f085600ae2282d55a5b6d";
             break;
             
-		// page
+        // page
         case "page":
             $type = a\Page::TYPE;
             $id   = "9e19b89f8b7ffe8353cc17e9c1ab52bb";
             break;
 
-		// page configuraton set
+        // page configuraton set
         case "pcs":
             $type = a\PageConfigurationSet::TYPE;
             $id   = "6188631a8b7ffe8377b637e8d9af95ee";
             break;
-		
-		// page configuraton set container
+        
+        // page configuraton set container
         case "pcsc":
             $type = a\PageConfigurationSetContainer::TYPE;
             $id   = "648977a98b7f085600ae228293a97bf5";
             break;
 
-		// publish set
+        // publish set
         case "ps":
             $type = a\PublishSet::TYPE;
             $id   = "28a960258b7ffe8343b94c282741f634";
             break;
-		
-		// publish set container
+        
+        // publish set container
         case "psc":
             $type = a\PublishSetContainer::TYPE;
             $id   = "0952d9758b7ffe8339ce5d13a1ad5e0a";
             break;
 
-		// reference
+        // reference
         case "ref":
             $type = a\Reference::TYPE;
             $id   = "28c750538b7ffe8343b94c28494a5cf8";
             break;
 
-		// site
+        // site
         case "site":
             $type = a\Site::TYPE;
             $id   = "0fa6f6f18b7ffe8343b94c28251e132e";
             break;
 
-		// site destination container
+        // site destination container
         case "sdc":
             $type = a\SiteDestinationContainer::TYPE;
             $id   = "0fbc5d5c8b7ffe8343b94c289aaf4adc";
             break;
 
-      	// symlink
+          // symlink
         case "sym":
             $type = a\Symlink::TYPE;
             $id   = "5045ce7a8b7ffe8353cc17e9559b8b12";
             break;
-      	
-      	// template
+          
+          // template
         case "t":
             $type = a\Template::TYPE;
             $id   = "618863fc8b7ffe8377b637e865012e5d";
             break;
-      	
-      	// transports
+          
+          // transports
         case "cloudt":
             $type = a\CloudTransport::TYPE;
             $id   = "2428dfa38b7ffe8343b94c28b5616ed8";
             break;
-      	     
+               
         case "dbt":
             $type = a\DatabaseTransport::TYPE;
             $id   = "24af01918b7ffe8343b94c28de598720";
             break;
-      	     
+               
         case "fst":
             $type = a\FileSystemTransport::TYPE;
             $id   = "24b50e0d8b7ffe8343b94c28957a79f8";
@@ -259,7 +263,7 @@ try
             $id   = "28f068db8b7ffe8343b94c28e4459d6a";
             break;
             
-      	     
+               
     }
     
     $asset = $cascade->getAsset( $type, $id );
