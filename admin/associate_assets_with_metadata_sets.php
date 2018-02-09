@@ -15,23 +15,20 @@ $start_time = time();
 try
 {
     u\DebugUtility::setTimeSpaceLimits();
-
-    $folder_id   = "4d2ef6228b7ffe834bd90c8f61354784";
-    $folder_path = "_cascade/formats/page-elements";
-    $f_ms_id     = "4cb790e88b7ffe834bd90c8f6f190bf4";
-    $f_ms_path   = "Folder";
     $site_name   = "formats";
-
-    $folder      = $cascade->getAsset( a\Folder::TYPE, $folder_id );
-    $ms          = $cascade->getAsset( a\MetadataSet::TYPE, $f_ms_id );
     
     $admin->associateAssetsWithMetadataSets( array(
         // the type of assets to be associated with the metadata set
         a\Folder::TYPE => array(
             // the folder containing the assets
-            a\Folder::TYPE      => array( $folder_path, $site_name ),
+            a\Folder::TYPE      => array( "_cascade/blocks", $site_name ),
             // the metadata set
-            a\MetadataSet::TYPE => array( $f_ms_path, $site_name )
+            a\MetadataSet::TYPE => $cascade->getAsset(
+                a\MetadataSet::TYPE, "6188622e8b7ffe8377b637e84e639b54" )
+        ),
+        a\XmlBlock::TYPE => array(
+            a\Folder::TYPE      => "48a581eb8b7ffe834bd90c8f2ef6b1bb",
+            a\MetadataSet::TYPE => "618861da8b7ffe8377b637e8ad3dd499"
         )
     ) );
     
