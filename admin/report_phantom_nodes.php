@@ -8,7 +8,7 @@ use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
-$site_name = "formats";
+$site_name = "hospital";
 
 $start_time = time();
 
@@ -17,7 +17,7 @@ try
     u\DebugUtility::setTimeSpaceLimits();
     
     $results = array();
-    $admin->reportPhantomNodes( $site_name, "velocity", $results );
+    $admin->reportPhantomNodes( $site_name, NULL, $results );
     u\DebugUtility::dump( $results );
     u\DebugUtility::outputDuration( $start_time );
 }
