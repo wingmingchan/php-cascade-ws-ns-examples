@@ -1,4 +1,7 @@
 <?php
+/*
+This program can be used to associate assets with the corresponding metadata sets.
+*/
 require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
