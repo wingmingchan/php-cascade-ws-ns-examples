@@ -1,4 +1,7 @@
 <?php
+/*
+This program can be used to clear access settings of folders in a site.
+*/
 require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
