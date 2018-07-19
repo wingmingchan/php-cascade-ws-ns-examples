@@ -1,5 +1,5 @@
 <?php
-require_once('auth_tutorial7.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -11,13 +11,15 @@ use cascade_ws_exception as e;
 try
 {
     // the block to be copy
-    $block_id = $service->createId( a\TextBlock::TYPE, "_cascade/blocks/code/text-block", "cascade-admin" );
+    $block_id = $service->createId(
+        a\DataBlock::TYPE, "_cascade/blocks/code/test-velocity", "formats" );
 
     // the parent folder where the new block should be placed
-    $parent_id = $service->createId( a\Folder::TYPE, "_cascade/blocks/code", "cascade-admin" );
+    $parent_id = $service->createId(
+        a\Folder::TYPE, "_cascade/blocks/code", "formats" );
     
     // new name for the copy
-    $new_name = "another-text-block";
+    $new_name = "another-velocity-block";
     
     // no workflow
     $do_workflow = false;
