@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_chanw.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -12,9 +12,9 @@ try
 {
     // get two blocks
     $xml_block = $cascade->getAsset(
-        a\XmlBlock::TYPE, "970d2ef08b7f08ee3df073c8df057b89" );
+        a\XmlBlock::TYPE, "b3d33caa8b7f08ee73363edd1b593d88" );
     $dd_block = $cascade->getAsset(
-        a\DataBlock::TYPE, "0b3aaa208b7f08ee5a4fada2258d6fb9" );
+        a\DataBlock::TYPE, "31a4c6c78b7f08ee131ff8e306395c5a" );
         
     // read the property of the xml block so that we can keep the id, metadata, etc.
     $property = $xml_block->getProperty();
@@ -37,23 +37,4 @@ catch( \Error $er )
 {
     echo S_PRE . $er . E_PRE; 
 }
-/*
-Useful code templates:
-    u\ReflectionUtility::showMethodSignatures( 
-        "cascade_ws_utility\ReflectionUtility" );
-        
-    u\ReflectionUtility::showMethodSignature( 
-        "cascade_ws_asset\Page", "edit" );
-        
-    u\ReflectionUtility::showMethodDescription( 
-        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-        
-    u\ReflectionUtility::showMethodExample( 
-        "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
-
-    u\DebugUtility::dump( $page );
-    echo u\StringUtility::getCoalescedString( $m->getEndDate() ), BR;
-
-    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump();
-*/
 ?>
