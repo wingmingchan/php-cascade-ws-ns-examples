@@ -1,5 +1,5 @@
 <?php
-require_once('auth_tutorial7.php');
+require_once('auth_REST_SOAP.php');
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -9,14 +9,14 @@ use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 $paths = array( 
-             "/_cascade/blocks/code/text-block", 
-             "_cascade/blocks/code/ajax-read-profile-php" );
+             "/_cascade/blocks/code/test-include-page-text", 
+             "/_cascade/blocks/code/test-text" );
 
 $operations = array();
 
 foreach( $paths as $path )
 {
-    $id        = $service->createId( a\TextBlock::TYPE, $path, "cascade-admin" );
+    $id        = $service->createId( a\TextBlock::TYPE, $path, "formats" );
     $operation = new \stdClass();
     $read_op   = new \stdClass();
     
