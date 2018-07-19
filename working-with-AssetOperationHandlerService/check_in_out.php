@@ -1,5 +1,5 @@
 <?php
-require_once('auth_tutorial7.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -9,7 +9,7 @@ use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
 // the file to manipulate
-$path = "/files/AssetOperationHandlerService.class.php.zip";
+$path = "/files/global-editor.css";
 
 // a flag to control the checkIn/checkOut process
 $out = false;
