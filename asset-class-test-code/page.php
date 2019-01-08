@@ -1,5 +1,5 @@
 <?php
-require_once('auth_tutorial7.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_constants as c;
 use cascade_ws_asset     as a;
@@ -7,21 +7,20 @@ use cascade_ws_property  as p;
 use cascade_ws_utility   as u;
 use cascade_ws_exception as e;
 
-$mode = 'all';
-//$mode = 'display';
-$mode = 'dump';
-//$mode = 'get';
-//$mode = 'copy';
-//$mode = 'is';
-//$mode = 'metadata';
+//$mode = 'all';
+$mode = 'display';
+//$mode = 'dump';
+$mode = 'get';
+$mode = 'copy';
+$mode = 'is';
+$mode = 'metadata';
 //$mode = 'set';
-//$mode = 'move';
-//$mode = 'raw';
+$mode = 'raw';
 //$mode = 'none';
 
 try
 {
-    $id = "1f2401dc8b7ffe834c5fe91ec8c91543";
+    $id = "29b846a88b7f08ee2969788831c112a6";
     $p  = $cascade->getAsset( a\Page::TYPE, $id );
     
     switch( $mode )
@@ -36,6 +35,8 @@ try
                 
         case 'dump':
             $p->dump();
+            
+            u\DebugUtility::dump( $p->getIdentifiers() );
             
             if( $mode != 'all' )
                 break;
@@ -66,7 +67,6 @@ try
                 }
             }
             
-/**/            
             echo "Configuration set:" . BR;
             $p->getConfigurationSet()->display();
             
@@ -74,20 +74,10 @@ try
                         getDefaultConfiguration()->getName() . BR;
             echo $p->getConfigurationSet()->getDefaultConfiguration()->
                     getOutputExtension() . BR;
-            
-            
 
             echo "Data definition:" . BR;
             $p->getDataDefinition()->display();
-/*
-            echo "Metadata set:" . BR;
-            $p->getMetadataSet()->display();
 
-            echo "Template of Desktop:" . BR;
-            $t = $p->getConfigurationSet()
-                ->getPageConfigurationTemplate( 'Desktop' )
-                ->dump();
-*/
             if( $mode != 'all' )
                 break;
                 
@@ -95,13 +85,10 @@ try
             echo "Dumping the set of identifiers:" . BR;
             u\DebugUtility::dump( $p->getIdentifiers() );
             
-            $node_name = 'content-group;0'; // group
-            $node_name = "main-content-title"; // normal text, no text type
-            $node_name = "main-content-content"; // WYSIWYG
-            // radiobutton
-            $node_name = "content-group;2;content-group-margin-bottom"; 
-            $node_name = "content-group;0;content-group-chooser"; // block
-            //$node_name = "main-content-image"; // file
+            $node_name = "pre-main-group";     // group
+            $node_name = "main-group;h1";      // normal text, no text type
+            $node_name = "main-group;wysiwyg"; // WYSIWYG
+            $node_name = "main-group;mul-pre-h1-chooser;0"; // block
             
             if( $p->isAssetNode( $node_name ) )
             {
@@ -118,7 +105,7 @@ try
             }
             else
             {
-                echo "This is not a asset node" . BR;
+                echo "This is not an asset node" . BR;
             }
             
             if( $p->isGroupNode( $node_name ) )
@@ -150,14 +137,15 @@ try
                 break;
                 
         case 'set':
-            // work with DEFAULT first
-            $node_name = 'content-group;0;content-group-chooser';
-            
-            $block_id     = '96f745cb8b7f0856002a5e11a2199545';
-            $text_block = $cascade->getAsset( a\TextBlock::TYPE, $block_id );
+            //u\DebugUtility::dump( $p->getIdentifiers() );
+            $p->setText( "main-group;h1", "New Title" )->edit();
+        
+            // chooser
+            $node_name = "main-group;mul-pre-h1-chooser;0";
             
             if( $p->hasNode( $node_name ) )
             {
+            
                 $node_type = $p->getNodeType( $node_name );
                 
                 if( $node_type == c\T::ASSET )
@@ -166,13 +154,14 @@ try
                     
                     if( $asset_type == c\T::BLOCK )
                     {
-                        $p->setBlock( $node_name, $text_block );
+                        $block_id     = '818347538b7f08ee22f3b7d13a216538';
+                        $text_block = $cascade->getAsset( a\TextBlock::TYPE, $block_id );
+                        $p->setBlock( $node_name, $text_block )->edit();
                     }
                 }
             }
             
-/*
-            $node_name = 'main-content-content';
+            $node_name = "main-group;wysiwyg";
              
             if( $p->hasNode( $node_name ) && 
                 $p->getNodeType( $node_name ) == c\T::TEXT &&
@@ -183,53 +172,10 @@ try
                 $text .= "<p>Another paragraph.</p>";
                 $p->setText( $node_name, $text )->edit();
             }
-*/            
-            // add another content-group
-            $node_name = $node_name = 'content-group;0';
-            //$p->appendSibling( $node_name )->edit();
 
-            // regions
-            //u\DebugUtility::dump( $p->getPageRegionNames( 'Desktop' ) );
-            
-            //$p->removeLastSibling( $node_name )->edit();
-            u\DebugUtility::dump( $p->getIdentifiers() );
-            
-            
-            if( $p->hasPageRegion( 'Desktop', "TOP GRAPHICS" ) )
-            {
-                $slide_show_id = '968587d38b7f08560081f1439f7e4b5d';
-                $slide_show_block = 
-                    $cascade->getAsset(
-                        a\DataDefinitionBlock::TYPE, $slide_show_id );
-                // the wrong one
-                //$format_id = 'e39283268b7f0856015997e4069c17ea';
-                // the right one
-                $format_id = '470207d98b7f0856015997e487d78571'; 
-                $format = $cascade->getAsset( a\XsltFormat::TYPE, $format_id );
-                
-                // attach the slide show to the region
-                // this will have no effect because of the next line
-                $p->setRegionBlock( 
-                    'Desktop', "TOP GRAPHICS", $slide_show_block );
-                //$p->setRegionBlock( 'Desktop', "TOP GRAPHICS", NULL );
-                
-                // set noBlock
-                //$p->setRegionNoBlock( 'Desktop', "TOP GRAPHICS", true );
-                
-                // attach the format to the region
-                $p->setRegionFormat( 'Desktop', "TOP GRAPHICS", $format )->
-                    //setRegionNoFormat( 'Desktop', "TOP GRAPHICS", false )->
-                    edit();
-            }
-            else
-            {
-                echo "Top graphic not found" . BR;
-            }
-            
-            //$p->setShouldBePublished( false )->edit();
-            //$p->setShouldBePublished( true )->edit()->publish();
-            $p->setMaintainAbsoluteLinks( true )->edit();
-     
+            $p->setShouldBePublished( false );
+            $p->setMaintainAbsoluteLinks( false )->edit();
+
             if( $mode != 'all' )
                 break;
                 
@@ -238,13 +184,13 @@ try
             
             u\DebugUtility::dump( $m->getDynamicFieldNames() );
             
-            $field_name = "exclude-from-left";
+            $field_name = "exclude-from-left-folder-nav";
             //var_dump( $m->getDynamicFieldPossibleValues( $field_name ) );
             $m->setDynamicFieldValues( $field_name, '' );
             $field_name = "exclude-from-menu";
             $m->setDynamicFieldValues( $field_name, NULL );
-            $p->edit();
-
+            $p->edit()->dump();
+            
             if( $mode != 'all' )
                 break;
                 
@@ -257,10 +203,7 @@ try
                 break;
                 
         case 'raw':
-            //$p->dump();
-        
-            $p_std = $service->retrieve( $service->createId( 
-                c\T::PAGE, $id ), c\P::PAGE );
+            $p_std = $service->retrieve( $service->createId( c\T::PAGE, $id ) );
                 
             u\DebugUtility::dump( $p_std );
         
@@ -268,7 +211,7 @@ try
                 break;
     }
     
-    echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Page" );
+    //echo u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Page" );
 }
 catch( \Exception $e )
 {
