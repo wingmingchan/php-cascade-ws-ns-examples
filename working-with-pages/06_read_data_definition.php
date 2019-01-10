@@ -65,6 +65,12 @@ array(6) {
 }
 */
     u\DebugUtility::dump( $dd->getIdentifiers() );
+    
+    // dump the info of all shared fields
+    foreach( $dd->getSharedFields() as $sf )
+    {
+    	$sf->dump();
+    }
 }
 catch( \Exception $e )
 {
