@@ -1,4 +1,8 @@
 <?php
+/*
+This program shows how to work with shared fields.
+*/
+
 require_once( 'auth_soap_c8.php' );
 
 use cascade_ws_AOHS      as aohs;
