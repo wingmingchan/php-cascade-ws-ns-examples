@@ -1,6 +1,6 @@
 <?php
 /*
-This program creates a metadata set for XHTML pages.
+This program creates a metadata set for pages.
 */
 
 require_once( 'auth_soap_c8.php' );
