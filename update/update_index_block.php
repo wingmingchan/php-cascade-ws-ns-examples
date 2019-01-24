@@ -29,8 +29,6 @@ try
 
     $end_time = time();
     echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
-
-    //cho u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Page" );
 }
 catch( \Exception $e ) 
 {
