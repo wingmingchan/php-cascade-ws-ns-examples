@@ -12,7 +12,7 @@ $start_time = time();
 
 try
 {
-    $block = $admin->getAsset( a\TextBlock::TYPE, "0ac3696a8b7f08ee5a4fada2072faed1" )->update(
+    $admin->getAsset( a\TextBlock::TYPE, "0ac3696a8b7f08ee5a4fada2072faed1" )->update(
         array(
             // text block data
             a\DublinAwareAsset::TEXT => "Hello, World!"
