@@ -14,7 +14,7 @@ try
 {
     $folder = $admin->getAsset( a\Folder::TYPE, "e0eda35a8b7f08ee6d3c97dea0f6da4e" );
 
-                                                                   $folder->update(
+    $folder->update(
         array(
             a\DublinAwareAsset::METADATA => array(
                 // wired fields
