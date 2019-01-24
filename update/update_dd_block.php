@@ -12,7 +12,10 @@ $start_time = time();
 
 try
 {
-    $admin->getAsset( a\DataBlock::TYPE, "0b3aaa208b7f08ee5a4fada2258d6fb9" )->update(
+    $block = $admin->getAsset( a\DataBlock::TYPE, "0b3aaa208b7f08ee5a4fada2258d6fb9" );
+    //u\DebugUtility::dump( $block->getIdentifiers() );
+    
+    $block->update(
         array(
             a\DublinAwareAsset::METADATA => array(
                 // dynamic fields
@@ -25,8 +28,6 @@ try
 
     $end_time = time();
     echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
-
-    //cho u\ReflectionUtility::getClassDocumentation( "cascade_ws_asset\Page" );
 }
 catch( \Exception $e ) 
 {
