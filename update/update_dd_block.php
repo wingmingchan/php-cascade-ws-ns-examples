@@ -12,17 +12,14 @@ $start_time = time();
 
 try
 {
-    $block = $admin->getAsset( a\DataBlock::TYPE, "0b3aaa208b7f08ee5a4fada2258d6fb9" );
-    //u\DebugUtility::dump( $block->getIdentifiers() );
-    
-    $block->update(
+    $admin->getAsset( a\DataBlock::TYPE, "0b3aaa208b7f08ee5a4fada2258d6fb9" )->update(
         array(
             a\DublinAwareAsset::METADATA => array(
                 // dynamic fields
                 "macro" => "processDDBlock",
             ),
             // structured data nodes
-            "wysiwyg-group;wysiwyg-content" => "<p>Je voudrais boire du vin.</p>",
+            "wysiwyg-group;wysiwyg-content" => "<p>Je voudrais boire de la bière.</p>",
         )
     )->dump();
 
