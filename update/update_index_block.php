@@ -21,9 +21,9 @@ try
                 "macro" => "processIndexBlock",
             ),
             // block data
-            a\DublinAwareAsset::MAX_RENDERED_ASSETS => 50,
-            a\DublinAwareAsset::DEPTH_OF_INDEX      => 5,
-            a\DublinAwareAsset::INDEX_LINKS         => true
+            a\Asset::MAX_RENDERED_ASSETS => 50,
+            a\Asset::DEPTH_OF_INDEX      => 5,
+            a\Asset::INDEX_LINKS         => true
         )
     )->dump();
 
