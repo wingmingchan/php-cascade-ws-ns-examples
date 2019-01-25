@@ -29,7 +29,7 @@
                 a\DublinAwareAsset::SUMMARY      => "Struts 2 in Action",
                 // dynamic fields
                 "exclude-from-menu"              => ""
-            ),
+            ),<br />
             // folder settings
             a\Asset::SHOULD_BE_PUBLISHED         => true,
             a\Asset::SHOULD_BE_INDEXED           => true,
