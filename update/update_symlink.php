@@ -21,7 +21,7 @@ try
                 "exclude-from-menu"         => "yes"
             ),
             // symlink data
-            a\DublinAwareAsset::LINK_URL    => "https://www.msnbc.com/",
+            a\Asset::LINK_URL    => "https://www.msnbc.com/",
         )
     )->dump();
 
