@@ -20,7 +20,7 @@
 <p>For assets that can be associated with metadata (blocks, files, folders, pages, and symlinks), string constants have been defined in classes like <code>Asset</code> and <code>DublinAwareAsset</code>. Use these constants to avoid typos and possible exceptions. Metadata is treated slightly differently. Parameters must be passed into <code>update</code> in a separate entry, using the string <code>metadata</code> as the key, and a sub-array as the value. For example:</p>
 <pre>
     $admin->getAsset( a\Folder::TYPE, "e0eda35a8b7f08ee6d3c97dea0f6da4e" )->update(
-        array(
+        array(<br />
             // the entry for metadata alone
             a\DublinAwareAsset::METADATA => array(
                 // wired fields
