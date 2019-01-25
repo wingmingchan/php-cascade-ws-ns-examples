@@ -28,9 +28,9 @@ try
                 "tree-picker"                    => array( "inherited" )
             ),
             // page settings
-            a\DublinAwareAsset::SHOULD_BE_PUBLISHED     => false,
-            a\DublinAwareAsset::SHOULD_BE_INDEXED       => false,
-            a\DublinAwareAsset::MAINTAIN_ABSOLUTE_LINKS => true,
+            a\Asset::SHOULD_BE_PUBLISHED      => false,
+            a\Asset::SHOULD_BE_INDEXED        => false,
+            a\Asset::MAINTAIN_ABSOLUTE_LINKS  => true,
             // structured data nodes
             "main-group;h1"                   => "Struts 2 in Action",
             "main-group;mul-pre-h1-chooser;0" => NULL // remove block
