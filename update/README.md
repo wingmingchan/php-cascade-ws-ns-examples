@@ -21,7 +21,6 @@
 <pre>
     $admin->getAsset( a\Folder::TYPE, "e0eda35a8b7f08ee6d3c97dea0f6da4e" )->update(
         array(
-
             // the entry for metadata alone
             a\DublinAwareAsset::METADATA => array(
                 // wired fields
@@ -31,7 +30,6 @@
                 // dynamic fields
                 "exclude-from-menu"              => ""
             ),
-            
             // folder settings
             a\Asset::SHOULD_BE_PUBLISHED         => true,
             a\Asset::SHOULD_BE_INDEXED           => true,
