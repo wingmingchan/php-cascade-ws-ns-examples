@@ -16,3 +16,35 @@
 <li>After the property name is turned into a <code>set</code> method name, the method must be defined in the library</li>
 <li>A <code>set</code> method must take only one parameter, which is supplied as the value of the corresponding string key; the value can be anything</li>
 </ul>
+<p>If a string key is not a property defined in the WSDL, or if there is no <code>set</code> method defined for the property, then an exception will be thrown.</p>
+<p>For assets that can be associated with metadata (blocks, files, folders, pages, and symlinks), string constants have been defined in classes <code>Asset</code> and <code>DublinAwareAsset</code>. Use these constants to avoid typos and possible exceptions. Metadata is treated slightly differently. Parameters must be passed into <code>update</code> in a separate entry, using the string <code>metadata</code> as the key, and a sub-array as the value. For example:</p>
+<pre>
+    $admin->getAsset( a\Folder::TYPE, "e0eda35a8b7f08ee6d3c97dea0f6da4e" )->update(
+        array(
+
+            // the entry for metadata alone
+            a\DublinAwareAsset::METADATA => array(
+                // wired fields
+                a\DublinAwareAsset::AUTHOR       => "Wing Ming",
+                a\DublinAwareAsset::DISPLAY_NAME => "Struts 3 in Action",
+                a\DublinAwareAsset::SUMMARY      => "Struts 2 in Action",
+                // dynamic fields
+                "exclude-from-menu"              => ""
+            ),
+            
+            // folder settings
+            a\Asset::SHOULD_BE_PUBLISHED         => true,
+            a\Asset::SHOULD_BE_INDEXED           => true,
+            a\Asset::INCLUDE_IN_STALE_CONTENT    => true
+        )
+    );
+</pre>
+<p>Also note that identifiers of dynamic fields can be passed in as keys.</p>
+<p>For pages and data definition blocks, besides property names, fully qualified identifiers can also be passed in as keys. For example:</p>
+<pre>
+    $admin->getAsset( a\DataBlock::TYPE, "0b3aaa208b7f08ee5a4fada2258d6fb9" )->update(
+            // structured data nodes, with FQIs as keys
+            "wysiwyg-group;wysiwyg-content" => "<p>Je voudrais boire de la bière.</p>",
+        )
+    );
+</pre>
