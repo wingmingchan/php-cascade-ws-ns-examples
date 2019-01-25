@@ -23,9 +23,9 @@ try
                 "exclude-from-menu"              => ""
             ),
             // folder settings
-            a\DublinAwareAsset::SHOULD_BE_PUBLISHED      => true,
-            a\DublinAwareAsset::SHOULD_BE_INDEXED        => true,
-            a\DublinAwareAsset::INCLUDE_IN_STALE_CONTENT => true
+            a\Asset::SHOULD_BE_PUBLISHED         => true,
+            a\Asset::SHOULD_BE_INDEXED           => true,
+            a\Asset::INCLUDE_IN_STALE_CONTENT    => true
         )
     )->dump();
 
