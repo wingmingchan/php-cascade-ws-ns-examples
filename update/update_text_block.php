@@ -15,7 +15,7 @@ try
     $admin->getAsset( a\TextBlock::TYPE, "0ac3696a8b7f08ee5a4fada2072faed1" )->update(
         array(
             // text block data
-            a\DublinAwareAsset::TEXT => "Hello, World!"
+            a\Asset::TEXT => "Hello, World!"
         )
     )->dump();
 
