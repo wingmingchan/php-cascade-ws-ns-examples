@@ -26,7 +26,7 @@
             a\DublinAwareAsset::METADATA => array(
                 // wired fields
                 a\DublinAwareAsset::AUTHOR       => "Wing Ming",
-                a\DublinAwareAsset::DISPLAY_NAME => "Struts 3 in Action",
+                a\DublinAwareAsset::DISPLAY_NAME => "Struts 2 in Action",
                 a\DublinAwareAsset::SUMMARY      => "Struts 2 in Action",
                 // dynamic fields
                 "exclude-from-menu"              => ""
