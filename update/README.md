@@ -41,7 +41,9 @@
 <p>For pages and data definition blocks, besides property names, fully qualified identifiers can also be passed in as keys. For example:</p>
 <pre>
     $admin->getAsset( a\DataBlock::TYPE, "0b3aaa208b7f08ee5a4fada2258d6fb9" )->update(
-        // structured data nodes, with FQIs as keys
-        "wysiwyg-group;wysiwyg-content" => "&lt;p&gt;Je voudrais boire de la bière.&lt;/p&gt;",
+        array(
+            // structured data nodes, with FQIs as keys
+            "wysiwyg-group;wysiwyg-content" => "&lt;p&gt;Je voudrais boire de la bière.&lt;/p&gt;"
+        )
     );
 </pre>
