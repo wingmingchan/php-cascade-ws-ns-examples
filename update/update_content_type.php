@@ -19,10 +19,10 @@ try
     //$admin->getAsset( a\ContentType::TYPE, "9f2c6baa8b7f08ee29c9ee3decfc2a0d" )->
     //    removeInlineEditableField( "Page;DEFAULT;NULL;data-definition;bottom-group" )->edit();
     
-    // Now remove the data definition
+    // Now remove the data definition and switch the metadata set
     $admin->getAsset( a\ContentType::TYPE, "9f2c6baa8b7f08ee29c9ee3decfc2a0d" )->update(
         array(
-            // content type data and switch the metadata set
+            // content type data
             "dataDefinition" => NULL,
             "metadataSet"    => $admin->getAsset( a\MetadataSet::TYPE, "1cd91a998b7f08ee7df4e217a65462b1" )
         )
