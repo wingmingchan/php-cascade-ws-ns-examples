@@ -15,10 +15,9 @@ $client = new SoapClient(
 $identifier       = array(
     'id'      => '275f515a8b7f08ee5668fbfd3fe3e766',
     /*/
-    'path'        => array( 
-        'path'    => 
-            'index',
-            'siteName' => 'formats' ),
+    'path'         => array( 
+        'path'     => 'index',
+        'siteName' => 'formats' ),
     /*/
     'type'        => 'page' );
 
