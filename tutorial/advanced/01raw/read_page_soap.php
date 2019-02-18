@@ -13,11 +13,13 @@ $client = new SoapClient(
 
 // identifier of the asset
 $identifier       = array(
+    'id'      => '275f515a8b7f08ee5668fbfd3fe3e766',
+    /*/
     'path'        => array( 
         'path'    => 
             'index',
-            //'275f515a8b7f08ee5668fbfd3fe3e766',
-        'siteName'=> 'formats' ),
+            'siteName' => 'formats' ),
+    /*/
     'type'        => 'page' );
 
 // parameters to be sent to Cascade
