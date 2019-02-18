@@ -12,11 +12,11 @@ $client = new SoapClient(
     $wsdl, array( 'trace' => 1, 'location' => $wsdl ) );
 
 // identifier of the asset
-$identifier       = array(
-    'path'        => array( 
-        'path'    => 'index',
-        'siteName'=> 'formats' ),
-    'type'        => 'page' );
+$identifier        = array(
+    'path'         => array( 
+        'path'     => 'index',
+        'siteName' => 'formats' ),
+    'type'         => 'page' );
 
 // parameters to be sent to Cascade
 $readParams = array (
