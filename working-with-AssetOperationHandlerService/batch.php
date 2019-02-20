@@ -1,5 +1,5 @@
 <?php
-require_once('auth_REST_SOAP.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
