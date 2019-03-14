@@ -24,11 +24,9 @@ catch( \Error $er )
 /*
 Useful code templates:
 
-    u\ReflectionUtility::showMethodSignatures( 
-        "cascade_ws_utility\ReflectionUtility" );
+    u\ReflectionUtility::showMethodSignatures(  "cascade_ws_utility\ReflectionUtility" );
         
-    u\ReflectionUtility::showMethodSignature( 
-        "cascade_ws_asset\Page", "edit" );
+    u\ReflectionUtility::showMethodSignature( "cascade_ws_asset\Page", "edit" );
         
     u\ReflectionUtility::showMethodDescription( 
         "cascade_ws_utility\ReflectionUtility", "getMethodInfoByName", true );
@@ -38,8 +36,6 @@ Useful code templates:
 
     u\DebugUtility::dump( $page );
 
-    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump( true );
-
-
+    $cascade->getAsset( a\Page::TYPE, "389b32a68b7ffe83164c931497b7bc24" )->dump();
 */
 ?>
