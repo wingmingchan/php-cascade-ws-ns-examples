@@ -10,8 +10,8 @@ use cascade_ws_exception as e;
 
 try
 {
-    $parent = $cascade->getAsset( a\Folder::TYPE, "54713b9e8b7ffe83552dce4f21a3d6e8" );
-    $block  = $cascade->createTextBlock(
+    $parent = $admin->getAsset( a\Folder::TYPE, "54713b9e8b7ffe83552dce4f21a3d6e8" );
+    $block  = $admin->createTextBlock(
         $parent,
         "new-block",
         "Some data string"

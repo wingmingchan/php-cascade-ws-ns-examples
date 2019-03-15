@@ -10,8 +10,8 @@ use cascade_ws_exception as e;
 
 try
 {
-    //$page = $cascade->getPage( "54763ffe8b7ffe83552dce4f30290433" )->dump();
-    $page = $cascade->getPage( "index", "cascade-admin" )->dump();
+    //$page = $admin->getPage( "54763ffe8b7ffe83552dce4f30290433" )->dump();
+    $page = $admin->getPage( "index", "cascade-admin" )->dump();
 }
 catch( \Exception $e ) 
 {

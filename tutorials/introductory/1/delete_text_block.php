@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-    $cascade->deleteTextBlock( "_cascade/blocks/code/new-block", "cascade-admin" );
+    $admin->deleteTextBlock( "_cascade/blocks/code/new-block", "cascade-admin" );
 }
 catch( \Exception $e ) 
 {

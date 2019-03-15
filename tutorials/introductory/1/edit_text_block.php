@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-    $block = $cascade->getAsset(
+    $block = $admin->getAsset(
         a\TextBlock::TYPE, "_cascade/blocks/code/new-block", "cascade-admin" );
     $block->setText( "New content" )->edit();
 }
