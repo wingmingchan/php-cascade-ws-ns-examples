@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_tutorial7.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,18 +10,18 @@ use cascade_ws_exception as e;
 
 try
 {
-    $page     = $cascade->getAsset( a\Page::TYPE, '1f22b0c88b7ffe834c5fe91e752964c7' );
+    $page     = $cascade->getAsset( a\Page::TYPE, 'a177aa378b7f08ee51a7376383cd61e2' );
     $metadata = $page->getMetadata();
     
     /* wired fields */
     $metadata->setDisplayName( "New Display Name" )->
-        setStartDate( "2017-01-20T00:00:00" );
+        setStartDate( "2019-03-21T00:00:00" );
     
     $page->edit();
     
     /* dynamic fields */
-    $field_name = "include-in-menubar";
-    $yes_value  = "Yes";
+    $field_name = "exclude-from-menu";
+    $yes_value  = "yes";
     
     // if value exist, set the value
     if( $metadata->hasDynamicField( $field_name ) )
@@ -36,7 +36,7 @@ try
     }
     
     // too lazy to do any tests; exception can be thrown
-    $field_name = "exclude-from-left";
+    $field_name = "exclude-from-left-folder-nav";
     $metadata->
         // uncheck the checkbox
         setDynamicField( $field_name, "" )->getHostAsset()->edit();
