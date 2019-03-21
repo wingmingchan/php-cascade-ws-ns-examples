@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_tutorial7.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-    $ms = $cascade->getAsset( a\MetadataSet::TYPE, 'b893fd058b7f0856002a5e11185ff809' );
+    $ms = $cascade->getAsset( a\MetadataSet::TYPE, 'a15e54ae8b7ffe837b9f2648f7d70d16' );
     
     /* wired fields */
     $ms->setStartDateFieldRequired( true )->
@@ -44,16 +44,17 @@ try
             "Display",    // label
             true,         // required
             c\T::VISIBLE, // visibility
-            "Yes;No"      // possible values
+            "yes;no"      // possible values
         );
     }
     u\DebugUtility::dump( $ms->getDynamicMetadataFieldDefinitionNames() );
         
     // move the field up
     u\DebugUtility::out( "Moving $field_name up" );
-    if( $ms->hasDynamicMetadataFieldDefinition( "radio" ) )
+    
+    if( $ms->hasDynamicMetadataFieldDefinition( "tree-picker" ) )
     {
-        $ms->swapFields( "radio", $field_name );
+        $ms->swapFields( "tree-picker", $field_name );
     }
     u\DebugUtility::dump( $ms->getDynamicMetadataFieldDefinitionNames() );
         
