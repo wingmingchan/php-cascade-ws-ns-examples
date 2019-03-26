@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_chanw.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,9 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-    u\DebugUtility::dump( $service->createId( a\Site::TYPE, "cascade-admin" ) );
-
-    $sites = $cascade->getSites();
+    $sites = $admin->getSites();
     //$counter = 0;
     
     foreach( $sites as $site_id )
@@ -25,7 +23,6 @@ try
             break;
 */
     }
-
 }
 catch( \Exception $e ) 
 {
