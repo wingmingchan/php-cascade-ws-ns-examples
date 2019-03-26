@@ -11,7 +11,7 @@ data definitions and metadata sets.
 */
 $start_time = time();
 
-require_once( 'auth_chanw.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -22,11 +22,11 @@ use cascade_ws_exception as e;
 
 try
 {
-    // set parameters for timing: about 20 seconds
+    // set parameters for timing: about 40 seconds for 200 sites
     u\DebugUtility::setTimeSpaceLimits();
     
     // $sites store an array of Child objects
-    $sites = $cascade->getSites();
+    $sites = $admin->getSites();
     
     // output some site information
     foreach( $sites as $site )
@@ -40,6 +40,7 @@ try
         
         // output the URL
         echo "Site URL: ", $site_obj->getUrl(), BR;
+        
         // output recycle bin expiration
         echo "Recyle bin expiration: ", $site_obj->getRecycleBinExpiration(), BR;
         
