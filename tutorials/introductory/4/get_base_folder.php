@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_tutorial7.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -11,8 +11,8 @@ use cascade_ws_exception as e;
 try
 {
     $site_name = "cascade-admin";
-    $site = $cascade->getSite( $site_name );
-    $site_base_folder = $site->getBaseFolder()->dump();
+    $site      = $admin->getSite( $site_name );
+    $site_bf   = $site->getBaseFolder()->dump();
 }
 catch( \Exception $e ) 
 {
