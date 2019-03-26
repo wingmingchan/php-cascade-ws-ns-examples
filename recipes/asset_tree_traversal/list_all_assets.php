@@ -4,7 +4,7 @@ This program shows how to list all assets within a folder.
 There are two ways to show the result: either as a list, or
 as an XML document.
 */
-require_once('auth_chanw.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -15,10 +15,12 @@ use cascade_ws_exception as e;
 
 try
 {
-    $at = $cascade->getAsset( a\Folder::TYPE, 'c0a77f3d8b7f0856002a5e11f1d4c763' )->
+    $at = $admin->getAsset( a\Folder::TYPE, '506024598b7f08ee0c71f5c09776dbb5' )->
         getAssetTree();
+        
+    // output the list
     echo $at->toListString();
-      
+    // output the XML
     echo S_PRE, u\XmlUtility::replaceBrackets( $at->toXml() ), E_PRE;  
 }
 catch( \Exception $e ) 
