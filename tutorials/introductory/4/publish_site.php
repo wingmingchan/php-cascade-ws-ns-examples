@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_chanw.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -11,8 +11,7 @@ use cascade_ws_exception as e;
 try
 {
     $site_name = "about";
-    $site = $cascade->getSite( $site_name );
-    $site->publish();
+    $admin->getSite( $site_name )->publish();
 }
 catch( \Exception $e ) 
 {
