@@ -1,9 +1,9 @@
 <?php
 /*
-This program shows how to retrieve the set of identifiers from
+This program shows how to retrieve the set of identifiers (FQIs) from
 a data defintion block.
 */
-require_once('auth_chanw.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -14,7 +14,7 @@ use cascade_ws_exception as e;
 
 try 
 {
-    $dd_block = $cascade->getAsset( 
+    $dd_block = $admin->getAsset( 
         a\DataDefinitionBlock::TYPE, "32fca8458b7f08ee384a2061ad1d5f17" );
         
     u\DebugUtility::dump( $dd_block->getIdentifiers() );
