@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_tutorial7.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,16 +10,16 @@ use cascade_ws_exception as e;
 
 try
 {
-    $template = $cascade->getAsset( a\Template::TYPE, "9fea1e1b8b7ffe83164c9314e13a3233" );
+    $template = $admin->getAsset( a\Template::TYPE, "9fea1e1b8b7ffe83164c9314e13a3233" );
     $subscribers = $template->getSubscribers();
     
     if( count( $subscribers ) > 0 )
     {
         echo S_UL;
         
-        foreach( $subscribers as $subsriber )
+        foreach( $subscribers as $subscriber )
         {
-             echo S_LI, $subsriber->getPathSiteName(), ": ", $subsriber->getPathPath(),
+             echo S_LI, $subsriber->getPathSiteName(), ": ", $subscriber->getPathPath(),
                  E_LI;
         }
         
