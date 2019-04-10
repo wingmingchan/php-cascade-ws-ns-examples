@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_tutorial7.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,7 +10,7 @@ use cascade_ws_exception as e;
 
 try
 {
-    $dd = $cascade->getAsset( a\DataDefinition::TYPE, "ead5dd108b7ffe83164c9314c28a8074" );
+    $dd = $admin->getAsset( a\DataDefinition::TYPE, "ead5dd108b7ffe83164c9314c28a8074" );
     u\DebugUtility::dump( $dd->getIdentifiers() );
 }
 catch( \Exception $e ) 
