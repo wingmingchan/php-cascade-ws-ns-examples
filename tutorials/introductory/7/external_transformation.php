@@ -1,5 +1,5 @@
 <?php
-require_once( 'auth_chanw.php' );
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -10,9 +10,9 @@ use cascade_ws_exception as e;
 
 try
 {
-    $xml  = $cascade->getAsset(
+    $xml  = $admin->getAsset(
         a\XmlBlock::TYPE, "c1c150508b7f08ee4fe76bb8883e80b5" )->getXml();
-    $xsl  = $cascade->getAsset(
+    $xsl  = $admin->getAsset(
         a\XsltFormat::TYPE, "c1cdc7488b7f08ee4fe76bb8b0635d4a" )->getXml();
     $xslt = new XSLTProcessor();
     
