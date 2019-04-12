@@ -1,10 +1,10 @@
 <?php
 /*
-This program is used to count assets of various types.
+This program is used to count assets of various types in a site.
 */
 $start_time = time();
 
-require_once('auth_chanw.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_constants as c;
 use cascade_ws_AOHS      as aohs;
