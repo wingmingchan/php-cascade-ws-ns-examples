@@ -1,8 +1,10 @@
 <?php 
 /*
 This program can be used to count pages in the entire Cascade instance.
+Note that the program can take a very long time to execute.
+919 seconds on 4/12/2019
 */
-require_once('auth_chanw.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_constants as c;
 use cascade_ws_asset     as a;
