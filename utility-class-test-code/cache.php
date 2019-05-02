@@ -1,5 +1,5 @@
 <?php 
-require_once('auth_tutorial7.php');
+require_once( 'auth_REST_SOAP.php' );
 
 use cascade_ws_AOHS      as aohs;
 use cascade_ws_constants as c;
@@ -11,7 +11,7 @@ use cascade_ws_exception as e;
 try
 {
     $cache                = u\Cache::getInstance( $service );
-    $template_id_stdClass = $service->createId( a\Template::TYPE, "78c760648b7f0856004564242ce4d1d1" );
+    $template_id_stdClass = $service->createId( a\Template::TYPE, "1db71c3f8b7f08ee7df4e217fd764404" );
     $template_identifier  = new p\Child( $template_id_stdClass );
 
     // test cache time
@@ -22,12 +22,16 @@ try
         $template = $cache->retrieveAsset( $template_identifier );
     }
     
-    $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    //$cache->displayCache();    // 0 seconds
+    $cache->displayCacheKeys();  // 1 second
     
-    u\DebugUtility::dump( $cache );
-    $cache->clearCache();
-    u\DebugUtility::dump( $cache );
+    $end_time = time();
+    echo "\nTotal time taken when using cache: " . ( $end_time - $start_time ) .
+        " seconds\n" . BR;
+    
+    //u\DebugUtility::dump( $cache );
+    //$cache->clearCache();
+    //u\DebugUtility::dump( $cache );
     
     // test direct retrieval time
     $start_time = time();
@@ -38,7 +42,8 @@ try
     }
     
     $end_time = time();
-    echo "\nTotal time taken: " . ( $end_time - $start_time ) . " seconds\n";
+    echo "\nTotal time taken without cache: " . ( $end_time - $start_time ) .
+        " seconds\n" . BR; // 8 seconds
 }
 catch( \Exception $e ) 
 {
