@@ -23,16 +23,29 @@ try
     }
     
     //$cache->displayCache();    // 0 seconds
-    $cache->displayCacheKeys();  // 1 second
+    $cache->displayCacheKeys();  // 0 second
     
     $end_time = time();
     echo "\nTotal time taken when using cache: " . ( $end_time - $start_time ) .
         " seconds\n" . BR;
-    
+        
     //u\DebugUtility::dump( $cache );
-    //$cache->clearCache();
-    //u\DebugUtility::dump( $cache );
+    $cache->clearCache();
     
+    $start_time = time();
+
+    $template = $template_identifier->getAsset( $service );
+    $cache->storeAsset( $template );
+    
+    for( $i = 0; $i < 50; $i++ )
+    {
+        $template = $cache->retrieveAsset( $template_identifier );
+    }
+    
+    $end_time = time();
+    echo "\nTotal time taken when using cache: " . ( $end_time - $start_time ) .
+        " seconds\n" . BR;
+
     // test direct retrieval time
     $start_time = time();
     
