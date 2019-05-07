@@ -13,12 +13,12 @@ try
     
     echo $proc->transformToXML( $xml_doc );
 }
-catch( \Exception $e ) 
+catch( Exception $e ) 
 {
-    echo S_PRE . $e . E_PRE; 
+    echo $e; 
 }
-catch( \Error $er )
+catch( Error $er )
 {
-    echo S_PRE . $er . E_PRE; 
+    echo $er; 
 }
 ?>
