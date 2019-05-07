@@ -1,5 +1,5 @@
 <?php
-$xml_url   = "http://web.upstate.edu:8080/ws/services/AssetOperationService?wsdl";
+$xml_url   = "http://mydomain.edu:1234/ws/services/AssetOperationService?wsdl";
 $xsl_url   = "https://raw.githubusercontent.com/qvantel/wsdl-viewer/master/wsdl-viewer.xsl";
 
 try
